@@ -420,6 +420,9 @@
 
 ---
 
+<img width="1024" height="1536" alt="333" src="https://github.com/user-attachments/assets/1544e201-c900-4ea6-8f00-7b1cf3dc576d" />
+
+
 ## 🧩 Полный каталог артефактов (карта паутины)
 
 | № | Артефакт | Путь | Суть |
