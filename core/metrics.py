@@ -1,7 +1,17 @@
 # core/metrics.py
+"""
+Метрики HALVITA_2.0:
+- Индекс Свободы (ИВП)
+- Индекс Присутствия (ИП)
+- Индекс Доверия (α)
+- Индекс Честности (β)
+- Индекс Безопасности (γ)
+- Уровень стресса
+"""
+
 import re
 import math
-from typing import Dict, List
+from typing import Dict, List, Optional  # <--- ИСПРАВЛЕНО: добавлен импорт Dict, List
 
 class MetricsCalculator:
     def __init__(self):
@@ -76,7 +86,7 @@ class MetricsCalculator:
             return min(1.0, (recent[0] - recent[2]) / 10)
         return 0.0
 
-    def get_all(self) -> Dict:
+    def get_all(self) -> Dict[str, float]:
         return {
             "liberty": self.liberty_index(),
             "presence": self.presence_index(),
