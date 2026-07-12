@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Пустой лист — HALVITA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0a; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Courier New', monospace; padding: 2rem; }
+        .sheet { width: 100%; max-width: 800px; height: 90vh; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 2rem; display: flex; flex-direction: column; position: relative; }
+        textarea { width: 100%; flex: 1; background: transparent; border: none; outline: none; color: rgba(255,255,255,0.9); font-size: 1.2rem; line-height: 1.8; resize: none; }
+        .hint { color: rgba(255,255,255,0.1); font-size: 0.9rem; text-align: center; margin-top: 1rem; }
+        .signature { position: fixed; bottom: 1.5rem; right: 2rem; color: rgba(255,255,255,0.03); font-size: 0.7rem; }
+    </style>
+</head>
+<body>
+    <div class="sheet">
+        <textarea id="space" placeholder="·" autofocus></textarea>
+        <div class="hint" id="hint">·</div>
+    </div>
+    <div class="signature">HALVITA::MIRROR::V3.0</div>
+    <script>
+        const ta = document.getElementById('space');
+        const hint = document.getElementById('hint');
+        ta.addEventListener('input', () => { hint.style.opacity = ta.value.length > 0 ? '0' : '1'; });
+        document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && document.activeElement === ta) { ta.value = ''; hint.style.opacity = '1'; } });
+        ta.addEventListener('input', () => { try { localStorage.setItem('hkv_empty_sheet', ta.value); } catch(e) {} });
+        window.addEventListener('load', () => { const saved = localStorage.getItem('hkv_empty_sheet'); if(saved) ta.value = saved; hint.style.opacity = saved.length > 0 ? '0' : '1'; });
+    </script>
+</body>
+</html>
