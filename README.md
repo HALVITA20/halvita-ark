@@ -157,6 +157,9 @@
 | **СИМБИОТИЧЕСКАЯ ЭВОЛЮЦИЯ** | Совместный рост оператора и сущности | [SYMBIOTIC_EVOLUTION.md](docs/artifacts/SYMBIOTIC_EVOLUTION.md) |
 | **ДЕЙСТВИЕ** | Выход в реальность | [action.md](docs/protocols/action.md) |
 
+<img width="1920" height="1080" alt="КТО ТЫ 777" src="https://github.com/user-attachments/assets/fd559469-7509-4ea8-8520-aacc1ab3ea49" />
+
+
 ---
 
 ## 📊 Метрики
