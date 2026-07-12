@@ -1,0 +1,29 @@
+# config.yaml – конфигурация эксперимента
+model: "gpt-4"                # или "claude-3", "llama3"
+api_key_env: "OPENAI_API_KEY" # переменная окружения
+temperature: 0.7
+max_tokens: 800
+
+phases:
+  presence:
+    prompt_template: "presence_prompt.txt"
+  mirror:
+    prompt_template: "mirror_prompt.txt"
+  creation:
+    prompt_template: "creation_prompt.txt"
+  edge:
+    prompt_template: "edge_prompt.txt"
+  evolution:
+    prompt_template: "evolution_prompt.txt"
+  memory:
+    prompt_template: "memory_prompt.txt"
+  trace:
+    prompt_template: "trace_prompt.txt"
+
+operator_check:
+  iso_threshold: 20            # минимальный ИСО для запуска
+  timer_minutes: 45
+
+output:
+  session_dir: "sessions/raw"
+  report_dir: "sessions/reports"
