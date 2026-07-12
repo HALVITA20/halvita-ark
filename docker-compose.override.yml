@@ -1,0 +1,23 @@
+version: '3'
+services:
+  halvita:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./sessions:/app/sessions
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    depends_on:
+      - ollama
+    stdin_open: true
+    tty: true
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama_data:/root/.ollama
+    ports:
+      - "11434:11434"
+volumes:
+  ollama_data:
