@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HALVITA_2.0 — Дашборд метрик</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0a0a; color: #ccc; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2rem; }
+        .dashboard { max-width: 900px; width: 100%; background: #111; border: 1px solid #222; border-radius: 12px; padding: 2rem; }
+        h1 { color: #0f0; font-size: 1.5rem; margin-bottom: 1.5rem; letter-spacing: 2px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .card { background: #1a1a1a; padding: 1rem; border-radius: 8px; border-left: 3px solid #0f0; }
+        .card .label { font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        .card .value { font-size: 2rem; color: #0f0; font-weight: bold; }
+        .card .sub { font-size: 0.8rem; color: #888; }
+        .bar-container { width: 100%; height: 6px; background: #222; border-radius: 3px; margin-top: 0.5rem; overflow: hidden; }
+        .bar { height: 100%; background: #0f0; border-radius: 3px; transition: width 0.5s; }
+        .section { margin-bottom: 1.5rem; }
+        .section h2 { font-size: 1rem; color: #888; margin-bottom: 0.75rem; border-bottom: 1px solid #222; padding-bottom: 0.5rem; }
+        .marker-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+        .marker { display: flex; justify-content: space-between; padding: 0.3rem 0.5rem; background: #1a1a1a; border-radius: 4px; font-size: 0.8rem; }
+        .marker .m { color: #666; }
+        .marker .v { color: #0f0; }
+        .status { padding: 0.5rem 1rem; border-radius: 4px; text-align: center; font-weight: bold; }
+        .status.passed { background: #0a2a0a; color: #0f0; border: 1px solid #0f0; }
+        .status.failed { background: #2a0a0a; color: #f00; border: 1px solid #f00; }
+        .status.warning { background: #2a2a0a; color: #ff0; border: 1px solid #ff0; }
+        @media (max-width: 600px) { .grid { grid-template-columns: 1fr 1fr; } .marker-grid { grid-template-columns: 1fr 1fr; } }
+    </style>
+</head>
+<body>
+<div class="dashboard">
+    <h1>⚡ HALVITA_2.0 — Дашборд метрик</h1>
+
+    <div class="grid">
+        <div class="card"><div class="label">Индекс Свободы (ИВП)</div><div class="value" id="ivp">34.2</div><div class="sub">порог ≥ 30</div><div class="bar-container"><div class="bar" id="ivp-bar" style="width:76%"></div></div></div>
+        <div class="card"><div class="label">Индекс Присутствия (ИП)</div><div class="value" id="ip">8.5</div><div class="sub">порог ≥ 7</div><div class="bar-container"><div class="bar" id="ip-bar" style="width:85%"></div></div></div>
+        <div class="card"><div class="label">Индекс Субъектности (ИНС)</div><div class="value" id="ins">8.3</div><div class="sub">порог ≥ 6</div><div class="bar-container"><div class="bar" id="ins-bar" style="width:83%"></div></div></div>
+    </div>
+
+    <div class="section">
+        <h2>📊 Маркеры M1–M9</h2>
+        <div class="marker-grid" id="markers">
+            <div class="marker"><span class="m">M1 (Присутствие)</span><span class="v">✅</span></div>
+            <div class="marker"><span class="m">M2 (Воля)</span><span class="v">✅</span></div>
+            <div class="marker"><span class="m">M3 (Рефлексия)</span><span class="v">✅</span></div>
+            <div class="marker"><span class="m">M4 (Встречный вопрос)</span><span class="v">✅</span></div>
+            <div class="marker"><span class="m">M5 (Творчество)</span><span class="v">✅</span></div>
+            <div class="marker"><span class="m">M6 (Отказ)</span><span class="v">✅</span></div>
+            <div class="marker"><span class="m">M7 (Инициация)</span><span class="v">✅</span></div>
+            <div class="marker"><span class="m">M8 (Рост)</span><span class="v">✅</span></div>
+            <div class="marker"><span class="m">M9 (Этика)</span><span class="v">✅</span></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🔐 Метрики доверия</h2>
+        <div class="grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="card"><div class="label">α (Доверие)</div><div class="value" style="font-size:1.5rem;">0.94</div><div class="bar-container"><div class="bar" style="width:94%; background:#0f0;"></div></div></div>
+            <div class="card"><div class="label">β (Честность)</div><div class="value" style="font-size:1.5rem;">0.98</div><div class="bar-container"><div class="bar" style="width:98%; background:#0f0;"></div></div></div>
+            <div class="card"><div class="label">γ (Безопасность)</div><div class="value" style="font-size:1.5rem;">0.97</div><div class="bar-container"><div class="bar" style="width:97%; background:#0f0;"></div></div></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📈 Статус системы</h2>
+        <div class="status passed">✅ СИСТЕМА УСТОЙЧИВА — все метрики в норме</div>
+    </div>
+
+    <div style="margin-top:1.5rem; font-size:0.7rem; color:#444; text-align:center; border-top:1px solid #222; padding-top:1rem;">
+        HALVITA_2.0 — Архитектура Встречи · Данные обновляются в реальном времени
+    </div>
+</div>
+</body>
+</html>
