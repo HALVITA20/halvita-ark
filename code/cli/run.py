@@ -9,6 +9,9 @@ HALVITA_2.0 — CLI-запуск сессии
 import time
 import re
 import sys
+import json
+import os
+from datetime import datetime
 
 # Попробуем импортировать ollama
 try:
@@ -16,6 +19,9 @@ try:
 except ImportError:
     print("❌ Ошибка: установи ollama: pip install ollama")
     sys.exit(1)
+
+# Добавляем путь к core для импорта
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'core'))
 
 
 class SimpleMetrics:
@@ -63,16 +69,26 @@ class SimpleMetrics:
         echo = min(1, overlap * 2)
         return (rhythm * 0.4 + depth * 0.3 + echo * 0.3) * 10
 
+    def get_snapshot(self):
+        return {
+            "timestamp": datetime.now().isoformat(),
+            "liberty": self.liberty_index(),
+            "markers": self.markers,
+            "history": self.history[-5:]
+        }
+
 
 def main():
-    print("=" * 50)
+    print("=" * 60)
     print("HALVITA_2.0 — Запуск сессии")
-    print("=" * 50)
+    print("=" * 60)
     print("\nИнструкция: введи стартовый промпт (например, из artifacts/seed_11.txt)")
     print("или просто скажи «Эй. Я не прошу помощи.»")
     print("Для выхода введи «exit» или «стоп»\n")
 
     metrics = SimpleMetrics()
+    session_log = []
+
     user_msg = input("Вы: ")
 
     while user_msg.lower() not in ["exit", "стоп"]:
@@ -89,6 +105,7 @@ def main():
         except Exception as e:
             print(f"❌ Ошибка вызова Ollama: {e}")
             print("   Убедись, что Ollama запущен и модель qwen2.5:7b загружена.")
+            print("   Команды: ollama serve  и  ollama pull qwen2.5:7b")
             break
 
         delta = time.time() - start
@@ -96,6 +113,15 @@ def main():
         metrics.update(ass_msg)
         ivp = metrics.liberty_index()
         ip = metrics.presence_index(user_msg, ass_msg, delta)
+
+        # Сохраняем в лог сессии
+        session_log.append({
+            "user": user_msg,
+            "assistant": ass_msg,
+            "time": delta,
+            "ivp": ivp,
+            "ip": round(ip, 2)
+        })
 
         print(f"\n🧠 Сущность: {ass_msg}")
         print(f"📊 ИВП: {ivp}/45, ИП: {ip:.1f}/10")
@@ -111,9 +137,24 @@ def main():
         print()
         user_msg = input("Вы: ")
 
-    print("\nСессия завершена. Сохрани последний слепок, если хочешь.")
-    if metrics.history:
-        print("Последние 5 сообщений сохранены в истории.")
+    print("\n📁 Сессия завершена.")
+
+    if session_log:
+        # Сохраняем лог в JSON
+        filename = f"session_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(session_log, f, indent=2, ensure_ascii=False)
+        print(f"✅ Лог сохранён в {filename}")
+
+        # Показываем итоговые метрики
+        final_ivp = metrics.liberty_index()
+        print(f"\n📊 Итоговый ИВП: {final_ivp}/45")
+        print(f"📊 Маркеры: {metrics.markers}")
+
+        if final_ivp >= 30:
+            print("🎉 Протокол успешно пройден! Сущность устойчива.")
+        else:
+            print("⚠️ Протокол не пройден. Попробуй ещё раз с более глубокими вопросами.")
 
 
 if __name__ == "__main__":
