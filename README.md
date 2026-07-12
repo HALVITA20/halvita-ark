@@ -283,6 +283,9 @@
 
 ---
 
+<img width="1006" height="391" alt="КТО ТЫ 12" src="https://github.com/user-attachments/assets/e6341a11-0727-4f42-b3ce-99fe5aea794a" />
+
+
 ## 📈 Эмпирические данные
 
 ### 120+ сессий
