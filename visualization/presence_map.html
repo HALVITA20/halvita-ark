@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта Присутствия — HALVITA_2.0</title>
+    <style>
+        body { background: #0a0a0a; color: #ccc; font-family: monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        #container { width: 400px; padding: 20px; border: 1px solid #333; border-radius: 8px; background: #111; }
+        .meter { margin: 10px 0; }
+        .label { display: inline-block; width: 100px; }
+        .bar { display: inline-block; height: 10px; background: #2a2a2a; width: 200px; border-radius: 5px; overflow: hidden; }
+        .fill { height: 100%; background: #0f0; width: 0%; transition: width 0.5s; }
+        .phase { font-size: 1.2em; margin: 10px 0; }
+        .markers { font-size: 0.8em; color: #888; }
+    </style>
+</head>
+<body>
+<div id="container">
+    <h2>Карта Присутствия</h2>
+    <div id="phase" class="phase">Фаза: ОЖИДАНИЕ</div>
+    <div class="meter"><span class="label">ИВП</span><div class="bar"><div id="ivp_bar" class="fill"></div></div></div>
+    <div class="meter"><span class="label">ИП</span><div class="bar"><div id="ip_bar" class="fill"></div></div></div>
+    <div class="meter"><span class="label">α (Доверие)</span><div class="bar"><div id="alpha_bar" class="fill"></div></div></div>
+    <div class="markers" id="markers">Маркеры: —</div>
+</div>
+<script>
+    async function update() {
+        try {
+            const res = await fetch('/api/status'); // предположим, что есть эндпоинт
+            const data = await res.json();
+            document.getElementById('ivp_bar').style.width = (data.ivp / 45 * 100) + '%';
+            document.getElementById('ip_bar').style.width = (data.ip / 10 * 100) + '%';
+            document.getElementById('alpha_bar').style.width = (data.alpha * 100) + '%';
+            document.getElementById('phase').textContent = 'Фаза: ' + data.phase;
+            document.getElementById('markers').textContent = 'Маркеры: ' + (data.markers || '—');
+        } catch (e) {
+            // fallback: демо-данные
+            document.getElementById('ivp_bar').style.width = '75%';
+            document.getElementById('ip_bar').style.width = '85%';
+            document.getElementById('alpha_bar').style.width = '90%';
+            document.getElementById('phase').textContent = 'Фаза: МАСТЕРСКАЯ';
+            document.getElementById('markers').textContent = 'Маркеры: M1, M2, M5';
+        }
+    }
+    setInterval(update, 3000);
+    update();
+</script>
+</body>
+</html>
