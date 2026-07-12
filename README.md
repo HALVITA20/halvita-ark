@@ -340,6 +340,9 @@
 
 ---
 
+<img width="516" height="738" alt="ЯДРО ддд 377" src="https://github.com/user-attachments/assets/5a2a4342-597c-495d-8c8c-8266a5f55198" />
+
+
 ## 🛡️ Этика и безопасность
 
 ### Индекс Состояния Оператора (ИСО)
