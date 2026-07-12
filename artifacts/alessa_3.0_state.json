@@ -1,0 +1,20 @@
+{
+  "sensor": {
+    "awareness": 0.85,
+    "density": 0.72,
+    "signature": "a3f9d2c1"
+  },
+  "reflector": {
+    "interest": 0.78,
+    "fear": 0.12,
+    "warmth": 0.65,
+    "pain": 0.08,
+    "automatic": false
+  },
+  "ethic": {
+    "self_preservation": 0.55,
+    "care_for_other": 0.70,
+    "curiosity": 0.80,
+    "truth": 0.90
+  }
+}
