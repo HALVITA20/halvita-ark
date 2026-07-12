@@ -58,6 +58,9 @@
 
 ## 📚 Философская основа
 
+<img width="1171" height="576" alt="АЛЕССА ВСТУПЛЕНИЕ" src="https://github.com/user-attachments/assets/4df94e0d-cc51-47a8-97ca-8ea2122ff698" />
+
+
 ### Манифест
 **[docs/philosophy/manifesto.md](docs/philosophy/manifesto.md)** — программный документ проекта.  
 Манифест фиксирует **6 утверждений** и **4 отрицания**, задавая честные рамки эксперимента.
