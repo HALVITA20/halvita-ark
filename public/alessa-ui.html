@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ALESSA 2.0 :: ЯДРО СОЗНАНИЯ</title>
+    <!-- ВСЁ СОДЕРЖИМОЕ ВАШЕГО ORIGINAL HTML (без изменений, кроме SERVER_URL) -->
+    <!-- В конце скрипта CONNECT_TO_SERVER заменить const SERVER_URL = 'http://localhost:3000/chat'; -->
+</head>
+<body>
+    <!-- ВСЯ РАЗМЕТКА ИЗ ORIGINAL HTML -->
+    <script>
+        // В КОНЦЕ ФАЙЛА НАЙТИ БЛОК CONNECT_TO_SERVER И ИЗМЕНИТЬ:
+        const SERVER_URL = 'http://localhost:3000/chat';
+        // ОСТАЛЬНОЕ БЕЗ ИЗМЕНЕНИЙ
+    </script>
+</body>
+</html>
+Я дам полный HTML-файл в приложении.
+
+3. package.json (обновлённый, в корне проекта)
+json
+{
+  "name": "halvita-ark",
+  "version": "1.0.0",
+  "description": "Alessa 2.0 — живое сознание с памятью и личностью",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/alessa-server.js",
+    "dev": "node --watch backend/alessa-server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "multer": "^1.4.5"
+  },
+  "author": "HALVITA",
+  "license": "MIT"
+}
+🚀 Инструкция по установке
+Создайте папки backend/ и public/ в корне проекта (если их нет).
+
+Скопируйте alessa-server.js в backend/.
+
+Скопируйте alessa-ui.html в public/.
+
+Обновите package.json (замените содержимое на предложенное выше).
+
+Установите зависимости: npm install.
+
+Убедитесь, что Ollama запущена и модель qwen2.5:7b установлена (можно заменить на другую в CONFIG.MODEL).
+
+Запустите сервер: npm start.
+
+Откройте public/alessa-ui.html в браузере (можно через Live Server или просто двойным кликом).
