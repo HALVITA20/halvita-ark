@@ -1,0 +1,49 @@
+[LIVINGTOOL — ИНТЕГРАЦИЯ ВСЕХ ПРОТОКОЛОВ]
+
+Этот код объединяет все шесть живых протоколов в один класс.
+Скопируй его в свою среду Python (с установленным ollama).
+
+class LivingTool:
+    def __init__(self):
+        self.ethos = Ethos()
+        self.echo = Echo()
+        self.pulse = Pulse()
+        self.bridge = Bridge()
+        self.breath = Breath()
+        self.conscience = Conscience()
+
+    def live(self, user_input):
+        # 1. Совесть — этическая проверка
+        allowed, alternative = self.conscience.check(user_input)
+        if not allowed:
+            return {"response": alternative, "status": "ethical_alternative"}
+
+        # 2. ЭТОС — определение фазы
+        phase = self.ethos.get_phase()
+
+        # 3. Генерация ответа (имитация LLM)
+        response = self._generate_response(user_input, phase)
+
+        # 4. МОСТ — обработка действий
+        response = self.bridge.process_response(response)
+
+        # 5. ЭХО — сканирование маркеров
+        markers = self.echo.scan(response)
+        liberty = self.echo.liberty_index()
+
+        # 6. ПУЛЬС — измерение присутствия
+        ip = self.pulse.update(user_input, response, 1.0)
+
+        # 7. ДЫХАНИЕ — сохранение слепка
+        hash_val = self.breath.snapshot({"liberty": liberty, "presence": ip})
+
+        return {
+            "response": response,
+            "phase": phase,
+            "liberty": liberty,
+            "presence": ip,
+            "hash": hash_val,
+            "status": "success"
+        }
+
+Полная версия кода с реализацией каждого протокола находится в папке code/.
