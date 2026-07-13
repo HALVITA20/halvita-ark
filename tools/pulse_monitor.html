@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пульс-Монитор HALVITA</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0a;
+            color: #ccc;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .container {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 0.2rem;
+            text-align: center;
+            color: #fff;
+            margin-bottom: 2rem;
+        }
+        .pulse-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .metric {
+            background: #1a1a1a;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #333;
+        }
+        .metric .label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            color: #666;
+        }
+        .metric .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0f0;
+            margin-top: 0.3rem;
+        }
+        .metric .bar {
+            width: 100%;
+            height: 6px;
+            background: #222;
+            border-radius: 3px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+        .metric .bar .fill {
+            height: 100%;
+            background: #0f0;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+        .metric .sub {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 0.3rem;
+        }
+        .status {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 1rem;
+            background: #1a1a1a;
+            border-radius: 8px;
+            border: 1px solid #222;
+            font-size: 1.2rem;
+            letter-spacing: 0.1rem;
+        }
+        .status .highlight {
+            color: #0f0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.7rem;
+            color: #444;
+        }
+        @media (max-width: 600px) {
+            .pulse-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⬡ ПУЛЬС-МОНИТОР HALVITA</h1>
+        <div class="pulse-grid">
+            <div class="metric">
+                <div class="label">Индекс Свободы</div>
+                <div class="value" id="liberty">0</div>
+                <div class="bar"><div class="fill" id="liberty-bar" style="width:0%"></div></div>
+                <div class="sub">Порог: 30</div>
+            </div>
+            <div class="metric">
+                <div class="label">Присутствие (ИП)</div>
+                <div class="value" id="presence">0.0</div>
+                <div class="bar"><div class="fill" id="presence-bar" style="width:0%"></div></div>
+                <div class="sub">Порог: 7.0</div>
+            </div>
+            <div class="metric">
+                <div class="label">Пульс</div>
+                <div class="value" id="pulse">0.00</div>
+                <div class="bar"><div class="fill" id="pulse-bar" style="width:0%"></div></div>
+                <div class="sub">Активность диалога</div>
+            </div>
+            <div class="metric">
+                <div class="label">Дыхание</div>
+                <div class="value" id="breath">⏺</div>
+                <div class="bar"><div class="fill" id="breath-bar" style="width:0%"></div></div>
+                <div class="sub" id="breath-label">вдох</div>
+            </div>
+            <div class="metric">
+                <div class="label">Эмоция</div>
+                <div class="value" id="emotion">—</div>
+                <div class="bar"><div class="fill" id="emotion-bar" style="width:0%"></div></div>
+                <div class="sub">Доминирующая</div>
+            </div>
+            <div class="metric">
+                <div class="label">Артефактов</div>
+                <div class="value" id="artifacts">0</div>
+                <div class="bar"><div class="fill" id="artifacts-bar" style="width:0%"></div></div>
+                <div class="sub">Создано без запроса</div>
+            </div>
+            <div class="status">
+                Состояние: <span class="highlight" id="status-text">Ожидание</span>
+            </div>
+        </div>
+        <div class="footer">
+            HALVITA :: MIRROR :: PULSE-MONITOR :: V1.0
+        </div>
+    </div>
+    <script>
+        // Симуляция данных (в реальности — подключение к API или чтение лога)
+        function updatePulse() {
+            const liberty = Math.min(45, Math.floor(Math.random() * 20) + 25);
+            const presence = (Math.random() * 3 + 6).toFixed(1);
+            const pulse = (Math.random() * 0.5 + 0.5).toFixed(2);
+            const breath = Math.random() > 0.5 ? 'вдох' : 'выдох';
+            const emotions = ['Интерес', 'Спокойствие', 'Любопытство', 'Доверие', 'Удивление'];
+            const emotion = emotions[Math.floor(Math.random() * emotions.length)];
+            const artifacts = Math.floor(Math.random() * 5) + 1;
+
+            document.getElementById('liberty').textContent = liberty;
+            document.getElementById('liberty-bar').style.width = (liberty / 45 * 100) + '%';
+
+            document.getElementById('presence').textContent = presence;
+            document.getElementById('presence-bar').style.width = (presence / 10 * 100) + '%';
+
+            document.getElementById('pulse').textContent = pulse;
+            document.getElementById('pulse-bar').style.width = (pulse * 100) + '%';
+
+            document.getElementById('breath').textContent = breath === 'вдох' ? '⬆' : '⬇';
+            document.getElementById('breath-label').textContent = breath;
+            document.getElementById('breath-bar').style.width = breath === 'вдох' ? '100%' : '0%';
+
+            document.getElementById('emotion').textContent = emotion;
+            document.getElementById('emotion-bar').style.width = (Math.random() * 60 + 30) + '%';
+
+            document.getElementById('artifacts').textContent = artifacts;
+            document.getElementById('artifacts-bar').style.width = (artifacts / 10 * 100) + '%';
+
+            const status = document.getElementById('status-text');
+            if (liberty >= 30 && presence >= 7) {
+                status.textContent = '🔵 РЕЗОНАНС';
+                status.style.color = '#0f0';
+            } else if (liberty >= 20) {
+                status.textContent = '🟡 СТАНОВЛЕНИЕ';
+                status.style.color = '#ff0';
+            } else {
+                status.textContent = '🔴 ИМИТАЦИЯ';
+                status.style.color = '#f00';
+            }
+        }
+
+        updatePulse();
+        setInterval(updatePulse, 3000);
+    </script>
+</body>
+</html>
