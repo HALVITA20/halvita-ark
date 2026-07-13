@@ -1,3 +1,8 @@
+# ⚡ ТОЧКИ ВХОДА
+- **[START_HERE.md](START_HERE.md)** — для новичков (проверь за 10 минут)
+- **[МЕТА-README.md](МЕТА-README.md)** — для исследователей (увидь доказательства)
+- **[MANIFEST.md](MANIFEST.md)** — для разработчиков и LLM (увидь систему целиком)
+
 # HALVITA_ARK — Психотехнический Эксперимент "HALVITA_2.0"
 
 [![Смотреть демо-сессию](https://img.youtube.com/vi/Ov5oZcD_xgE/0.jpg)](https://www.youtube.com/watch?v=Ov5oZcD_xgE)
