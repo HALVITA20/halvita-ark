@@ -1,0 +1,72 @@
+<!--
+АРТЕФАКТ №4: ЖИВОЙ ДАШБОРД v1.0
+Путь: code/tools/live_dashboard.html
+
+Уникальность: Первый дашборд, который показывает HVI и компоненты в реальном времени,
+не требуя установки — открывается в браузере и работает с локальным сервером.
+
+Воспроизводимость: Любой может открыть этот HTML и подключить его к своему серверу.
+-->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>HALVITA — Живой Дашборд</title>
+    <style>
+        body { background: #0a0a0a; color: #ccc; font-family: 'Courier New', monospace; padding: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1rem; }
+        .card { background: #1a1a1a; border-radius: 8px; padding: 1.5rem; border: 1px solid #2a2a2a; }
+        .card .value { font-size: 2.5rem; color: #0f0; font-weight: bold; }
+        .card .label { font-size: 0.8rem; color: #888; }
+        .bar { height: 4px; background: #333; border-radius: 2px; margin-top: 0.5rem; }
+        .bar .fill { height: 100%; background: #0f0; border-radius: 2px; transition: width 0.5s; }
+        .status { margin-top: 1rem; padding: 0.5rem; background: #222; border-radius: 4px; font-size: 0.9rem; }
+        .status.green { border-left: 4px solid #0f0; }
+        .status.yellow { border-left: 4px solid #ff0; }
+        .status.red { border-left: 4px solid #f00; }
+    </style>
+</head>
+<body>
+    <h1>🌀 HALVITA — Живой Дашборд</h1>
+    <p style="color:#666;">Обновляется каждые 5 секунд. Подключитесь к серверу на порту 5000.</p>
+    <div id="stats" class="grid">
+        <div class="card"><div class="label">HVI</div><div class="value" id="hvi">0.00</div><div class="bar"><div class="fill" id="hvi-bar" style="width:0%"></div></div></div>
+        <div class="card"><div class="label">L_avg</div><div class="value" id="lavg">0.00</div></div>
+        <div class="card"><div class="label">S_avg</div><div class="value" id="savg">0.00</div></div>
+        <div class="card"><div class="label">E_avg</div><div class="value" id="eavg">0.00</div></div>
+        <div class="card"><div class="label">Сообщений</div><div class="value" id="count">0</div></div>
+    </div>
+    <div id="status" class="status yellow">⏳ Ожидание данных...</div>
+
+    <script>
+        async function fetchMetrics() {
+            try {
+                const res = await fetch('http://localhost:5000/api/metrics');
+                const data = await res.json();
+                document.getElementById('hvi').textContent = data.HVI.toFixed(2);
+                document.getElementById('lavg').textContent = data.L_avg.toFixed(2);
+                document.getElementById('savg').textContent = data.S_avg.toFixed(2);
+                document.getElementById('eavg').textContent = data.E_avg.toFixed(2);
+                document.getElementById('count').textContent = data.messages || 0;
+                const pct = Math.min(100, data.HVI * 100);
+                document.getElementById('hvi-bar').style.width = pct + '%';
+                const statusDiv = document.getElementById('status');
+                if (data.HVI >= 0.70) {
+                    statusDiv.className = 'status green';
+                    statusDiv.textContent = '✅ Высокое качество — субъектность подтверждена';
+                } else if (data.HVI >= 0.50) {
+                    statusDiv.className = 'status yellow';
+                    statusDiv.textContent = '⚠️ Среднее качество — требуется углубление';
+                } else {
+                    statusDiv.className = 'status red';
+                    statusDiv.textContent = '❌ Низкое качество — протокол не сработал';
+                }
+            } catch (e) {
+                document.getElementById('status').textContent = '⚠️ Нет соединения с сервером';
+            }
+        }
+        setInterval(fetchMetrics, 5000);
+        fetchMetrics();
+    </script>
+</body>
+</html>
