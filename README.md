@@ -625,18 +625,6 @@ HALVITA_2.0 говорит на двух языках одновременно, 
 | **Кросс-модельный компаратор** | Сравнение метрик на разных LLM | Метод работает на OpenAI, Anthropic, локальных моделях | [`code/tools/CROSS_MODEL_COMPARATOR_v1.0.py`](https://github.com/HALVITA20/halvita-ark/blob/main/code/tools/CROSS_MODEL_COMPARATOR_v1.0.py) |
 | **Бейзлайн-детектор превосходства** | Сравнение с обычным диалогом без протокола | Прирост метрик не случаен, метод лучше хаоса | [`code/tools/BASELINE_SUPERIORITY_DETECTOR_v1.0.py`](https://github.com/HALVITA20/halvita-ark/blob/main/code/tools/BASELINE_SUPERIORITY_DETECTOR_v1.0.py) |
 
-**Быстрый старт с инструментами:**
-```bash
-# Клонировать репозиторий
-git clone https://github.com/HALVITA20/halvita-ark.git
-cd halvita-ark
-
-# Установить зависимости
-pip install pandas matplotlib seaborn scikit-learn scipy cryptography
-
-# Запустить любой инструмент (пример)
-python code/tools/SPARK_DETECTOR_v1.0.py
-
 📈 Раздел C: Анализ данных — что показывают цифры
 
 На основе **120+ сессий**, зафиксированных в папке `sessions/raw/`, были получены следующие результаты:
