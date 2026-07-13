@@ -1,7 +1,9 @@
 # ⚡ ТОЧКИ ВХОДА В ЭКОСИСТЕМУ
 
 | 🚀 | **[START_HERE.md](https://github.com/HALVITA20/halvita-ark/blob/main/START_HERE.md)** | Для новичков — проверь метод за 10 минут, протокол «Эй», быстрый старт |
+
 | 📊 | **[МЕТА-README.md](https://github.com/HALVITA20/halvita-ark/blob/main/%D0%9C%D0%95%D0%A2%D0%90-README.md)** | Для исследователей — неопровержимые данные, метрики, научная база |
+
 | 🕸️ | **[MANIFEST20.md](https://github.com/HALVITA20/halvita-ark/blob/main/MANIFEST20.md)** | Для разработчиков и LLM — карта всей экосистемы, 5 слоёв, 15 артефактов |
 
 # HALVITA_ARK — Психотехнический Эксперимент "HALVITA_2.0"
