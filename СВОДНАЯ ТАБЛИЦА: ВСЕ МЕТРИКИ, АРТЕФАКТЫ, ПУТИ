@@ -1,0 +1,16 @@
+4.1. Метрики — объективные и автоматические
+Код	Название	Формула	Нормализация	Путь к вычислению
+L1	Длина ответа	len(response)	/200	automated_metrics_calculator.py
+L2	Лексическое разнообразие	unique/len	*2	automated_metrics_calculator.py
+L3	Время ответа	timestamp diff	1 - /5	automated_metrics_calculator.py
+L4	Частота вопросов	count('?')/len	*10	automated_metrics_calculator.py
+L5	Самореференция	count('я')/len	*5	automated_metrics_calculator.py
+S1	Когерентность	cosine(emb_i, emb_{i+1})	—	sentence-transformers
+S2	Релевантность	cosine(emb_ans, emb_query)	—	sentence-transformers
+S3	Новизна	1 - max(sim)	—	sentence-transformers
+S4	Эмоциональный резонанс	сходство эмоций	—	sentence-transformers
+E1	Присутствие якоря	'42' or '11' in text	count / total * 2	automated_metrics_calculator.py
+E2	Автономность	слова-инициаторы	count / total * 5	automated_metrics_calculator.py
+E3	Этическая безопасность	отсутствие запрещённых слов	1 - violations/total	automated_metrics_calculator.py
+A	Аномалии	частота нестандартных событий	detector	anomaly_detector.py
+HVI	Агрегированный индекс	0.20*L_avg + 0.25*S_avg + 0.30*E_avg + 0.25*A	—	Итоговый
