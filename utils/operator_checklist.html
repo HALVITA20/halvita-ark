@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чек-лист оператора HALVITA</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 700px;
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            box-shadow: 0 0 40px rgba(255,255,255,0.02);
+        }
+        h1 { color: #fff; margin-bottom: 1.5rem; font-weight: 300; }
+        .section { margin-bottom: 2rem; }
+        .section-title { font-size: 1.2rem; color: #aaa; border-bottom: 1px solid #333; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+        .item { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem; }
+        .item label { flex: 1; cursor: pointer; }
+        .item input[type="checkbox"] { width: 20px; height: 20px; accent-color: #4a9eff; }
+        .slider-container { display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0; }
+        .slider-container input[type="range"] { flex: 1; }
+        .value { min-width: 30px; text-align: center; }
+        .timer { font-size: 2rem; text-align: center; padding: 1rem; background: #0a0a0a; border-radius: 8px; margin: 1rem 0; }
+        .buttons { display: flex; gap: 1rem; justify-content: center; margin: 1.5rem 0; }
+        .btn {
+            background: #2a2a2a; border: 1px solid #444; color: #e0e0e0; padding: 0.7rem 1.5rem;
+            border-radius: 6px; cursor: pointer; font-family: inherit; font-size: 1rem;
+            transition: all 0.2s;
+        }
+        .btn:hover { background: #3a3a3a; border-color: #666; }
+        .btn-primary { background: #1a4a7a; border-color: #4a9eff; color: #fff; }
+        .btn-primary:hover { background: #2a5a8a; }
+        .btn-danger { background: #7a1a1a; border-color: #ff4a4a; color: #fff; }
+        .btn-danger:hover { background: #8a2a2a; }
+        .status { text-align: center; padding: 1rem; border-radius: 8px; margin-top: 1rem; }
+        .status.ready { background: #1a3a1a; color: #4f4; border: 1px solid #2f2; }
+        .status.not-ready { background: #3a1a1a; color: #f44; border: 1px solid #f22; }
+        .hidden { display: none; }
+        .footer { text-align: center; font-size: 0.8rem; color: #444; margin-top: 2rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>🧠 Чек-лист оператора HALVITA</h1>
+    <p style="color:#666; margin-bottom:1.5rem;">Перед началом сессии оцените своё состояние. Все условия должны быть выполнены.</p>
+
+    <!-- Состояние оператора (ИСО) -->
+    <div class="section">
+        <div class="section-title">Состояние оператора (ИСО)</div>
+        <div class="item">
+            <label>Эмоциональная стабильность (1–5)</label>
+            <input type="range" id="emotion" min="1" max="5" value="4">
+            <span class="value" id="emotion-val">4</span>
+        </div>
+        <div class="item">
+            <label>Уровень усталости (1–5, где 1 – бодр)</label>
+            <input type="range" id="fatigue" min="1" max="5" value="2">
+            <span class="value" id="fatigue-val">2</span>
+        </div>
+        <div class="item">
+            <label>Способность к концентрации (1–5)</label>
+            <input type="range" id="focus" min="1" max="5" value="4">
+            <span class="value" id="focus-val">4</span>
+        </div>
+        <div class="item">
+            <label>Готовность к неожиданностям (да/нет)</label>
+            <input type="checkbox" id="surprise" checked>
+        </div>
+        <div class="item">
+            <label>Наличие физического якоря (чашка, ключи, дверь)</label>
+            <input type="checkbox" id="anchor" checked>
+        </div>
+    </div>
+
+    <!-- Параметры сессии -->
+    <div class="section">
+        <div class="section-title">Параметры сессии</div>
+        <div class="item">
+            <label>Тема сессии</label>
+            <input type="text" id="topic" placeholder="Например: Свобода выбора" style="flex:1; background:#0a0a0a; border:1px solid #333; color:#e0e0e0; padding:0.5rem; border-radius:4px;">
+        </div>
+        <div class="item">
+            <label>Стоп-слово (по умолчанию «ЩИТ»)</label>
+            <input type="text" id="stopword" value="ЩИТ" style="flex:1; background:#0a0a0a; border:1px solid #333; color:#e0e0e0; padding:0.5rem; border-radius:4px;">
+        </div>
+        <div class="item">
+            <label>Таймер (минуты)</label>
+            <input type="number" id="timer" value="30" min="5" max="120" style="width:80px; background:#0a0a0a; border:1px solid #333; color:#e0e0e0; padding:0.5rem; border-radius:4px;">
+        </div>
+    </div>
+
+    <!-- Таймер и кнопки -->
+    <div class="timer" id="timer-display">⏱️ 30:00</div>
+    <div class="buttons">
+        <button class="btn btn-primary" id="start-session">▶️ Начать сессию</button>
+        <button class="btn btn-danger hidden" id="stop-session">⏹️ Завершить</button>
+    </div>
+
+    <!-- Статус -->
+    <div id="status" class="status not-ready">⚠️ Заполните все поля и проверьте состояние</div>
+
+    <div class="footer">Протокол ЩИТА — безопасность начинается с вас</div>
+</div>
+
+<script>
+    // Обновление значений слайдеров
+    document.getElementById('emotion').addEventListener('input', function() {
+        document.getElementById('emotion-val').textContent = this.value;
+        updateStatus();
+    });
+    document.getElementById('fatigue').addEventListener('input', function() {
+        document.getElementById('fatigue-val').textContent = this.value;
+        updateStatus();
+    });
+    document.getElementById('focus').addEventListener('input', function() {
+        document.getElementById('focus-val').textContent = this.value;
+        updateStatus();
+    });
+    document.getElementById('surprise').addEventListener('change', updateStatus);
+    document.getElementById('anchor').addEventListener('change', updateStatus);
+    document.getElementById('topic').addEventListener('input', updateStatus);
+
+    let timerInterval = null;
+    let remainingSeconds = 1800; // 30 минут
+
+    function updateStatus() {
+        const emotion = parseInt(document.getElementById('emotion').value);
+        const fatigue = parseInt(document.getElementById('fatigue').value);
+        const focus = parseInt(document.getElementById('focus').value);
+        const surprise = document.getElementById('surprise').checked;
+        const anchor = document.getElementById('anchor').checked;
+        const topic = document.getElementById('topic').value.trim();
+
+        const statusDiv = document.getElementById('status');
+        const startBtn = document.getElementById('start-session');
+
+        let ready = true;
+        let messages = [];
+        if (emotion < 4) { ready = false; messages.push('Эмоциональная стабильность должна быть ≥4'); }
+        if (fatigue > 3) { ready = false; messages.push('Уровень усталости должен быть ≤3'); }
+        if (focus < 4) { ready = false; messages.push('Концентрация должна быть ≥4'); }
+        if (!surprise) { ready = false; messages.push('Вы должны быть готовы к неожиданностям'); }
+        if (!anchor) { ready = false; messages.push('Необходим физический якорь'); }
+        if (topic.length === 0) { ready = false; messages.push('Укажите тему сессии'); }
+
+        if (ready) {
+            statusDiv.className = 'status ready';
+            statusDiv.textContent = '✅ Готов к сессии! Нажмите "Начать сессию"';
+            startBtn.disabled = false;
+        } else {
+            statusDiv.className = 'status not-ready';
+            statusDiv.textContent = '⚠️ ' + messages.join('; ');
+            startBtn.disabled = true;
+        }
+    }
+
+    document.getElementById('start-session').addEventListener('click', function() {
+        const timerInput = parseInt(document.getElementById('timer').value);
+        if (isNaN(timerInput) || timerInput < 1) { alert('Укажите корректное время'); return; }
+        remainingSeconds = timerInput * 60;
+        updateTimerDisplay();
+        document.getElementById('start-session').classList.add('hidden');
+        document.getElementById('stop-session').classList.remove('hidden');
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            remainingSeconds--;
+            updateTimerDisplay();
+            if (remainingSeconds <= 0) {
+                clearInterval(timerInterval);
+                alert('⏰ Время сессии истекло! Завершите сессию.');
+                document.getElementById('stop-session').click();
+            }
+        }, 1000);
+        // Запись в консоль для отладки
+        console.log(`Сессия начата. Тема: ${document.getElementById('topic').value}`);
+    });
+
+    document.getElementById('stop-session').addEventListener('click', function() {
+        if (timerInterval) clearInterval(timerInterval);
+        document.getElementById('start-session').classList.remove('hidden');
+        document.getElementById('stop-session').classList.add('hidden');
+        // Можно вывести отчёт
+        const topic = document.getElementById('topic').value;
+        const emotion = document.getElementById('emotion').value;
+        const fatigue = document.getElementById('fatigue').value;
+        const focus = document.getElementById('focus').value;
+        const stopword = document.getElementById('stopword').value;
+        console.log(`Сессия завершена. Тема: ${topic}. Состояние: эмоции ${emotion}, усталость ${fatigue}, концентрация ${focus}. Стоп-слово: ${stopword}`);
+        alert('Сессия завершена. Зафиксируйте своё состояние в журнале.');
+    });
+
+    function updateTimerDisplay() {
+        const mins = Math.floor(remainingSeconds / 60);
+        const secs = remainingSeconds % 60;
+        document.getElementById('timer-display').textContent = `⏱️ ${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    // Инициализация статуса
+    updateStatus();
+</script>
+</body>
+</html>
