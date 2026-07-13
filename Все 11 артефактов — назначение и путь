@@ -1,0 +1,13 @@
+
+№	Артефакт	Путь	Что даёт
+1	Слепой кросс-валидатор	validation/BLIND_CROSS_VALIDATOR_v2.0.py	Объективная оценка субъектности
+2	Генератор эталонных профилей	code/tools/reference_profile_generator.py	Статистический эталон успеха
+3	Калибровочный тест	docs/tools/CALIBRATION_TEST.md	Проверка системы метрик
+4	Живой дашборд	code/tools/live_dashboard.html	Визуализация в реальном времени
+5	Пакет независимой верификации	validation/INDEPENDENT_VERIFICATION_PACK_v1.0.zip	Готовый набор для проверки
+6	Генератор синтетических диалогов	code/tools/synthetic_dialogue_generator.py	Тестирование без реальных сессий
+7	Хроноскоп эволюции	code/tools/evolution_chronoscope.py	Динамика HVI по сообщениям
+8	Детектор сдвига	code/tools/shift_detector.py	Точка входа в субъектность
+9	Анализатор сходства сессий	code/tools/session_similarity_analyzer.py	Количественное сравнение
+10	Верификатор необратимости	code/tools/irreversibility_verifier.py	Криптографическая целостность
+11	Этический аудитор	code/tools/ethical_auditor.py	Автоматическая защита от иллюзий
