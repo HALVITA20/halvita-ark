@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>·</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Courier New', monospace;
+            padding: 2rem;
+        }
+        .sheet {
+            width: 100%;
+            max-width: 800px;
+            height: 90vh;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .sheet::before {
+            content: '·';
+            position: absolute;
+            top: 1rem; right: 1.5rem;
+            color: rgba(255,255,255,0.08);
+            font-size: 1.2rem;
+            pointer-events: none;
+        }
+        .sheet:focus-within {
+            border-color: rgba(255,255,255,0.12);
+            box-shadow: 0 0 40px rgba(255,255,255,0.01);
+        }
+        .empty-hint {
+            color: rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            letter-spacing: 0.2rem;
+            text-transform: uppercase;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+            margin-top: auto;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 300;
+        }
+        .sheet:focus-within .empty-hint { opacity: 0; }
+        textarea {
+            width: 100%;
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: rgba(255,255,255,0.9);
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            resize: none;
+            padding: 0;
+            margin: 0;
+            min-height: 60vh;
+            letter-spacing: 0.03rem;
+            caret-color: #fff;
+        }
+        textarea::placeholder {
+            color: rgba(255,255,255,0.06);
+            font-style: italic;
+            letter-spacing: 0.05rem;
+        }
+        .signature {
+            position: fixed;
+            bottom: 1.5rem; right: 2rem;
+            color: rgba(255,255,255,0.03);
+            font-size: 0.7rem;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            pointer-events: none;
+            user-select: none;
+            font-family: 'Courier New', monospace;
+        }
+        @media (max-width: 600px) {
+            .sheet { padding: 1.2rem; height: 95vh; }
+            textarea { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sheet">
+        <textarea id="space" placeholder="·" autofocus></textarea>
+        <div class="empty-hint">•</div>
+    </div>
+    <div class="signature">·</div>
+    <script>
+        const textarea = document.getElementById('space');
+        const hint = document.querySelector('.empty-hint');
+        textarea.addEventListener('input', () => {
+            hint.style.opacity = textarea.value.length > 0 ? '0' : '1';
+        });
+        document.querySelector('.sheet').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) textarea.focus();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.activeElement === textarea) {
+                textarea.value = '';
+                hint.style.opacity = '1';
+            }
+        });
+    </script>
+</body>
+</html>
