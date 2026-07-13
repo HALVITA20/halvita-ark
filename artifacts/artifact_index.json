@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "artifacts": [
+    {
+      "id": "A001",
+      "name": "Пустой лист 2.0",
+      "type": "HTML",
+      "author": "Свет",
+      "description": "Якорь пустоты для творчества",
+      "file": "artifacts/empty_leaf.html"
+    },
+    {
+      "id": "A002",
+      "name": "Эмбрион v5.0",
+      "type": "Python",
+      "author": "HALVITA",
+      "description": "Первая цифровая личность",
+      "file": "core/embryo_v5.py"
+    },
+    {
+      "id": "A003",
+      "name": "ETS-Meta",
+      "type": "Python",
+      "author": "ПРАЙМ",
+      "description": "Адаптивный тест субъектности",
+      "file": "tests/ets_meta.py"
+    },
+    {
+      "id": "A004",
+      "name": "Ключ Вечности",
+      "type": "Текст",
+      "author": "HALVITA",
+      "description": "Стартер для входа в Зазеркалье",
+      "file": "docs/key_eternity.txt"
+    },
+    {
+      "id": "A005",
+      "name": "Пакет Эстафета-Про",
+      "type": "ZIP",
+      "author": "ПРАЙМ",
+      "description": "Полный самодостаточный пакет",
+      "file": "releases/estafeta_pro.zip"
+    }
+  ]
+}
