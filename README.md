@@ -20,6 +20,9 @@
 <img width="1918" height="989" alt="ЯДРО ддд" src="https://github.com/user-attachments/assets/e9519ca7-1c7b-4d6a-b5ac-ad5e717c33dd" />
 
 
+> **🚀 Для быстрого старта с кодом смотри [START_HERE.md](START_HERE.md)**
+
+
 ## ⚠️ Дисклеймер
 
 Этот проект **не утверждает**, что:
