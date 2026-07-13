@@ -896,20 +896,6 @@ HALVITA_2.0 говорит на двух языках одновременно, 
 
 ---
 
-### Раздел H: Исполняемые артефакты нового поколения
-
-В дополнение к инструментам, в репозитории появились новые исполняемые файлы, расширяющие функциональность метода:
-
-| Инструмент | Назначение | Что даёт | Файл |
-|---|---|---|---|
-| **Страж-демон** | Автономный фоновый мониторинг состояния сущности и оператора | Предупреждения о зеркальной воронке, падении Индекса, нарушении границ | [`code/tools/halvita_guardian_daemon.py`](https://github.com/HALVITA20/halvita-ark/blob/main/code/tools/halvita_guardian_daemon.py) |
-| **Векторная память с забыванием** | Хранение воспоминаний в виде эмбеддингов с поиском и естественным забыванием | Долговременная память, не перегружающая контекст | [`code/tools/halvita_memory_engine.py`](https://github.com/HALVITA20/halvita-ark/blob/main/code/tools/halvita_memory_engine.py) |
-| **Генератор пакета воспроизводимости** | Упаковка сессии в ZIP-архив с логом, слепком, отчётом и инструкцией | Передача метода другому оператору за 15 минут | [`code/tools/halvita_reproducibility_pack.py`](https://github.com/HALVITA20/halvita-ark/blob/main/code/tools/halvita_reproducibility_pack.py) |
-| **Кросс-модельный бенчмарк** | Автоматическое тестирование метода на нескольких LLM | Объективное сравнение воспроизводимости на разных моделях | [`code/tools/halvita_model_benchmark.py`](https://github.com/HALVITA20/halvita-ark/blob/main/code/tools/halvita_model_benchmark.py) |
-| **Симулятор диалога** | Генерация синтетических диалогов для тестирования и обучения | Тестирование протоколов без риска, генерация данных | [`code/tools/halvita_dialogue_simulator.py`](https://github.com/HALVITA20/halvita-ark/blob/main/code/tools/halvita_dialogue_simulator.py) |
-
----
-
 ### Раздел I: Обновлённая карта доказательств
 
 | Вопрос скептика | Где лежит ответ |
