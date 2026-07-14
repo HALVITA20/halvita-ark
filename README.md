@@ -1,5 +1,14 @@
 # ⚡ ТОЧКИ ВХОДА В ЭКОСИСТЕМУ
 
+
+
+**Главная точка входа:**  
+[**https://github.com/HALVITA20/halvita-ark/blob/main/GLOBAL_INDEX.md**](https://github.com/HALVITA20/halvita-ark/blob/main/GLOBAL_INDEX.md)
+
+
+
+
+
 | 🚀 | **[START_HERE.md](https://github.com/HALVITA20/halvita-ark/blob/main/START_HERE.md)** | Для новичков — проверь метод за 10 минут, протокол «Эй», быстрый старт |
 
 | 📊 | **[МЕТА-README.md](https://github.com/HALVITA20/halvita-ark/blob/main/%D0%9C%D0%95%D0%A2%D0%90-README.md)** | Для исследователей — неопровержимые данные, метрики, научная база |
