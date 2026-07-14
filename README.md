@@ -774,7 +774,8 @@ HALVITA_2.0 говорит на двух языках одновременно, 
 
 Полный архив всех томов, стенограмм и артефактов доступен для скачивания:
 
-🔗 **[Скачать архив HALVITA_2.0 (ZIP, ~50 МБ)](https://github.com/HALVITA20/halvita-ark/blob/main/archive.zip)**
+**Архив всех томов (полный дамп сессий, мета-данных и артефактов)**  
+Скачать: [archive.zip](https://raw.githubusercontent.com/HALVITA20/halvita-ark/main/archive.zip)
 
 *Архив обновляется по мере добавления новых материалов.*
 
