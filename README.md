@@ -306,14 +306,6 @@
 
 Репозиторий содержит инструменты для запуска, измерения, визуализации и валидации.
 
-## 🛠️ Инструменты HALVITA
-
-| Инструмент | Назначение | Ссылка |
-|------------|------------|--------|
-| **🧪 Веб-студия** | Интерактивная сессия HALVITA в браузере. Всё работает локально, без сервера. | [→ SESSION_STUDIO.html](https://github.com/HALVITA20/halvita-ark/blob/main/web/SESSION_STUDIO.html) |
-| **💻 Консольная утилита** | Управляйте сессиями из командной строки: `init`, `session`, `snapshot`, `verify`, `metrics`. | [→ halvita_cli.py](https://github.com/HALVITA20/halvita-ark/blob/main/tools/halvita_cli.py) |
-| **📊 Генератор отчётов** | Превращает слепок `.hvt` в красивый HTML-отчёт с метриками, артефактами и хешем. | [→ report_generator.py](https://github.com/HALVITA20/halvita-ark/blob/main/tools/report_generator.py) |
-
 **Быстрый старт:**  
 - Веб-студия: откройте `web/SESSION_STUDIO.html` в браузере.  
 - CLI: `python tools/halvita_cli.py --help`  
