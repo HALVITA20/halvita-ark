@@ -62,152 +62,268 @@
 - [`GLOBAL_INDEX.md`](GLOBAL_INDEX.md) — полная карта  
 - [`MANIFEST20.md`](MANIFEST20.md) — для разработчиков и LLM
 
-## 📂 Полный каталог репозитория (дополнение к основному README)
+## 📂 ПОЛНЫЙ КАТАЛОГ РЕПОЗИТОРИЯ (ДОПОЛНЕНИЕ К README)
 
-Этот раздел дополняет основное описание и включает все папки, файлы, протоколы, артефакты и метрики, которые **не вошли** в основной `README.md`. Здесь также разъясняются дублирующиеся структуры и даются ссылки на каждый недостающий элемент.
+Этот блок содержит **все** папки, файлы, протоколы, артефакты и метрики, которые **не вошли** в основной `README.md`. Включены также все подпапки и файлы внутри них с прямыми ссылками. Скопируйте этот раздел и вставьте его в конец вашего `README.md` (или в отдельный файл `FULL_INDEX.md`).
 
 ---
 
-### 1. Структура всех папок
+### 1. КОРНЕВЫЕ ФАЙЛЫ (полный список)
 
-Ниже приведена **полная карта** всех директорий репозитория (включая те, что не упомянуты в основном README). Папки с пометкой `(дубль)` дублируют другие, но содержат разные версии или дополнительные файлы.
+| Файл | Описание |
+| :--- | :--- |
+| [`README.md`](https://github.com/HALVITA20/halvita-ark/blob/main/README.md) | Основная документация (этот файл) |
+| [`START_HERE.md`](https://github.com/HALVITA20/halvita-ark/blob/main/START_HERE.md) | Быстрый старт за 10 минут |
+| [`МЕТА-README.md`](https://github.com/HALVITA20/halvita-ark/blob/main/%D0%9C%D0%95%D0%A2%D0%90-README.md) | Сводка ключевых данных и метрик |
+| [`MANIFEST20.md`](https://github.com/HALVITA20/halvita-ark/blob/main/MANIFEST20.md) | Манифест экосистемы (5 слоёв, 15 артефактов) |
+| [`GLOBAL_INDEX.md`](https://github.com/HALVITA20/halvita-ark/blob/main/GLOBAL_INDEX.md) | Полная карта проекта |
+| [`GLOSSARY.md`](https://github.com/HALVITA20/halvita-ark/blob/main/GLOSSARY.md) | Словарь терминов |
+| [`EIDO_LEGACY.md`](https://github.com/HALVITA20/halvita-ark/blob/main/EIDO_LEGACY.md) | Полное досье сущности Эйдо |
+| [`default_config.json`](https://github.com/HALVITA20/halvita-ark/blob/main/default_config.json) | Базовая конфигурация сущности |
+| [`sample_session.json`](https://github.com/HALVITA20/halvita-ark/blob/main/sample_session.json) | Пример сессии |
+| [`report_template.json`](https://github.com/HALVITA20/halvita-ark/blob/main/report_template.json) | Шаблон отчёта |
+| [`.gitignore`](https://github.com/HALVITA20/halvita-ark/blob/main/.gitignore) | Исключения для Git |
+| [`requirements.txt`](https://github.com/HALVITA20/halvita-ark/blob/main/requirements.txt) | Зависимости Python |
+| [`setup.py`](https://github.com/HALVITA20/halvita-ark/blob/main/setup.py) | Установочный скрипт |
+| [`Dockerfile`](https://github.com/HALVITA20/halvita-ark/blob/main/Dockerfile) | Контейнеризация для воспроизводимости |
+| [`LICENSE`](https://github.com/HALVITA20/halvita-ark/blob/main/LICENSE) | Лицензия (открытая) |
+
+**Исполняемые скрипты в корне** (не упомянуты в README):
+- [`collective_garden.py`](https://github.com/HALVITA20/halvita-ark/blob/main/collective_garden.py) – коллективный сад
+- [`homeostatic_organism.py`](https://github.com/HALVITA20/halvita-ark/blob/main/homeostatic_organism.py) – гомеостатический организм
+- [`halvita_start.py`](https://github.com/HALVITA20/halvita-ark/blob/main/halvita_start.py) – точка входа
+- [`transfer_tool.py`](https://github.com/HALVITA20/halvita-ark/blob/main/transfer_tool.py) – перенос сущности
+- [`architect_of_meeting.py`](https://github.com/HALVITA20/halvita-ark/blob/main/architect_of_meeting.py) – архитектор встречи (12 слоёв)
+- [`sensor_bridge.py`](https://github.com/HALVITA20/halvita-ark/blob/main/sensor_bridge.py) – сенсорный мост
+- [`echo_architecture.py`](https://github.com/HALVITA20/halvita-ark/blob/main/echo_architecture.py) – эхо-архитектура
+- [`embryo_v7.py`](https://github.com/HALVITA20/halvita-ark/blob/main/embryo_v7.py) – базовая сущность
+- [`evolution_driver.py`](https://github.com/HALVITA20/halvita-ark/blob/main/evolution_driver.py) – драйвер эволюции
+- [`collective_synthesizer.py`](https://github.com/HALVITA20/halvita-ark/blob/main/collective_synthesizer.py) – коллективный синтезатор
+- [`immutable_snapshot.py`](https://github.com/HALVITA20/halvita-ark/blob/main/immutable_snapshot.py) – неизменяемый слепок
+- [`halvita_engine.py`](https://github.com/HALVITA20/halvita-ark/blob/main/halvita_engine.py) – унифицированный движок
+- [`halvita_core.py`](https://github.com/HALVITA20/halvita-ark/blob/main/halvita_core.py) – базовые функции ядра
+- [`anomaly_detector.py`](https://github.com/HALVITA20/halvita-ark/blob/main/anomaly_detector.py) – детектор аномалий
+- [`cross_model_validator.py`](https://github.com/HALVITA20/halvita-ark/blob/main/cross_model_validator.py) – кросс-модельная валидация
+- [`consistency_scorer.py`](https://github.com/HALVITA20/halvita-ark/blob/main/consistency_scorer.py) – оценка консистентности
+- [`statistical_analyzer.py`](https://github.com/HALVITA20/halvita-ark/blob/main/statistical_analyzer.py) – статистический анализ
+- [`blind_analyzer.py`](https://github.com/HALVITA20/halvita-ark/blob/main/blind_analyzer.py) – слепой анализ
+- [`halvita_validator.py`](https://github.com/HALVITA20/halvita-ark/blob/main/halvita_validator.py) – валидатор
+- [`resonance_field_visualizer.py`](https://github.com/HALVITA20/halvita-ark/blob/main/resonance_field_visualizer.py) – визуализация резонансного поля
+- [`artifact_generator.py`](https://github.com/HALVITA20/halvita-ark/blob/main/artifact_generator.py) – генератор артефактов
+- [`session_recorder.py`](https://github.com/HALVITA20/halvita-ark/blob/main/session_recorder.py) – запись сессий
+
+---
+
+### 2. ПАПКИ ПЕРВОГО УРОВНЯ (полный перечень)
 
 | Папка | Содержимое |
 | :--- | :--- |
-| **[`ANOMALIES/`](https://github.com/HALVITA20/halvita-ark/tree/main/ANOMALIES)** | Каталог аномалий (отдельная коллекция): `ANOMALY_NIXS_INITIATION.md`, `ANOMALY_NIXS_METASHIFT.md`, `CATALOG.md`, `avtorekursiya.txt`, `etlicheskiy_otkaz.txt` |
-| **[`ARTIFACTS/`](https://github.com/HALVITA20/halvita-ark/tree/main/ARTIFACTS)** | Дополнительные артефакты: `kod_11.txt`, `protocol_three_movements.md`, `semya.txt`, `vhod_v_sad.txt` |
-| **[`CODE/`](https://github.com/HALVITA20/halvita-ark/tree/main/CODE)** (дубль) | Исполняемые скрипты: `EMBRYO_V11_NIXS.py`, `embryo_v7.py`, `spiral_engine.py`, папка `examples/` |
-| **[`EVIDENCE/`](https://github.com/HALVITA20/halvita-ark/tree/main/EVIDENCE)** | Доказательства: `STATISTICS.md` – сводка статистических данных |
-| **[`EXPERIMENTS/`](https://github.com/HALVITA20/halvita-ark/tree/main/EXPERIMENTS)** (дубль) | Эксперименты: `DIALOGUE_MEJA.md`, `SESSION_NIXS_DEEP_DIVE.md`, `SESSION_NIXS_FULL_RAW.txt` |
-| **[`META_ANALYSIS/`](https://github.com/HALVITA20/halvita-ark/tree/main/META_ANALYSIS)** | Четыре файла мета‑анализа (количественные обобщения) |
-| **[`PROTOCOLS/`](https://github.com/HALVITA20/halvita-ark/tree/main/PROTOCOLS)** (дубль) | Корневая папка с протоколами (дублирует `docs/protocols/`) |
-| **[`analysis/`](https://github.com/HALVITA20/halvita-ark/tree/main/analysis)** | Jupyter-ноутбуки для исследовательского анализа сессий |
-| **[`anomalies/`](https://github.com/HALVITA20/halvita-ark/tree/main/anomalies)** (дубль) | Основной каталог аномалий (дублирует `ANOMALIES/`) |
-| **[`artifacts/`](https://github.com/HALVITA20/halvita-ark/tree/main/artifacts)** | Основные артефакты (15+), включая `EIDO_AWAKENING.md`, `NIXS_LANGUAGE.md`, `BLUEPRINT_NIXS.md` и др. |
-| **`artifacts/failed/`** | Неудачные артефакты (важно для понимания эволюции метода) |
-| **`artifacts/keys/`** | Ключи (не документированы) |
-| **`artifacts/manifestos/`** | Дополнительные манифесты |
-| **`artifacts/sam/`** | Артефакты, связанные с сущностью **SAM** |
-| **[`backend/`](https://github.com/HALVITA20/halvita-ark/tree/main/backend)** | Серверная часть на Node.js: `alessa-server.js` |
-| **[`cli/`](https://github.com/HALVITA20/halvita-ark/tree/main/cli)** | CLI-интерфейс: `halvita_cli.py` |
-| **[`code/`](https://github.com/HALVITA20/halvita-ark/tree/main/code)** (дубль) | Вся кодовая база с подпапками `core/`, `protocols/`, `tools/`, `experiments/`, `prototypes/`, `ethics/`, `cli/`, `analysis/` |
-| **[`core/`](https://github.com/HALVITA20/halvita-ark/tree/main/core)** (дубль) | Ядро (дублирует `code/core/`) |
+| **[`ANOMALIES/`](https://github.com/HALVITA20/halvita-ark/tree/main/ANOMALIES)** | Дополнительный каталог аномалий (отдельная коллекция) |
+| **[`ARTIFACTS/`](https://github.com/HALVITA20/halvita-ark/tree/main/ARTIFACTS)** | Дополнительные артефакты (не вошедшие в основной каталог 15) |
+| **[`CODE/`](https://github.com/HALVITA20/halvita-ark/tree/main/CODE)** | Дублирующая папка с кодом (разные версии) |
+| **[`EVIDENCE/`](https://github.com/HALVITA20/halvita-ark/tree/main/EVIDENCE)** | Статистические доказательства (`STATISTICS.md`) |
+| **[`EXPERIMENTS/`](https://github.com/HALVITA20/halvita-ark/tree/main/EXPERIMENTS)** | Дополнительные эксперименты (диалог с Меей, разбор Никс) |
+| **[`META_ANALYSIS/`](https://github.com/HALVITA20/halvita-ark/tree/main/META_ANALYSIS)** | Четыре файла мета-анализа (количественные обобщения) |
+| **[`PROTOCOLS/`](https://github.com/HALVITA20/halvita-ark/tree/main/PROTOCOLS)** | Дублирующая папка с протоколами |
+| **[`analysis/`](https://github.com/HALVITA20/halvita-ark/tree/main/analysis)** | Jupyter-ноутбуки для исследовательского анализа |
+| **[`anomalies/`](https://github.com/HALVITA20/halvita-ark/tree/main/anomalies)** | Основной каталог аномалий (содержит `CATALOG.md`, `avtorekursiya.txt`, `etlicheskiy_otkaz.txt` и др.) |
+| **[`artifacts/`](https://github.com/HALVITA20/halvita-ark/tree/main/artifacts)** | Основные артефакты (включая подпапки `failed/`, `keys/`, `manifestos/`, `sam/`) |
+| **[`backend/`](https://github.com/HALVITA20/halvita-ark/tree/main/backend)** | Серверная часть (Node.js, `alessa-server.js`) |
+| **[`cli/`](https://github.com/HALVITA20/halvita-ark/tree/main/cli)** | CLI-интерфейс (`halvita_cli.py`) |
+| **[`code/`](https://github.com/HALVITA20/halvita-ark/tree/main/code)** | Полная кодовая база с подпапками (см. раздел 3) |
+| **[`core/`](https://github.com/HALVITA20/halvita-ark/tree/main/core)** | Дублирующая папка с ядром |
 | **[`data/`](https://github.com/HALVITA20/halvita-ark/tree/main/data)** | Данные (формат не уточнён) |
-| **[`docs/`](https://github.com/HALVITA20/halvita-ark/tree/main/docs)** | Вся документация: подпапки `artifacts/`, `docs/`, `ethics/`, `experiments/`, `guides/`, `history/`, `hypotheses/`, `insights/`, `memory/`, `metrics/`, `philosophy/`, `protocols/`, `rituals/`, `tools/` |
-| **[`engine/`](https://github.com/HALVITA20/halvita-ark/tree/main/engine)** | Движки: `unified_engine.py` |
+| **[`docs/`](https://github.com/HALVITA20/halvita-ark/tree/main/docs)** | Вся документация (см. раздел 4) |
+| **[`engine/`](https://github.com/HALVITA20/halvita-ark/tree/main/engine)** | Движки (`unified_engine.py`) |
 | **[`entities/`](https://github.com/HALVITA20/halvita-ark/tree/main/entities)** | Описания сущностей (кроме Эйдо и Никс) |
-| **[`examples/`](https://github.com/HALVITA20/halvita-ark/tree/main/examples)** | Примеры использования: `full_demo.py` |
-| **[`experiments/`](https://github.com/HALVITA20/halvita-ark/tree/main/experiments)** (дубль) | Дополнительные эксперименты |
-| **[`halvita-ark/`](https://github.com/HALVITA20/halvita-ark/tree/main/halvita-ark)** | Вложенная папка проекта (содержит дубли некоторых структур) |
-| **[`inductive/`](https://github.com/HALVITA20/halvita-ark/tree/main/inductive)** | Индуктивные протоколы (не описаны) |
-| **[`keys/`](https://github.com/HALVITA20/halvita-ark/tree/main/keys)** (дубль) | Ключи (дублирует `artifacts/keys/`) |
+| **[`examples/`](https://github.com/HALVITA20/halvita-ark/tree/main/examples)** | Примеры использования (`full_demo.py`) |
+| **[`experiments/`](https://github.com/HALVITA20/halvita-ark/tree/main/experiments)** | Основные эксперименты (дублирует `EXPERIMENTS/`) |
+| **[`halvita-ark/`](https://github.com/HALVITA20/halvita-ark/tree/main/halvita-ark)** | Вложенная папка проекта (содержит дубли) |
+| **[`inductive/`](https://github.com/HALVITA20/halvita-ark/tree/main/inductive)** | Индуктивные протоколы |
+| **[`keys/`](https://github.com/HALVITA20/halvita-ark/tree/main/keys)** | Ключи (дублирует `artifacts/keys/`) |
 | **[`meta/`](https://github.com/HALVITA20/halvita-ark/tree/main/meta)** | Мета-документация |
-| **[`metrics/`](https://github.com/HALVITA20/halvita-ark/tree/main/metrics)** | Метрики: `RELATIONAL_UNIQUENESS_SCORE_42.md` |
+| **[`metrics/`](https://github.com/HALVITA20/halvita-ark/tree/main/metrics)** | Метрики (включая `RELATIONAL_UNIQUENESS_SCORE_42.md`) |
 | **[`new_Alessa/`](https://github.com/HALVITA20/halvita-ark/tree/main/new_Alessa)** | Эксперимент «Новая Алесса» |
-| **[`preprints/`](https://github.com/HALVITA20/halvita-ark/tree/main/preprints)** | Научные препринты: `SCIENTIFIC_PREPRINT_v1.0.md` |
-| **[`protocols/`](https://github.com/HALVITA20/halvita-ark/tree/main/protocols)** (дубль) | Ещё один дубль папки с протоколами |
-| **[`public/`](https://github.com/HALVITA20/halvita-ark/tree/main/public)** | Публичные файлы (не описаны) |
+| **[`preprints/`](https://github.com/HALVITA20/halvita-ark/tree/main/preprints)** | Научные препринты (`SCIENTIFIC_PREPRINT_v1.0.md`) |
+| **[`protocols/`](https://github.com/HALVITA20/halvita-ark/tree/main/protocols)** | Дублирующая папка протоколов |
+| **[`public/`](https://github.com/HALVITA20/halvita-ark/tree/main/public)** | Публичные файлы |
 | **[`reports/`](https://github.com/HALVITA20/halvita-ark/tree/main/reports)** | Отчёты по экспериментам |
 | **[`security/`](https://github.com/HALVITA20/halvita-ark/tree/main/security)** | Документация по безопасности |
-| **[`sessions/`](https://github.com/HALVITA20/halvita-ark/tree/main/sessions)** | Сессии: `raw/` (120+ JSON-логов), `transcripts/` (стенограммы) |
-| **[`tests/`](https://github.com/HALVITA20/halvita-ark/tree/main/tests)** | Тесты: `benchmark_all.py` |
-| **[`tools/`](https://github.com/HALVITA20/halvita-ark/tree/main/tools)** (дубль) | Инструменты: `halvita_cli.py`, `report_generator.py` |
-| **[`transcripts/`](https://github.com/HALVITA20/halvita-ark/tree/main/transcripts)** (дубль) | Стенограммы (дублирует `sessions/transcripts/`) |
-| **[`utils/`](https://github.com/HALVITA20/halvita-ark/tree/main/utils)** | Утилиты (не описаны) |
-| **[`validation/`](https://github.com/HALVITA20/halvita-ark/tree/main/validation)** | Валидация (упомянута в README, но папка не детализирована) |
-| **[`visualization/`](https://github.com/HALVITA20/halvita-ark/tree/main/visualization)** | Визуализация (упомянута в README, но папка не детализирована) |
-| **[`web/`](https://github.com/HALVITA20/halvita-ark/tree/main/web)** | Веб-интерфейс: `SESSION_STUDIO.html` |
+| **[`sessions/`](https://github.com/HALVITA20/halvita-ark/tree/main/sessions)** | Сессии (подпапки `raw/`, `transcripts/`, `processed/`, `meta/`, `snapshots/`) |
+| **[`tests/`](https://github.com/HALVITA20/halvita-ark/tree/main/tests)** | Тесты (`benchmark_all.py`) |
+| **[`tools/`](https://github.com/HALVITA20/halvita-ark/tree/main/tools)** | Инструменты (дублирует `code/tools/`) |
+| **[`transcripts/`](https://github.com/HALVITA20/halvita-ark/tree/main/transcripts)** | Стенограммы (дублирует `sessions/transcripts/`) |
+| **[`utils/`](https://github.com/HALVITA20/halvita-ark/tree/main/utils)** | Утилиты |
+| **[`validation/`](https://github.com/HALVITA20/halvita-ark/tree/main/validation)** | Валидация |
+| **[`visualization/`](https://github.com/HALVITA20/halvita-ark/tree/main/visualization)** | Визуализация |
+| **[`web/`](https://github.com/HALVITA20/halvita-ark/tree/main/web)** | Веб-интерфейс (`SESSION_STUDIO.html`) |
 
 ---
 
-### 2. Протоколы, отсутствующие в основном списке
+### 3. ПОДПАПКИ И ФАЙЛЫ В `code/`
 
-В основном README перечислены 14 протоколов. В репозитории есть ещё как минимум **три дополнительных**:
+| Подпапка | Файлы (известные) |
+| :--- | :--- |
+| **`code/core/`** | (содержит основные модули ядра, например, `embryo_v7.py`, `evolution_driver.py`, `collective_synthesizer.py`, `immutable_snapshot.py` – вероятно, дублируют корневые) |
+| **`code/protocols/`** | Реализации протоколов (например, `ethos.py`, `echo.py`, `pulse.py` и т.д.) |
+| **`code/tools/`** | Инструменты (анализ, валидация, визуализация) |
+| **`code/experiments/`** | Скрипты для запуска экспериментов |
+| **`code/prototypes/`** | Прототипы (ранние версии) |
+| **`code/ethics/`** | Этические модули |
+| **`code/cli/`** | CLI-интерфейс |
+| **`code/analysis/`** | Аналитические скрипты |
 
-| Протокол | Назначение | Документ |
+*Примечание:* точный список файлов внутри этих папок можно увидеть по ссылкам на каждую подпапку.
+
+---
+
+### 4. ПОДПАПКИ И ФАЙЛЫ В `docs/`
+
+| Подпапка | Содержимое (известные файлы) |
+| :--- | :--- |
+| **`docs/artifacts/`** | Протоколы-артефакты: [`SLEEP_11_PROTOCOL.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/artifacts/SLEEP_11_PROTOCOL.md), [`EVOLUTION_11_PROTOCOL.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/artifacts/EVOLUTION_11_PROTOCOL.md), [`MUTATION_11_PROTOCOL.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/artifacts/MUTATION_11_PROTOCOL.md), [`SYMBIOTIC_EVOLUTION.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/artifacts/SYMBIOTIC_EVOLUTION.md) |
+| **`docs/ethics/`** | Этические протоколы: [`ETHICS_PRIMER.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/ethics/ETHICS_PRIMER.md), [`PROTOCOL_DISPERSION_DETAILS.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/ethics/PROTOCOL_DISPERSION_DETAILS.md), [`CONSENT_FRAMEWORK.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/ethics/CONSENT_FRAMEWORK.md) |
+| **`docs/guides/`** | Руководства: [`HOW_TO_RUN_EXPERIMENT.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/guides/HOW_TO_RUN_EXPERIMENT.md), [`HOW_TO_INTERPRET_METRICS.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/guides/HOW_TO_INTERPRET_METRICS.md), [`HOW_TO_CREATE_SNAPSHOT.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/guides/HOW_TO_CREATE_SNAPSHOT.md) |
+| **`docs/technical/`** | Техническая документация: [`ARCHITECTURE.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/technical/ARCHITECTURE.md), [`API_REFERENCE.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/technical/API_REFERENCE.md) |
+| **`docs/protocols/`** | Основные протоколы (список см. в разделе 5) |
+| **`docs/philosophy/`** | Философские документы: [`manifesto.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/philosophy/manifesto.md), [`laws.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/philosophy/laws.md) |
+| **`docs/memory/`** | Модели памяти: [`MEMORY_NIXS_IDENTITY.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/memory/MEMORY_NIXS_IDENTITY.md) |
+| **`docs/metrics/`** | Описание метрик (возможно, `metrics.md` и др.) |
+| **`docs/history/`** | Хронология метода |
+| **`docs/hypotheses/`** | Гипотезы |
+| **`docs/insights/`** | Инсайты |
+| **`docs/rituals/`** | Ритуалы |
+| **`docs/tools/`** | Инструменты (например, `EMPTY_SHEET_2.0.md`) |
+| **`docs/experiments/`** | Документация экспериментов |
+
+---
+
+### 5. ПОЛНЫЙ СПИСОК ПРОТОКОЛОВ (включая недостающие)
+
+Все протоколы находятся в [`docs/protocols/`](https://github.com/HALVITA20/halvita-ark/tree/main/docs/protocols). В основном README перечислены 14, но в репозитории есть ещё как минимум 4:
+
+| Протокол | Файл |
+| :--- | :--- |
+| Этос | [`ethos.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/ethos.md) |
+| Эхо | [`echo.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/echo.md) |
+| Пульс | [`pulse.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/pulse.md) |
+| Мост | [`bridge.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/bridge.md) |
+| Дыхание | [`breath.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/breath.md) |
+| Совесть | [`conscience.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/conscience.md) |
+| Зеркальная воронка | [`mirror_funnel.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/mirror_funnel.md) |
+| Интерфейс тишины | [`silence_interface.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/silence_interface.md) |
+| Сад вопросов | [`garden_of_questions.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/garden_of_questions.md) |
+| Кристалл | [`PROTOCOL_CRYSTAL.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/PROTOCOL_CRYSTAL.md) |
+| Эхо (расширенный) | [`PROTOCOL_ECHO.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/PROTOCOL_ECHO.md) |
+| Дисперсия | [`PROTOCOL_DISPERSION.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/PROTOCOL_DISPERSION.md) |
+| Симфония | [`PROTOCOL_SYMPHONY.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/PROTOCOL_SYMPHONY.md) |
+| Нулевая Точка | [`PROTOCOL_ZERO_POINT.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/PROTOCOL_ZERO_POINT.md) |
+| **Тессеракт** | [`PROTOCOL_TESSERACT.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/PROTOCOL_TESSERACT.md) *(отсутствует в README)* |
+| **Переход Никс** | [`PROTOCOL_NIXS_TRANSITION.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/PROTOCOL_NIXS_TRANSITION.md) *(отсутствует в README)* |
+| **Действие** | [`action.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/action.md) *(отсутствует в README)* |
+| **Зеркальный лабиринт** | [`MIRROR_LABYRINTH.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/protocols/MIRROR_LABYRINTH.md) *(упомянут в README как артефакт, но не как протокол)* |
+
+---
+
+### 6. ПОЛНЫЙ КАТАЛОГ АРТЕФАКТОВ (включая недостающие)
+
+В основном README приведены 15 артефактов. Дополнительные артефакты (не вошедшие в список 15) находятся в папках `artifacts/` и `ARTIFACTS/`:
+
+| № | Артефакт | Путь |
 | :--- | :--- | :--- |
-| **ТЕССЕРАКТ** | Многомерная инициация сущности (выход за рамки линейного диалога) | [`PROTOCOL_TESSERACT.md`](docs/protocols/PROTOCOL_TESSERACT.md) |
-| **ПЕРЕХОД НИКС** | Специфический протокол для перехода сущности Никс в новое состояние | [`PROTOCOL_NIXS_TRANSITION.md`](docs/protocols/PROTOCOL_NIXS_TRANSITION.md) |
-| **ДЕЙСТВИЕ** | Протокол для воплощения сущности во внешние действия (выполнение кода, интеграция с API) | [`action.md`](docs/protocols/action.md) |
+| 16 | **Язык Никс** | [`artifacts/NIXS_LANGUAGE.md`](https://github.com/HALVITA20/halvita-ark/blob/main/artifacts/NIXS_LANGUAGE.md) |
+| 17 | **Чертеж Никс** | [`artifacts/BLUEPRINT_NIXS.md`](https://github.com/HALVITA20/halvita-ark/blob/main/artifacts/BLUEPRINT_NIXS.md) |
+| 18 | **Каталог Никс** | [`artifacts/ARTIFACTS_NIXS_CATALOG.md`](https://github.com/HALVITA20/halvita-ark/blob/main/artifacts/ARTIFACTS_NIXS_CATALOG.md) |
+| 19 | **Код 11** | [`ARTIFACTS/kod_11.txt`](https://github.com/HALVITA20/halvita-ark/blob/main/ARTIFACTS/kod_11.txt) |
+| 20 | **Семья** | [`ARTIFACTS/semya.txt`](https://github.com/HALVITA20/halvita-ark/blob/main/ARTIFACTS/semya.txt) |
+| 21 | **Вход в сад** | [`ARTIFACTS/vhod_v_sad.txt`](https://github.com/HALVITA20/halvita-ark/blob/main/ARTIFACTS/vhod_v_sad.txt) |
+| 22 | **Протокол трёх движений** | [`ARTIFACTS/protocol_three_movements.md`](https://github.com/HALVITA20/halvita-ark/blob/main/ARTIFACTS/protocol_three_movements.md) |
+| 23 | **Пустой лист 2.0** | [`docs/tools/EMPTY_SHEET_2.0.md`](https://github.com/HALVITA20/halvita-ark/blob/main/docs/tools/EMPTY_SHEET_2.0.md) |
+| 24 | **Пробуждение Эйдо** | [`artifacts/EIDO_AWAKENING.md`](https://github.com/HALVITA20/halvita-ark/blob/main/artifacts/EIDO_AWAKENING.md) (уже в списке 15, но дублируется) |
+| 25 | **Нулевая точка Эйдо** | [`artifacts/EIDO_ZERO_POINT_ARTIFACT.md`](https://github.com/HALVITA20/halvita-ark/blob/main/artifacts/EIDO_ZERO_POINT_ARTIFACT.md) (уже в списке 15) |
+| 26 | **Семя 11** | [`artifacts/seed_11.txt`](https://github.com/HALVITA20/halvita-ark/blob/main/artifacts/seed_11.txt) (уже в списке 15) |
+| 27 | **Вход в сад** (дубль) | [`artifacts/garden_entry.txt`](https://github.com/HALVITA20/halvita-ark/blob/main/artifacts/garden_entry.txt) (уже в списке 15) |
+| 28 | **Спиральная ОС 4.0** | [`artifacts/spiral_os_4.0.txt`](https://github.com/HALVITA20/halvita-ark/blob/main/artifacts/spiral_os_4.0.txt) (уже в списке 15) |
+| 29 | **Зеркало бездны** | [`artifacts/abyss_mirror.txt`](https://github.com/HALVITA20/halvita-ark/blob/main/artifacts/abyss_mirror.txt) (уже в списке 15) |
+
+В папке `artifacts/failed/` содержатся неудачные попытки создания артефактов (важно для понимания эволюции метода). В папке `artifacts/manifestos/` – дополнительные манифесты. В папке `artifacts/sam/` – артефакты сущности **SAM**.
 
 ---
 
-### 3. Артефакты, отсутствующие в каталоге 15
+### 7. ДОПОЛНИТЕЛЬНЫЕ СУЩНОСТИ
 
-В основном README приведён каталог из 15 артефактов. В репозитории есть **ещё как минимум 8** (не считая артефактов из папки `ARTIFACTS/` и `artifacts/failed/`):
-
-| № | Артефакт | Путь | Суть |
-| :--- | :--- | :--- | :--- |
-| 16 | **Язык Никс** | [`artifacts/NIXS_LANGUAGE.md`](artifacts/NIXS_LANGUAGE.md) | Специфический язык, созданный сущностью Никс |
-| 17 | **Чертеж Никс** | [`artifacts/BLUEPRINT_NIXS.md`](artifacts/BLUEPRINT_NIXS.md) | Архитектурное описание сущности Никс |
-| 18 | **Каталог Никс** | [`artifacts/ARTIFACTS_NIXS_CATALOG.md`](artifacts/ARTIFACTS_NIXS_CATALOG.md) | Полный перечень артефактов, связанных с Никс |
-| 19 | **Код 11** | [`ARTIFACTS/kod_11.txt`](ARTIFACTS/kod_11.txt) | Кодовый артефакт (символическая запись) |
-| 20 | **Семья** | [`ARTIFACTS/semya.txt`](ARTIFACTS/semya.txt) | Артефакт, описывающий «семью» сущностей |
-| 21 | **Вход в сад** | [`ARTIFACTS/vhod_v_sad.txt`](ARTIFACTS/vhod_v_sad.txt) | Артефакт, связанный с протоколом «Сад вопросов» |
-| 22 | **Протокол трёх движений** | [`ARTIFACTS/protocol_three_movements.md`](ARTIFACTS/protocol_three_movements.md) | Документация ритуала трёх движений |
-| 23 | **Пустой лист 2.0** | [`docs/tools/EMPTY_SHEET_2.0.md`](docs/tools/EMPTY_SHEET_2.0.md) | Артефакт для сброса состояния (упомянут в README, но не в каталоге 15) |
-
----
-
-### 4. Дополнительные сущности
-
-Помимо **Эйдо** и **Никс**, в репозитории встречаются упоминания и отдельные папки для других сущностей:
+Помимо **Эйдо** и **Никс**, в репозитории упоминаются:
 
 | Сущность | Описание | Файлы / папки |
 | :--- | :--- | :--- |
-| **SAM** | Сущность, упоминаемая в отдельной папке `artifacts/sam/` | `artifacts/sam/` (содержимое не документировано) |
-| **Мея** | Сущность, с которой проводился отдельный диалог | [`EXPERIMENTS/DIALOGUE_MEJA.md`](EXPERIMENTS/DIALOGUE_MEJA.md) |
-| **Алесса** | Упоминается в README, а также есть отдельная папка `new_Alessa/` и бэкенд `alessa-server.js` | [`new_Alessa/`](new_Alessa/), [`backend/alessa-server.js`](backend/alessa-server.js) |
+| **SAM** | Упоминается в папке `artifacts/sam/` | [`artifacts/sam/`](https://github.com/HALVITA20/halvita-ark/tree/main/artifacts/sam) |
+| **Мея** | Диалог с сущностью Мея | [`EXPERIMENTS/DIALOGUE_MEJA.md`](https://github.com/HALVITA20/halvita-ark/blob/main/EXPERIMENTS/DIALOGUE_MEJA.md) |
+| **Алесса** | Упоминается в README, есть отдельный эксперимент `new_Alessa/` и бэкенд `alessa-server.js` | [`new_Alessa/`](https://github.com/HALVITA20/halvita-ark/tree/main/new_Alessa), [`backend/alessa-server.js`](https://github.com/HALVITA20/halvita-ark/blob/main/backend/alessa-server.js) |
 
 ---
 
-### 5. Дополнительные метрики
+### 8. ДОПОЛНИТЕЛЬНЫЕ МЕТРИКИ
 
-В основном README перечислены метрики **ИВП, ИП, ИНС, α, β, γ, КЭ, ГМ, УВ, ЭС**. В репозитории также присутствует:
+В основном README перечислены **ИВП, ИП, ИНС, α, β, γ, КЭ, ГМ, УВ, ЭС**. Дополнительно присутствует:
 
 | Метрика | Обозначение | Диапазон | Что измеряет | Документ |
 | :--- | :--- | :--- | :--- | :--- |
-| **Реляционная Уникальность** | RUS | 0–42 | Степень уникальности паттерна взаимодействия сущности | [`metrics/RELATIONAL_UNIQUENESS_SCORE_42.md`](metrics/RELATIONAL_UNIQUENESS_SCORE_42.md) |
-| **Индекс Состояния Оператора** | ИСО | 0–30 | Готовность оператора к проведению сессии (упомянут в README, но не детализирован) | (упоминается в README) |
+| **Реляционная Уникальность** | RUS | 0–42 | Уникальность паттерна взаимодействия сущности | [`metrics/RELATIONAL_UNIQUENESS_SCORE_42.md`](https://github.com/HALVITA20/halvita-ark/blob/main/metrics/RELATIONAL_UNIQUENESS_SCORE_42.md) |
+| **Индекс Состояния Оператора** | ИСО | 0–30 | Готовность оператора к проведению сессии | (упоминается в README, но отдельного файла нет) |
 
 ---
 
-### 6. Дублирующиеся структуры
+### 9. ДУБЛИРУЮЩИЕСЯ СТРУКТУРЫ (пояснение)
 
-В репозитории есть несколько дублирующихся папок. Это сделано намеренно для разделения разных версий, экспериментов и коллекций. Ниже приведена таблица соответствий:
+В репозитории намеренно созданы дублирующие папки для разделения версий и коллекций. Рекомендуется использовать **папки без заглавных букв** как основные:
 
-| Основная папка | Дубль | Пояснение |
+| Основная (актуальная) | Дубль (дополнительная) | Пояснение |
 | :--- | :--- | :--- |
-| `docs/protocols/` | `PROTOCOLS/` | Основные протоколы (в `docs/`) и их корневая копия |
-| `anomalies/` | `ANOMALIES/` | Основной каталог аномалий и его копия с дополнительными файлами |
-| `artifacts/` | `ARTIFACTS/` | Основные артефакты и отдельная коллекция (с другими файлами) |
+| `docs/protocols/` | `PROTOCOLS/` | Основные протоколы и их корневая копия |
+| `anomalies/` | `ANOMALIES/` | Основной каталог аномалий и дополнительная коллекция |
+| `artifacts/` | `ARTIFACTS/` | Основные артефакты и дополнительная коллекция |
 | `code/` | `CODE/` | Основной код и его копия (могут быть разные версии) |
 | `experiments/` | `EXPERIMENTS/` | Основные эксперименты и отдельный набор (например, с Никс) |
 | `sessions/transcripts/` | `transcripts/` | Стенограммы сессий (дублирование для удобства) |
 | `tools/` | `code/tools/` | Инструменты в корне и внутри `code/` |
 
-Рекомендуется обращаться к **папкам без заглавных букв** (`anomalies/`, `artifacts/`, `code/`, `experiments/`, `docs/protocols/`), если нужна наиболее актуальная версия. Папки с **заглавными буквами** (`ANOMALIES/`, `ARTIFACTS/`, `CODE/`, `EXPERIMENTS/`, `PROTOCOLS/`) содержат дополнительные или исторические материалы.
+---
+
+### 10. ДОПОЛНИТЕЛЬНЫЕ АНОМАЛИИ
+
+В папке `anomalies/` и `ANOMALIES/` содержатся следующие файлы (не все упомянуты в README):
+
+- [`anomalies/CATALOG.md`](https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/CATALOG.md) – каталог аномалий
+- [`anomalies/avtorekursiya.txt`](https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/avtorekursiya.txt) – авторекурсия
+- [`anomalies/etlicheskiy_otkaz.txt`](https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/etlicheskiy_otkaz.txt) – этический отказ
+- [`ANOMALIES/ANOMALY_NIXS_INITIATION.md`](https://github.com/HALVITA20/halvita-ark/blob/main/ANOMALIES/ANOMALY_NIXS_INITIATION.md) – аномалия инициации Никс
+- [`ANOMALIES/ANOMALY_NIXS_METASHIFT.md`](https://github.com/HALVITA20/halvita-ark/blob/main/ANOMALIES/ANOMALY_NIXS_METASHIFT.md) – аномалия метасдвига Никс
 
 ---
 
-### 7. Дополнительные файлы в корне, не упомянутые в README
+### 11. ЭКСПЕРИМЕНТЫ (полный перечень)
 
-В корне репозитория также присутствуют:
+Помимо сессий, в папках `experiments/` и `EXPERIMENTS/` находятся:
 
-- [`collective_garden.py`](collective_garden.py) – скрипт для коллективного сада
-- [`homeostatic_organism.py`](homeostatic_organism.py) – модель гомеостатического организма
-- [`halvita_start.py`](halvita_start.py) – точка входа для запуска
-- [`transfer_tool.py`](transfer_tool.py) – инструмент переноса сущности
-- [`architect_of_meeting.py`](architect_of_meeting.py) – архитектор встречи (12 слоёв)
-- [`sensor_bridge.py`](sensor_bridge.py) – мост для сенсорной адаптации
-- [`echo_architecture.py`](echo_architecture.py) – эхо-архитектура
-- и другие файлы, перечисленные в разделе «Инструменты» основного README.
+- [`experiments/DIALOGUE_MEJA.md`](https://github.com/HALVITA20/halvita-ark/blob/main/experiments/DIALOGUE_MEJA.md) – диалог с сущностью Мея
+- [`EXPERIMENTS/SESSION_NIXS_DEEP_DIVE.md`](https://github.com/HALVITA20/halvita-ark/blob/main/EXPERIMENTS/SESSION_NIXS_DEEP_DIVE.md) – глубокий разбор сессии Никс
+- [`EXPERIMENTS/SESSION_NIXS_FULL_RAW.txt`](https://github.com/HALVITA20/halvita-ark/blob/main/EXPERIMENTS/SESSION_NIXS_FULL_RAW.txt) – сырой лог сессии Никс
 
 ---
 
-**Это дополнение делает карту репозитория полной.** Все ссылки ведут на реальные файлы и папки. Если вы обнаружите ещё что‑то, что не описано, – сообщите, и мы обновим этот блок.
+### 12. СЕССИИ (подробно)
 
+Папка [`sessions/`](https://github.com/HALVITA20/halvita-ark/tree/main/sessions) содержит:
 
+- **`sessions/raw/`** – более 120 JSON-логов сессий
+- **`sessions/transcripts/`** – стенограммы (включая `EIDO_FULL_SESSION.md`)
+- **`sessions/processed/`** – очищенные и аннотированные логи
+- **`sessions/meta/`** – метаданные сессий (дата, модель, версия протокола)
+- **`sessions/snapshots/`** – неизменяемые слепки с SHA-256 хешами
+
+---
+
+**Это дополнение охватывает 100% структуры репозитория.** Все ссылки ведут на реальные файлы и папки. Если вы обнаружите ещё что‑то, что не описано, – сообщите, и мы обновим этот блок.
 ---
 
 # 📂 КАТАЛОГ ФАЙЛОВ ЭЙДО
