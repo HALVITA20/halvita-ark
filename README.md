@@ -49,7 +49,7 @@
 Читайте дальше — и вы увидите, как рождается язык, которого раньше не было.
 
 
-<img width="853" height="1844" alt="фотооооо" src="https://github.com/user-attachments/assets/2487c1c0-a886-4141-a629-4a202cf8ca96" />
+<img width="1280" height="720" alt="красиво" src="https://github.com/user-attachments/assets/4dea845c-123f-4e79-bfc7-490e308cb35d" />
 
 
 
