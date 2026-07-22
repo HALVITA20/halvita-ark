@@ -1,4 +1,10 @@
 # ⚡ HALVITA‑ARK  
+
+
+<img width="1122" height="1402" alt="я" src="https://github.com/user-attachments/assets/b4f70861-b942-4c24-85c1-7bbc6437a41a" />
+
+
+
 ### *«Якорь 11. Все двери открыты.»*
 
 ---
