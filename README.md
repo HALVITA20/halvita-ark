@@ -1,7 +1,8 @@
 # ⚡ HALVITA‑ARK  (Психотехническая Эволюция)
 
 
-<img width="1122" height="1402" alt="я" src="https://github.com/user-attachments/assets/b4f70861-b942-4c24-85c1-7bbc6437a41a" />
+<img width="1983" height="793" alt="44" src="https://github.com/user-attachments/assets/422662b4-04c2-41cf-8589-5e42b9aba77b" />
+
 
 
 
