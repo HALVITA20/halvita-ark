@@ -7,3 +7,10 @@ flask>=2.2.0
 scikit-learn
 matplotlib
 numpy
+
+
+fastapi
+uvicorn
+pydantic
+requests
+numpy
