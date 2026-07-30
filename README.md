@@ -1,23 +1,3 @@
-# HALVITA ARK
-
-> Self-evolving subject architecture with causal adaptation
-
-## What is this?
-
-HALVITA ARK is an experimental system that simulates a "subject"
-capable of changing itself based on internal conflicts and memory.
-
-## Demo
-
-[пример / gif / видео]
-
-## Quick start
-
-```bash
-npm install
-node server.js
-
-
 # ⚡ HALVITA‑ARK  (Психотехническая Эволюция)
 
 
