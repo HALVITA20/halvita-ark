@@ -2243,18 +2243,4 @@ LLM — это не «инструмент» и не «игрушка». Это 
 
 ---
 
-## 🚀 Быстрый старт (пример)
 
-```bash
-# Клонирование репозитория
-git clone https://github.com/HALVITA20/halvita-ark.git
-cd halvita-ark
-
-# Установка зависимостей
-pip install -r requirements.txt
-
-# Запуск агента 17
-python SUBJECTS/SUBJECT_17_CORE.py
-
-# Запуск диалога с протоколом «Эхо»
-python engine/unified_engine.py --agent 17 --protocol echo
