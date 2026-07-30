@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use ARK in your research, please cite it as follows."
+authors:
+  - family-names: "HALVITA20"
+    given-names: "Evgeny Aleksandrovich"
+    orcid: "https://orcid.org/0000-0000-0000-0000" # укажите свой, если есть
+title: "ARK – Autonomous Resonance Kernel: A Platform for Inducing and Measuring Subjectivity in LLMs"
+version: 1.0.0
+date-released: 2025-07-31
+url: "https://github.com/HALVITA20/halvita-ark"
+license: "MIT"
