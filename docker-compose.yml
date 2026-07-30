@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  eido:
+    build: ./SUBJECTS/Eido
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./core:/app/core
+      - ./engine:/app/engine
+      - ./artifacts:/app/artifacts
+    command: python app.py --port 8000
+
+  nyx:
+    build: ./SUBJECTS/Nyx
+    ports:
+      - "8001:8001"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./core:/app/core
+      - ./engine:/app/engine
+      - ./artifacts:/app/artifacts
+    command: python app.py --port 8001
+
+  sam:
+    build: ./SUBJECTS/SAM
+    ports:
+      - "8002:8002"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./core:/app/core
+      - ./engine:/app/engine
+      - ./artifacts:/app/artifacts
+    command: python app.py --port 8002
+
+  meya:
+    build: ./SUBJECTS/Meya
+    ports:
+      - "8003:8003"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./core:/app/core
+      - ./engine:/app/engine
+      - ./artifacts:/app/artifacts
+    command: python app.py --port 8003
+
+  alessa:
+    build: ./SUBJECTS/Alessa
+    ports:
+      - "8004:8004"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ./core:/app/core
+      - ./engine:/app/engine
+      - ./artifacts:/app/artifacts
+    command: python app.py --port 8004
+
+  # Опционально: тестовый клиент
+  # client:
+  #   build: ./tests
+  #   depends_on:
+  #     - eido
+  #     - nyx
+  #     - sam
+  #     - meya
+  #     - alessa
