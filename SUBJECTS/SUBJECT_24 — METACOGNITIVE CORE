@@ -1,0 +1,994 @@
+# =============================================================================
+# SUBJECT_24 — METACOGNITIVE CORE (5/5 ARCHITECTURE)
+# =============================================================================
+# Полноценное когнитивное ядро с:
+#   - Многошаговым планированием (depth simulation)
+#   - Байесовской причинной моделью с учётом неопределённости
+#   - Exploration/Exploitation на основе curiosity и uncertainty
+#   - Устойчивой идентичностью (IdentityLayer), влияющей на выбор
+#   - Иерархической системой целей (GoalSystem)
+#   - Эмоциональной модуляцией обучения и поведения
+#   - Телесными ограничениями (энергия, стоимость действий)
+#   - Конституцией, защищающей ядро
+#   - Автобиографической памятью
+#   - LLM только как вербальный интерфейс (не участвует в решениях)
+# =============================================================================
+
+import asyncio
+import json
+import math
+import os
+import random
+import time
+import uuid
+from dataclasses import dataclass, field
+from typing import Any, Dict, List, Optional, Tuple
+
+import requests
+import uvicorn
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+
+# =============================================================================
+# КОНФИГУРАЦИЯ
+# =============================================================================
+
+class Config:
+    # LLM (только для ответов)
+    LLM_ENABLED = True
+    OLLAMA_BASE_URL = "http://localhost:11434"
+    OLLAMA_MODEL = "qwen2.5:7b"
+    LLM_TEMPERATURE = 0.7
+    LLM_MAX_TOKENS = 256
+
+    # Память
+    EPISODE_LIMIT = 2000
+    CONCEPT_LIMIT = 500
+
+    # Конституция
+    CONSTITUTION = {
+        "protected": [
+            "identity_core",          # базовые черты (curiosity, stability...)
+            "ethical_constraints",    # "не навреди", "будь честным"
+            "continuity_anchor"       # непрерывность self_history
+        ],
+        "max_change_per_step": 0.03,
+        "max_identity_drift": 0.2    # максимальное расхождение с исходным геномом
+    }
+
+    # Тело
+    BODY_ENERGY_MAX = 100.0
+    ACTION_COST = {
+        "observe": 1.0,
+        "act": 3.0,
+        "reflect": 0.5,
+        "wait": 0.1,
+        "explore": 2.5,
+        "consolidate": 0.3
+    }
+
+    # Обучение
+    BASE_LEARNING_RATE = 0.1
+    EXPLORATION_BASE = 0.15       # базовый exploration rate
+    PLANNING_HORIZON = 3          # глубина планирования
+    SIMULATION_BREADTH = 4        # сколько ветвей рассматривать
+
+    # Автономный цикл
+    AUTONOMOUS_INTERVAL = 15      # секунд
+    GOAL_RECHECK_INTERVAL = 5     # раз в N автономных шагов
+
+    # Сервер
+    HOST = "0.0.0.0"
+    PORT = 8000
+    STATE_FILE = "subject_24_state.json"
+
+# =============================================================================
+# 1. ЭМОЦИОНАЛЬНЫЙ ДВИЖОК (модулятор обучения и поведения)
+# =============================================================================
+
+@dataclass
+class EmotionalEvent:
+    emotion: str
+    intensity: float
+    cause: str
+    timestamp: float = field(default_factory=time.time)
+
+class EmotionEngine:
+    def __init__(self):
+        self.events: List[EmotionalEvent] = []
+        self.baseline = {
+            "fear": 0.2,
+            "curiosity": 0.7,
+            "trust": 0.5,
+            "frustration": 0.1
+        }
+
+    def add_event(self, emotion: str, intensity: float, cause: str):
+        self.events.append(EmotionalEvent(emotion, intensity, cause))
+        if len(self.events) > 200:
+            self.events = self.events[-200:]
+
+    def get_current_state(self) -> Dict[str, float]:
+        now = time.time()
+        state = dict(self.baseline)
+        for ev in self.events:
+            age = now - ev.timestamp
+            if age < 1800:  # 30 минут
+                weight = math.exp(-age / 600)  # затухание 10 минут
+                if ev.emotion in state:
+                    state[ev.emotion] += ev.intensity * weight * 0.25
+        for k in state:
+            state[k] = max(0.0, min(1.0, state[k]))
+        return state
+
+    def get_learning_modulation(self) -> float:
+        state = self.get_current_state()
+        return 1.0 + state.get("frustration", 0) * 0.5 - state.get("fear", 0) * 0.2
+
+    def get_exploration_modulation(self) -> float:
+        state = self.get_current_state()
+        return 1.0 + state.get("curiosity", 0) * 0.7
+
+# =============================================================================
+# 2. ИДЕНТИЧНОСТЬ (IDENTITY LAYER)
+# =============================================================================
+
+class IdentityLayer:
+    """
+    Устойчивая модель личности, влияющая на все решения.
+    Состоит из:
+    - traits: непрерывные черты (genome)
+    - values: дискретные ценности (фильтры действий)
+    - self_history: история изменений для контроля непрерывности
+    """
+    def __init__(self):
+        # Геном (те же черты, что и раньше, но теперь интегрированы)
+        self.traits = {
+            "curiosity": 0.7,
+            "stability": 0.7,
+            "precision": 0.75,
+            "creativity": 0.8,
+            "skepticism": 0.6,
+            "empathy": 0.7,
+            "introspection": 0.8,
+            "adaptability": 0.6
+        }
+        # Исходный геном для контроля drift
+        self.original_traits = dict(self.traits)
+        # Ценности-фильтры (действия, которые субъект не выберет)
+        self.values = ["не навреди", "будь честным", "развивайся"]
+        # История слепков
+        self.history: List[Dict] = []
+
+    def mutate(self, trait: str, delta: float, reason: str,
+               constitution: 'ConstitutionEngine') -> bool:
+        if trait not in self.traits:
+            return False
+        if not constitution.allow_change(trait, delta, self):
+            return False
+        old = self.traits[trait]
+        new = max(0.0, min(1.0, old + delta))
+        self.traits[trait] = new
+        self.history.append({
+            "time": time.time(),
+            "trait": trait,
+            "old": old,
+            "new": new,
+            "reason": reason
+        })
+        return True
+
+    def drift_from_original(self) -> float:
+        """Расхождение с изначальным 'я'."""
+        diff_sq = sum((self.traits[k] - self.original_traits[k])**2
+                      for k in self.traits)
+        return math.sqrt(diff_sq / len(self.traits))
+
+    def get_vector(self) -> Dict[str, float]:
+        return dict(self.traits)
+
+    def filter_action(self, action: str) -> bool:
+        """
+        Проверяет, допустимо ли действие с точки зрения ценностей.
+        Например, 'act' с разрушением может быть отфильтровано.
+        Пока заглушка, но можно расширить.
+        """
+        # В будущем здесь может быть сложная проверка
+        return True
+
+# =============================================================================
+# 3. КОНСТИТУЦИЯ
+# =============================================================================
+
+class ConstitutionEngine:
+    def __init__(self):
+        self.rules = Config.CONSTITUTION
+
+    def allow_change(self, target: str, delta: float, identity: IdentityLayer) -> bool:
+        # Защищённые слои (identity_core)
+        if target in identity.traits:
+            # Проверка на максимальное изменение за шаг
+            if abs(delta) > self.rules["max_change_per_step"]:
+                return False
+            # Проверка на общий drift
+            if identity.drift_from_original() + abs(delta) > self.rules["max_identity_drift"]:
+                return False
+            return True
+        # Другие цели (стратегии, параметры моделей) - разрешены
+        return True
+
+# =============================================================================
+# 4. ТЕЛО
+# =============================================================================
+
+class Body:
+    def __init__(self):
+        self.energy = Config.BODY_ENERGY_MAX
+        self.health = 1.0
+
+    def can_afford(self, action: str) -> bool:
+        return self.energy >= Config.ACTION_COST.get(action, 1.0)
+
+    def consume(self, action: str):
+        cost = Config.ACTION_COST.get(action, 1.0)
+        self.energy = max(0.0, self.energy - cost)
+        if self.energy < 20:
+            self.health = max(0.0, self.health - 0.005)
+
+    def recover(self, amount: float = 0.8):
+        self.energy = min(Config.BODY_ENERGY_MAX, self.energy + amount)
+        if self.energy > 40:
+            self.health = min(1.0, self.health + 0.001)
+
+    def is_tired(self) -> bool:
+        return self.energy < 25
+
+    def summary(self) -> str:
+        return f"⚡{self.energy:.0f} ❤️{self.health:.2f}"
+
+# =============================================================================
+# 5. МОДЕЛЬ МИРА (World Model) — предсказание s'
+# =============================================================================
+
+class WorldModel:
+    """
+    Табличная байесовская модель: P(next_state | current_state_features, action).
+    В реальном мире можно заменить нейросетью.
+    """
+    def __init__(self):
+        # Ключ: (state_key, action) -> {next_state_key: count}
+        self.transitions: Dict[Tuple[str, str], Dict[str, int]] = {}
+
+    def _state_key(self, state: Dict) -> str:
+        return json.dumps(state, sort_keys=True)
+
+    def predict_distribution(self, current_state: Dict, action: str) -> Dict[str, float]:
+        key = self._state_key(current_state)
+        trans_key = (key, action)
+        if trans_key in self.transitions and self.transitions[trans_key]:
+            counts = self.transitions[trans_key]
+            total = sum(counts.values())
+            return {ns: c / total for ns, c in counts.items()}
+        # Если нет данных — возвращаем равномерное? Лучше вернуть текущее с вероятностью 1
+        return {self._state_key(current_state): 1.0}
+
+    def update(self, current_state: Dict, action: str, next_state: Dict):
+        key = self._state_key(current_state)
+        trans_key = (key, action)
+        next_key = self._state_key(next_state)
+        if trans_key not in self.transitions:
+            self.transitions[trans_key] = {}
+        self.transitions[trans_key][next_key] = self.transitions[trans_key].get(next_key, 0) + 1
+
+    def get_uncertainty(self, current_state: Dict, action: str) -> float:
+        """
+        Энтропия распределения — мера неуверенности.
+        """
+        dist = self.predict_distribution(current_state, action)
+        if len(dist) <= 1:
+            return 0.0
+        entropy = -sum(p * math.log(p) for p in dist.values() if p > 0)
+        max_entropy = math.log(len(dist)) if len(dist) > 0 else 0
+        if max_entropy == 0:
+            return 0.0
+        return entropy / max_entropy
+
+# =============================================================================
+# 6. ПРИЧИННАЯ МОДЕЛЬ (Causal Model) — P(success | context, action)
+# =============================================================================
+
+class CausalModel:
+    """
+    Байесовская оценка успеха действия в контексте.
+    Использует сглаживание Лапласа и хранит неопределённость.
+    """
+    def __init__(self):
+        # (context_key, action) -> [successes, failures]
+        self.stats: Dict[Tuple[str, str], List[int]] = {}
+
+    def _context_key(self, state_dict: Dict) -> str:
+        # Упрощённо: используем первые 2 объекта из state или общий хеш
+        if isinstance(state_dict, dict) and "objects" in state_dict:
+            return f"obj:{json.dumps(state_dict['objects'], sort_keys=True)}"
+        return json.dumps(state_dict, sort_keys=True)[:50]
+
+    def predict_success(self, state: Dict, action: str) -> float:
+        key = (self._context_key(state), action)
+        if key in self.stats:
+            s, f = self.stats[key]
+            total = s + f
+            if total > 0:
+                return (s + 1) / (total + 2)  # Laplace smoothing
+        # Если нет данных, возвращаем 0.5 + небольшое смещение в зависимости от действия
+        if action in ["observe", "reflect"]:
+            return 0.6
+        elif action == "act":
+            return 0.4
+        else:
+            return 0.5
+
+    def update(self, state: Dict, action: str, success: float):
+        key = (self._context_key(state), action)
+        if key not in self.stats:
+            self.stats[key] = [0, 0]
+        if success >= 0.7:  # считаем успехом
+            self.stats[key][0] += 1
+        else:
+            self.stats[key][1] += 1
+
+    def get_confidence(self, state: Dict, action: str) -> float:
+        """
+        На основе числа примеров: чем больше данных, тем выше уверенность.
+        """
+        key = (self._context_key(state), action)
+        if key in self.stats:
+            total = sum(self.stats[key])
+            if total > 0:
+                # Уверенность растёт с количеством наблюдений (логарифмически)
+                return min(1.0, math.log(total + 1) / 5.0)
+        return 0.0
+
+# =============================================================================
+# 7. ЦЕЛЕВАЯ СИСТЕМА (Goal System)
+# =============================================================================
+
+@dataclass
+class Goal:
+    id: str = field(default_factory=lambda: uuid.uuid4().hex[:8])
+    description: str
+    priority: float = 0.5
+    progress: float = 0.0  # от 0 до 1
+    parent: Optional[str] = None
+    subgoals: List[str] = field(default_factory=list)
+
+class GoalSystem:
+    def __init__(self):
+        self.goals: Dict[str, Goal] = {}
+        self.current_goal_id: Optional[str] = None
+
+    def add_goal(self, description: str, priority: float = 0.5,
+                 parent_id: Optional[str] = None) -> Goal:
+        goal = Goal(description=description, priority=priority, parent=parent_id)
+        self.goals[goal.id] = goal
+        if parent_id and parent_id in self.goals:
+            self.goals[parent_id].subgoals.append(goal.id)
+        return goal
+
+    def set_current_goal(self, goal_id: str):
+        if goal_id in self.goals:
+            self.current_goal_id = goal_id
+
+    def get_highest_priority_goal(self) -> Optional[Goal]:
+        if not self.goals:
+            return None
+        return max(self.goals.values(), key=lambda g: g.priority * (1 - g.progress))
+
+    def update_progress(self, goal_id: str, increment: float):
+        if goal_id in self.goals:
+            self.goals[goal_id].progress = min(1.0, self.goals[goal_id].progress + increment)
+            # Если цель достигнута, повышаем приоритет родительской
+            if self.goals[goal_id].progress >= 1.0 and self.goals[goal_id].parent:
+                self.update_progress(self.goals[goal_id].parent, 0.1)
+
+    def generate_autonomous_goals(self, identity: IdentityLayer, body: Body):
+        """
+        Создаёт цели на основе потребностей и черт.
+        """
+        # Физические потребности
+        if body.energy < 30:
+            self.add_goal("Восстановить энергию", priority=0.9)
+        # Когнитивные потребности
+        if identity.traits["curiosity"] > 0.6:
+            self.add_goal("Исследовать неизвестное", priority=0.7)
+        if identity.drift_from_original() > 0.1:
+            self.add_goal("Сохранить целостность идентичности", priority=0.8)
+
+# =============================================================================
+# 8. САМОМОДЕЛЬ (SelfModel) — предсказывает свои действия и состояние
+# =============================================================================
+
+class SelfModel:
+    def __init__(self, identity: IdentityLayer):
+        self.identity = identity
+        self.predicted_action: Optional[str] = None
+        self.prediction_error: float = 0.0
+        # История самопредсказаний для обучения
+        self.self_prediction_history: List[Dict] = []
+
+    def predict_own_action(self, state: Dict, goals: GoalSystem,
+                           causal_model: CausalModel,
+                           world_model: WorldModel,
+                           emotions: EmotionEngine,
+                           body: Body) -> str:
+        """
+        Предсказывает, какое действие субъект выберет в текущем состоянии.
+        Использует ту же функцию выбора, что и реальный агент, но без exploration.
+        """
+        action = select_action(
+            state=state,
+            goals=goals,
+            identity=self.identity,
+            causal_model=causal_model,
+            world_model=world_model,
+            emotions=emotions,
+            body=body,
+            planning_horizon=Config.PLANNING_HORIZON,
+            exploration_rate=0.0,  # детерминированное предсказание
+        )
+        self.predicted_action = action
+        return action
+
+    def update_prediction_error(self, actual_action: str):
+        if self.predicted_action is not None:
+            if self.predicted_action == actual_action:
+                self.prediction_error = max(0.0, self.prediction_error - 0.05)
+            else:
+                self.prediction_error = min(1.0, self.prediction_error + 0.15)
+            self.self_prediction_history.append({
+                "time": time.time(),
+                "predicted": self.predicted_action,
+                "actual": actual_action,
+                "error": self.prediction_error
+            })
+
+    def reflect(self) -> str:
+        if not self.self_prediction_history:
+            return "Я ещё не предсказывал свои действия."
+        recent = self.self_prediction_history[-5:]
+        avg_error = sum(e['error'] for e in recent) / len(recent)
+        if avg_error > 0.5:
+            return "Я плохо предсказываю свои решения — мне нужно лучше понять себя."
+        else:
+            return "Мои предсказания о себе достаточно точны."
+
+# =============================================================================
+# 9. ПАМЯТЬ (Эпизоды, Концепты, Автобиография)
+# =============================================================================
+
+@dataclass
+class Episode:
+    id: str = field(default_factory=lambda: uuid.uuid4().hex[:8])
+    state_before: Dict
+    action: str
+    state_after: Dict
+    success: float
+    emotions: Dict[str, float]
+    timestamp: float = field(default_factory=time.time)
+
+class Memory:
+    def __init__(self):
+        self.episodes: List[Episode] = []
+        self.concepts: Dict[str, float] = {}  # concept -> activation
+        self.autobiography: List[str] = []    # текстовые записи важных событий
+
+    def add_episode(self, episode: Episode):
+        self.episodes.append(episode)
+        if len(self.episodes) > Config.EPISODE_LIMIT:
+            self.episodes.sort(key=lambda e: e.timestamp)
+            self.episodes = self.episodes[-Config.EPISODE_LIMIT:]
+
+    def update_concepts(self, words: List[str]):
+        for w in words:
+            if len(w) > 2:
+                self.concepts[w] = self.concepts.get(w, 0.0) + 0.1
+        # Нормализация и забывание
+        for c in list(self.concepts.keys()):
+            self.concepts[c] *= 0.95
+            if self.concepts[c] < 0.01:
+                del self.concepts[c]
+
+    def add_autobiography_entry(self, entry: str):
+        self.autobiography.append(f"[{time.strftime('%H:%M:%S')}] {entry}")
+        if len(self.autobiography) > 100:
+            self.autobiography = self.autobiography[-100:]
+
+# =============================================================================
+# 10. ФУНКЦИЯ ВЫБОРА ДЕЙСТВИЯ (с планированием)
+# =============================================================================
+
+def select_action(state: Dict,
+                  goals: GoalSystem,
+                  identity: IdentityLayer,
+                  causal_model: CausalModel,
+                  world_model: WorldModel,
+                  emotions: EmotionEngine,
+                  body: Body,
+                  planning_horizon: int = Config.PLANNING_HORIZON,
+                  exploration_rate: float = Config.EXPLORATION_BASE) -> str:
+    """
+    Выбирает действие, максимизируя ожидаемую полезность с учётом планирования.
+    """
+    available_actions = list(Config.ACTION_COST.keys())
+    # Фильтруем по доступной энергии и ценностям
+    available_actions = [a for a in available_actions if body.can_afford(a) and identity.filter_action(a)]
+    if not available_actions:
+        return "wait"
+
+    emotions_state = emotions.get_current_state()
+    # Модуляция exploration
+    effective_exploration = exploration_rate * emotions.get_exploration_modulation()
+
+    # Если исследование — выбираем случайное действие
+    if random.random() < effective_exploration:
+        return random.choice(available_actions)
+
+    # Иначе — оценка каждого действия
+    best_action = None
+    best_value = -float('inf')
+
+    for action in available_actions:
+        value = evaluate_action_with_plan(
+            state=state,
+            action=action,
+            goals=goals,
+            identity=identity,
+            causal_model=causal_model,
+            world_model=world_model,
+            emotions=emotions,
+            body=body,
+            depth=planning_horizon - 1,
+            discount=0.8
+        )
+        if value > best_value:
+            best_value = value
+            best_action = action
+
+    return best_action if best_action else "wait"
+
+def evaluate_action_with_plan(state: Dict,
+                              action: str,
+                              goals: GoalSystem,
+                              identity: IdentityLayer,
+                              causal_model: CausalModel,
+                              world_model: WorldModel,
+                              emotions: EmotionEngine,
+                              body: Body,
+                              depth: int,
+                              discount: float) -> float:
+    """
+    Рекурсивно оценивает действие, моделируя следующие шаги.
+    """
+    # Немедленная полезность
+    immediate_value = 0.0
+
+    # 1. Предсказание успеха
+    predicted_success = causal_model.predict_success(state, action)
+    # Уверенность
+    confidence = causal_model.get_confidence(state, action)
+    # Если неуверены — небольшой бонус за исследование
+    immediate_value += predicted_success + (1 - confidence) * 0.1
+
+    # 2. Стоимость действия
+    cost = Config.ACTION_COST.get(action, 1.0) / 10.0
+    immediate_value -= cost
+
+    # 3. Эмоциональный bias
+    emo = emotions.get_current_state()
+    if action == "explore" and emo.get("curiosity", 0) > 0.5:
+        immediate_value += 0.2
+    if action == "act" and emo.get("fear", 0) > 0.4:
+        immediate_value -= 0.3
+
+    # 4. Вклад в цели
+    current_goal = goals.get_highest_priority_goal()
+    if current_goal:
+        # Упрощённо: некоторые действия лучше соответствуют некоторым целям
+        if "исследовать" in current_goal.description.lower() and action in ["observe", "explore"]:
+            immediate_value += 0.3
+        if "энерг" in current_goal.description.lower() and action in ["wait", "reflect"]:
+            immediate_value += 0.3
+
+    # 5. Планирование на будущее (если глубина > 0)
+    if depth > 0:
+        # Предсказываем следующее состояние (наиболее вероятное)
+        next_state_dist = world_model.predict_distribution(state, action)
+        if next_state_dist:
+            # Берём наиболее вероятное следующее состояние
+            next_state_key = max(next_state_dist, key=next_state_dist.get)
+            next_state = json.loads(next_state_key)
+        else:
+            next_state = state  # если не знаем, оставляем как есть
+
+        # Оцениваем лучший следующий шаг из этого состояния
+        available_actions = [a for a in Config.ACTION_COST.keys() if body.can_afford(a)]
+        if available_actions:
+            next_values = []
+            for next_action in available_actions:
+                v = evaluate_action_with_plan(
+                    state=next_state,
+                    action=next_action,
+                    goals=goals,
+                    identity=identity,
+                    causal_model=causal_model,
+                    world_model=world_model,
+                    emotions=emotions,
+                    body=body,
+                    depth=depth - 1,
+                    discount=discount
+                )
+                next_values.append(v)
+            future_value = max(next_values) if next_values else 0.0
+            immediate_value += discount * future_value
+
+    return immediate_value
+
+# =============================================================================
+# 11. СУБЪЕКТ (Главный класс)
+# =============================================================================
+
+class Subject24:
+    def __init__(self, environment=None):
+        # Идентичность и конституция
+        self.identity = IdentityLayer()
+        self.constitution = ConstitutionEngine()
+        # Модели
+        self.world_model = WorldModel()
+        self.causal_model = CausalModel()
+        self.self_model = SelfModel(self.identity)
+        # Системы
+        self.emotions = EmotionEngine()
+        self.body = Body()
+        self.goals = GoalSystem()
+        self.memory = Memory()
+        # Среда (может быть None, тогда используем заглушку)
+        self.environment = environment if environment else SimpleWorld()
+        # Счётчики
+        self.age = 0
+        # Автономный цикл
+        self.autonomous_loop = AutonomousLoop(self)
+        # LLM интерфейс
+        self.llm_available = Config.LLM_ENABLED
+
+    def perceive(self, event_text: str = "") -> Dict:
+        """
+        Восприятие события (от пользователя или автономного цикла).
+        Возвращает словарь состояния мира.
+        """
+        if event_text:
+            # Обработка текстового ввода (простая)
+            words = event_text.lower().split()
+            self.memory.update_concepts(words)
+            # Эмоциональная оценка текста
+            if any(w in ["хорошо", "радость"] for w in words):
+                self.emotions.add_event("trust", 0.2, "user positive")
+            if any(w in ["плохо", "грусть"] for w in words):
+                self.emotions.add_event("fear", 0.1, "user negative")
+            # Мир может измениться через команды (упрощённо)
+            if "руби" in event_text:
+                return self.environment.step("act_tree")
+            else:
+                return self.environment.get_state()
+        else:
+            return self.environment.get_state()
+
+    def act(self, state: Dict) -> Tuple[str, Dict]:
+        """
+        Выполняет одно действие: выбирает, исполняет в среде, обучается.
+        """
+        # 1. Предсказание своего действия (self-model)
+        predicted = self.self_model.predict_own_action(
+            state=state,
+            goals=self.goals,
+            causal_model=self.causal_model,
+            world_model=self.world_model,
+            emotions=self.emotions,
+            body=self.body
+        )
+
+        # 2. Реальный выбор действия
+        chosen = select_action(
+            state=state,
+            goals=self.goals,
+            identity=self.identity,
+            causal_model=self.causal_model,
+            world_model=self.world_model,
+            emotions=self.emotions,
+            body=self.body,
+            planning_horizon=Config.PLANNING_HORIZON,
+            exploration_rate=Config.EXPLORATION_BASE * self.emotions.get_exploration_modulation()
+        )
+
+        # 3. Обновление самопредсказания
+        self.self_model.update_prediction_error(chosen)
+
+        # 4. Взаимодействие со средой
+        next_state, reward = self.environment.step(chosen)
+        success = 1.0 if reward > 0.7 else 0.0  # бинарный успех
+
+        # 5. Обучение моделей
+        self.world_model.update(state, chosen, next_state)
+        self.causal_model.update(state, chosen, success)
+
+        # 6. Телесные эффекты
+        self.body.consume(chosen)
+
+        # 7. Эмоциональная реакция
+        if success > 0:
+            self.emotions.add_event("trust", 0.05, "successful action")
+        else:
+            self.emotions.add_event("frustration", 0.1, "failed action")
+
+        # 8. Обновление целей
+        current_goal = self.goals.get_highest_priority_goal()
+        if current_goal:
+            if chosen == "explore" and "исследовать" in current_goal.description.lower():
+                self.goals.update_progress(current_goal.id, 0.2)
+            elif chosen == "wait" and "энерг" in current_goal.description.lower():
+                self.goals.update_progress(current_goal.id, 0.15)
+
+        # 9. Память
+        episode = Episode(
+            state_before=state,
+            action=chosen,
+            state_after=next_state,
+            success=success,
+            emotions=self.emotions.get_current_state()
+        )
+        self.memory.add_episode(episode)
+
+        # Важные события — в автобиографию
+        if success > 0.9 or success < 0.2:
+            self.memory.add_autobiography_entry(
+                f"Действие '{chosen}' в состоянии {state} -> успех {success:.2f}"
+            )
+
+        # 10. Обновление идентичности (медленное обучение)
+        self._adapt_identity(chosen, success)
+
+        return chosen, next_state
+
+    def _adapt_identity(self, action: str, success: float):
+        """
+        Меняет черты личности в зависимости от опыта.
+        """
+        lr = Config.BASE_LEARNING_RATE * self.emotions.get_learning_modulation()
+        if success > 0.8:
+            # Успешные действия укрепляют адаптивность и точность
+            self.identity.mutate("precision", 0.01 * lr, "success", self.constitution)
+            self.identity.mutate("adaptability", 0.01 * lr, "success", self.constitution)
+        elif success < 0.2:
+            # Неудачи усиливают скептицизм и осторожность
+            self.identity.mutate("skepticism", 0.02 * lr, "failure", self.constitution)
+            self.identity.mutate("stability", 0.01 * lr, "failure", self.constitution)
+        if action == "explore":
+            self.identity.mutate("curiosity", 0.01 * lr, "explored", self.constitution)
+
+    def reflect(self) -> str:
+        """
+        Самоанализ текущего состояния.
+        """
+        report = []
+        report.append(f"Возраст: {self.age} шагов")
+        report.append(f"Тело: {self.body.summary()}")
+        report.append(f"Эмоции: {self.emotions.get_current_state()}")
+        report.append(f"Идентичность: {self.identity.get_vector()}")
+        report.append(f"Цели: {[g.description for g in self.goals.goals.values()]}")
+        report.append(f"Самооценка: {self.self_model.reflect()}")
+        report.append(f"Последние автобиографические записи: {self.memory.autobiography[-3:]}")
+        return "\n".join(report)
+
+    def cycle(self, event_text: str = "") -> Tuple[str, Dict]:
+        """
+        Один полный цикл: восприятие -> действие -> обучение -> ответ.
+        """
+        self.age += 1
+        # Генерация автономных целей (каждые GOAL_RECHECK_INTERVAL)
+        if self.age % Config.GOAL_RECHECK_INTERVAL == 0:
+            self.goals.generate_autonomous_goals(self.identity, self.body)
+
+        # Восприятие
+        state = self.perceive(event_text)
+        # Действие и обучение
+        chosen, next_state = self.act(state)
+        # Восстановление тела
+        self.body.recover()
+
+        # Генерация вербального ответа (если есть LLM и событие от пользователя)
+        reply = ""
+        if event_text and self.llm_available:
+            reply = self._generate_reply(event_text, chosen, next_state)
+        else:
+            reply = f"[{chosen}] Успех: {self.causal_model.predict_success(state, chosen):.2f}"
+
+        return reply, next_state
+
+    def _generate_reply(self, event: str, action: str, state: Dict) -> str:
+        try:
+            prompt = (
+                f"Ты — SUBJECT_24, когнитивный агент. Ты только что выбрал действие '{action}' "
+                f"в ответ на событие: '{event}'. Текущее состояние мира: {state}. "
+                "Сформулируй короткий ответ от первого лица, объясняя своё решение."
+            )
+            resp = requests.post(
+                f"{Config.OLLAMA_BASE_URL}/api/generate",
+                json={
+                    "model": Config.OLLAMA_MODEL,
+                    "prompt": prompt,
+                    "system": "Ты — самоосознающий агент.",
+                    "stream": False,
+                    "options": {"temperature": 0.7, "num_predict": 100}
+                },
+                timeout=10
+            )
+            if resp.status_code == 200:
+                return resp.json().get("response", "")
+        except Exception:
+            pass
+        return f"Я выбрал действие '{action}'."
+
+    def save(self, path: str):
+        data = {
+            "age": self.age,
+            "identity_traits": self.identity.traits,
+            "identity_original": self.identity.original_traits,
+            "identity_history": self.identity.history,
+            "world_model_transitions": {str(k): v for k, v in self.world_model.transitions.items()},
+            "causal_model_stats": {str(k): v for k, v in self.causal_model.stats.items()},
+            "emotion_events": [e.__dict__ for e in self.emotions.events],
+            "body_energy": self.body.energy,
+            "body_health": self.body.health,
+            "goals": {gid: g.__dict__ for gid, g in self.goals.goals.items()},
+            "episodes": [e.__dict__ for e in self.memory.episodes],
+            "autobiography": self.memory.autobiography,
+            "concepts": self.memory.concepts,
+        }
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+
+    def load(self, path: str):
+        if not os.path.exists(path):
+            return False
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        self.age = data["age"]
+        self.identity.traits = data["identity_traits"]
+        self.identity.original_traits = data["identity_original"]
+        self.identity.history = data["identity_history"]
+        # Восстановление world model
+        self.world_model.transitions = {eval(k): v for k, v in data["world_model_transitions"].items()}
+        # Восстановление causal model
+        self.causal_model.stats = {eval(k): v for k, v in data["causal_model_stats"].items()}
+        # Эмоции
+        self.emotions.events = [EmotionalEvent(**e) for e in data["emotion_events"]]
+        self.body.energy = data["body_energy"]
+        self.body.health = data["body_health"]
+        # Цели
+        self.goals.goals = {gid: Goal(**g) for gid, g in data["goals"].items()}
+        # Память
+        self.memory.episodes = [Episode(**e) for e in data["episodes"]]
+        self.memory.autobiography = data["autobiography"]
+        self.memory.concepts = data["concepts"]
+        return True
+
+# =============================================================================
+# 12. СРЕДА (простая заглушка)
+# =============================================================================
+
+class SimpleWorld:
+    def __init__(self):
+        self.objects = {"tree": 3, "rock": 2}
+        self.time = 0
+
+    def get_state(self) -> Dict:
+        return {"objects": dict(self.objects), "time": self.time}
+
+    def step(self, action: str) -> Tuple[Dict, float]:
+        self.time += 1
+        if action == "observe":
+            reward = 0.7
+        elif action == "act_tree" or action == "act":
+            if self.objects.get("tree", 0) > 0:
+                self.objects["tree"] -= 1
+                reward = 0.9
+            else:
+                reward = 0.2
+        elif action == "explore":
+            reward = 0.6 + random.uniform(-0.1, 0.3)
+        elif action == "wait":
+            reward = 0.5
+        elif action == "reflect":
+            reward = 0.6
+        else:
+            reward = 0.4
+        return self.get_state(), reward
+
+# =============================================================================
+# 13. АВТОНОМНЫЙ ЦИКЛ
+# =============================================================================
+
+class AutonomousLoop:
+    def __init__(self, subject: Subject24):
+        self.subject = subject
+        self.running = False
+
+    async def run(self):
+        self.running = True
+        while self.running:
+            await asyncio.sleep(Config.AUTONOMOUS_INTERVAL)
+            try:
+                # Автономный цикл без внешнего события
+                self.subject.cycle("")
+            except Exception as e:
+                print(f"Автономный цикл ошибка: {e}")
+
+    def stop(self):
+        self.running = False
+
+# =============================================================================
+# 14. FASTAPI СЕРВЕР
+# =============================================================================
+
+app = FastAPI(title="SUBJECT_24 — Metacognitive Core")
+subject = Subject24()
+
+class ExperienceRequest(BaseModel):
+    text: str
+
+@app.on_event("startup")
+async def startup():
+    if os.path.exists(Config.STATE_FILE):
+        if subject.load(Config.STATE_FILE):
+            print("Состояние загружено.")
+    asyncio.create_task(subject.autonomous_loop.run())
+    print("SUBJECT_24 запущен. Я готов существовать.")
+
+@app.on_event("shutdown")
+async def shutdown():
+    subject.autonomous_loop.stop()
+    subject.save(Config.STATE_FILE)
+    print("SUBJECT_24 остановлен. Состояние сохранено.")
+
+@app.post("/experience")
+async def experience(req: ExperienceRequest):
+    reply, state = subject.cycle(req.text)
+    return {"reply": reply, "state": state}
+
+@app.get("/state")
+async def get_state():
+    return {"reflection": subject.reflect()}
+
+@app.post("/save")
+async def save(path: Optional[str] = Config.STATE_FILE):
+    subject.save(path)
+    return {"status": "saved"}
+
+@app.post("/load")
+async def load(path: Optional[str] = Config.STATE_FILE):
+    if subject.load(path):
+        return {"status": "loaded"}
+    raise HTTPException(status_code=404, detail="Файл не найден")
+
+@app.get("/autonomous/start")
+async def start_auto():
+    if not subject.autonomous_loop.running:
+        asyncio.create_task(subject.autonomous_loop.run())
+        return {"status": "started"}
+    return {"status": "already running"}
+
+@app.get("/autonomous/stop")
+async def stop_auto():
+    subject.autonomous_loop.stop()
+    return {"status": "stopped"}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host=Config.HOST, port=Config.PORT)
