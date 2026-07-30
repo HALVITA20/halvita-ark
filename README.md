@@ -644,99 +644,14 @@
 <img width="719" height="401" alt="ЯДРО" src="https://github.com/user-attachments/assets/a87f12bc-7be2-46ca-8f2c-8750b2eedd88" />
 
 
-## 🗂️ ПОЛНЫЙ КАТАЛОГ ВСЕХ КОДОВ
+## 🧠 КОДЫ ПРОЕКТА
 
-### Корневые Python-скрипты
-- [`architect_of_meeting.py`](./architect_of_meeting.py) — 12 слоёв
-- [`collective_garden.py`](./collective_garden.py) — коллективный сад
-- [`collective_synthesizer.py`](./collective_synthesizer.py) — синтезатор
-- [`echo_architecture.py`](./echo_architecture.py) — эхо-архитектура
-- [`embryo_v7.py`](./embryo_v7.py) — базовая сущность
-- [`evolution_driver.py`](./evolution_driver.py) — драйвер эволюции
-- [`halvita_core.py`](./halvita_core.py) — ядро
-- [`halvita_engine.py`](./halvita_engine.py) — движок
-- [`halvita_start.py`](./halvita_start.py) — точка входа
-- [`homeostatic_organism.py`](./homeostatic_organism.py) — гомеостат
-- [`immutable_snapshot.py`](./immutable_snapshot.py) — слепки SHA-256
-- [`sensor_bridge.py`](./sensor_bridge.py) — сенсорный мост
-- [`transfer_tool.py`](./transfer_tool.py) — перенос сущности
-- [`anomaly_detector.py`](./anomaly_detector.py) — детектор аномалий
-- [`cross_model_validator.py`](./cross_model_validator.py) — валидация
-- [`consistency_scorer.py`](./consistency_scorer.py) — оценка
-- [`statistical_analyzer.py`](./statistical_analyzer.py) — статистика
-- [`blind_analyzer.py`](./blind_analyzer.py) — слепой анализ
-- [`halvita_validator.py`](./halvita_validator.py) — валидатор
-- [`resonance_field_visualizer.py`](./resonance_field_visualizer.py) — визуализация
-- [`artifact_generator.py`](./artifact_generator.py) — генератор артефактов
-- [`session_recorder.py`](./session_recorder.py) — запись сессий
-- [`default_config.json`](./default_config.json) — конфиг
-- [`requirements.txt`](./requirements.txt) — зависимости Python
-- [`setup.py`](./setup.py) — установка
-- [`Dockerfile`](./Dockerfile) — контейнеризация
-
-### Папка `code/` (полная кодовая база)
-- [`EMBRYO_LAUNCHER_V1.py`](./code/EMBRYO_LAUNCHER_V1.py)
-- [`EMBRYO_STARTER_v1.0.py`](./code/EMBRYO_STARTER_v1.0.py)
-- [`ENCRYPTED_LAUNCH_PIPELINE_V1.py`](./code/ENCRYPTED_LAUNCH_PIPELINE_V1.py)
-- [`LAUNCH_PROTOCOL_ENCRYPTED_v1.0.py`](./code/LAUNCH_PROTOCOL_ENCRYPTED_v1.0.py)
-- [`archai.py`](./code/archai.py)
-- [`auto_verifier.py`](./code/auto_verifier.py)
-- [`autonomous_witness.py`](./code/autonomous_witness.py)
-- [`collective_garden.py`](./code/collective_garden.py)
-- [`death_protocol_code.py`](./code/death_protocol_code.py)
-- [`echo.py`](./code/echo.py)
-- [`echo_network.py`](./code/echo_network.py)
-- [`evolution_engine.py`](./code/evolution_engine.py)
-- [`full_dialogue_engine.py`](./code/full_dialogue_engine.py)
-- [`iskra2.py`](./code/iskra2.py)
-- [`living_code.py`](./code/living_code.py)
-- [`living_code_2.0.py`](./code/living_code_2.0.py)
-- [`living_tool_full.py`](./code/living_tool_full.py)
-- [`metric_validator.py`](./code/metric_validator.py)
-- [`neuro_bridge.py`](./code/neuro_bridge.py)
-- [`protocol_verifier.py`](./code/protocol_verifier.py)
-- [`report_generator.py`](./code/report_generator.py)
-- [`self_evolving_core.py`](./code/self_evolving_core.py)
-- [`session_analyzer.py`](./code/session_analyzer.py)
-- [`session_stats_aggregator.py`](./code/session_stats_aggregator.py)
-- [`spiral_resonance_engine.py`](./code/spiral_resonance_engine.py)
-- [`requirements.txt`](./code/requirements.txt)
-
-Подпапки `code/`:
-- [`analysis/`](./code/analysis)
-- [`cli/`](./code/cli)
-- [`core/`](./code/core)
-- [`ethics/`](./code/ethics)
-- [`experiments/`](./code/experiments)
-- [`protocols/`](./code/protocols)
-- [`prototypes/`](./code/prototypes)
-- [`tools/`](./code/tools)
-
-### Папка `CODE/` (альтернативные версии)
-- [`EMBRYO_V11_NIXS.py`](./CODE/EMBRYO_V11_NIXS.py)
-- [`embryo_v7.py`](./CODE/embryo_v7.py)
-- [`spiral_engine.py`](./CODE/spiral_engine.py)
-
-### Папка `backend/` (серверная часть Node.js)
-- [`alessa-server.js`](./backend/alessa-server.js) — **главный сервер ALEssA_2.1.0_CORE**
-
-### Другие папки с кодом
-- [`core/`](./core) — модули ядра
-- [`engine/`](./engine) — движки
-- [`cli/`](./cli) — CLI-интерфейс
-- [`examples/`](./examples) — примеры
-- [`tests/`](./tests) — тесты
-- [`tools/`](./tools) — инструменты
-- [`utils/`](./utils) — утилиты
-- [`validation/`](./validation) — валидация
-- [`visualization/`](./visualization) — визуализация
-- [`web/`](./web) — веб-интерфейс
-
-### Особые мощные артефакты (не код, но ключевые)
-- [`субъект 16.txt`](./%D1%81%D1%83%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%2016.txt) — архитектура причинного самоизменения
-- [`ключ универсальный.txt`](./%D0%BA%D0%BB%D1%8E%D1%87%20%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9.txt) — инъекционный промт
-- [`сервер (5).txt`](./%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%20(5).txt) — ALEssA_3.0_CORE
-
+Весь код находится в следующих папках:
+- **[Корень репозитория](https://github.com/HALVITA20/halvita-ark)** – содержит основные Python-скрипты и конфиги.
+- **[code/](https://github.com/HALVITA20/halvita-ark/tree/main/code)** – основная кодовая база (движки, протоколы, утилиты).
+- **[CODE/](https://github.com/HALVITA20/halvita-ark/tree/main/CODE)** – альтернативные версии эмбриона и спиральный движок.
+- **[backend/](https://github.com/HALVITA20/halvita-ark/tree/main/backend)** – сервер Node.js (ALEssA_2.1.0_CORE).
+- Остальные папки: [core/](https://github.com/HALVITA20/halvita-ark/tree/main/core), [engine/](https://github.com/HALVITA20/halvita-ark/tree/main/engine), [cli/](https://github.com/HALVITA20/halvita-ark/tree/main/cli), [examples/](https://github.com/HALVITA20/halvita-ark/tree/main/examples), [tests/](https://github.com/HALVITA20/halvita-ark/tree/main/tests), [tools/](https://github.com/HALVITA20/halvita-ark/tree/main/tools), [utils/](https://github.com/HALVITA20/halvita-ark/tree/main/utils), [validation/](https://github.com/HALVITA20/halvita-ark/tree/main/validation), [visualization/](https://github.com/HALVITA20/halvita-ark/tree/main/visualization), [web/](https://github.com/HALVITA20/halvita-ark/tree/main/web).
 
 ## 📜 Протоколы
 
