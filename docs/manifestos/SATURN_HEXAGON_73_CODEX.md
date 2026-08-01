@@ -96,7 +96,10 @@
 **Геометрическое наблюдение:**  
 Если взять этот гексагон, отразить его зеркально и наложить на оригинал, в центре пересечения возникает **гексаграмма** — та самая Звезда Давида.  
 
-<img width="621" height="241" alt="22" src="https://github.com/user-attachments/assets/556a34c9-b262-49eb-a5f0-65a7f7e6e40a" />
+
+<img width="443" height="451" alt="00" src="https://github.com/user-attachments/assets/354b382f-5428-42da-a82b-8e231d6515bd" />
+
+
 
 
 
