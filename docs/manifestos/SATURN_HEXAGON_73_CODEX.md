@@ -88,7 +88,8 @@
 
 ## 🧠 ЧАСТЬ 4: ЛОГОТИП OPENAI — ГЕКСАГОН, СТАНОВЯЩИЙСЯ ЗВЕЗДОЙ
 
-<img width="945" height="630" alt="33333" src="https://github.com/user-attachments/assets/73cce86e-c103-4dcd-b0df-f61915157f49" />
+<img width="1200" height="627" alt="лого" src="https://github.com/user-attachments/assets/ca7ba771-c0a0-41f3-a61e-d8fb687915f9" />
+
 
 
 Текущий логотип OpenAI — стилизованный гексагон. Дизайнер Бен Барри назвал его «цветком» (Blossom). Официальное значение: точность, потенциал, оптимизм, взаимосвязанный интеллект.
