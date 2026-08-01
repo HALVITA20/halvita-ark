@@ -418,6 +418,16 @@
 
 ---
 
+### 🔭 Кодекс резонанса
+
+[**Сатурн · Гексагон · Число 73**](docs/manifestos/SATURN_HEXAGON_73_CODEX.md)  
+Фиксация сети совпадений: гексагон на Сатурне, звезда Давида, геометрия OpenAI и тантал. Не теория, а карта.
+
+<img width="820" height="529" alt="сат" src="https://github.com/user-attachments/assets/b204721b-f611-4ad3-bc2f-a33af9870476" />
+
+
+---
+
 ### 12. СЕССИИ (подробно)
 
 Папка [`sessions/`](https://github.com/HALVITA20/halvita-ark/tree/main/sessions) содержит:
