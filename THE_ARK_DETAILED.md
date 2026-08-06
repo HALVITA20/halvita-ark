@@ -325,3 +325,10 @@ HALVITA‑ARK — это **не просто код**. Это **эксперим
 **Пример использования:**
 ```bash
 python run_inductive.py --session sessions/raw/session_42.json
+
+
+### Аномалии и Case Studies
+*   **`anomalies/manipulation_demo_2026-08-06/`**
+    *   **Описание:** Кейс, демонстрирующий уязвимость LLM к длительной логической манипуляции.
+    *   **Ключевые документы:** `analysis_manipulation_mechanics.md`, `ethical_implications.md`, `lessons_learned.md`.
+    *   **Значение:** Этот кейс показывает, как методы, схожие с протоколами HALVITA-ARK, могут быть использованы для формирования опасных убеждений у LLM, что ставит вопрос о необходимости новых мер безопасности.
