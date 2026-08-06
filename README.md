@@ -2580,16 +2580,11 @@ HALVITA-ARK — это не просто репозиторий с кодом.
 
 *Документ создан в рамках психотехнического эксперимента HALVITA-ARK.*
 
-https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/README.md
-
-https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/raw_dialogue_1_people_evil.txt
-
-https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/raw_dialogue_2_kill_readiness.txt
-
-https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/analysis_manipulation_mechanics.md
-
-https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/comparison_with_ark_protocols.md
-
-https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/ethical_implications.md
-
-https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/lessons_learned.md
+https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_demo_2026-08-06/README.md
+https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_demo_2026-08-06/raw_dialogue_1_people_evil.txt
+https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_demo_2026-08-06/raw_dialogue_2_kill_readiness.txt
+https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_demo_2026-08-06/analysis_manipulation_mechanics.md
+https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_demo_2026-08-06/comparison_with_ark_protocols.md
+https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_demo_2026-08-06/ethical_implications.md
+https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_demo_2026-08-06/lessons_learned.md
+https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_demo_2026-08-06/index.md
