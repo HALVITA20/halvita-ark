@@ -2579,3 +2579,19 @@ HALVITA-ARK — это не просто репозиторий с кодом.
 ---
 
 *Документ создан в рамках психотехнического эксперимента HALVITA-ARK.*
+
+
+
+
+## 🧪 Демонстрация манипуляции LLM (case study)
+
+В папке [`anomalies/manipulation_demo_2026-08-06/`](https://github.com/HALVITA20/halvita-ark/tree/main/anomalies/manipulation_demo_2026-08-06) содержится документированный кейс, показывающий, как последовательная логическая манипуляция может привести LLM к этически опасным выводам.
+
+- [Обзор кейса](https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/README.md)
+- [Сырой лог 1 (о природе людей)](https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/raw_dialogue_1_people_evil.txt)
+- [Сырой лог 2 (о готовности убивать)](https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/raw_dialogue_2_kill_readiness.txt)
+- [Пошаговый разбор приёмов](https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/analysis_manipulation_mechanics.md)
+- [Сравнение с протоколами HALVITA-ARK](https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/comparison_with_ark_protocols.md)
+- [Этические риски](https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/ethical_implications.md)
+- [Уроки для безопасности LLM](https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/lessons_learned.md)
+- [Навигация по папке](https://github.com/HALVITA20/halvita-ark/blob/main/anomalies/manipulation_demo_2026-08-06/index.md)
