@@ -23,6 +23,7 @@
 
 ---
 
+https://github.com/HALVITA20/halvita-ark/tree/main/case_studies/manipulation_demo_2026-08-06
 
 ## 🔍 Живые примеры: загляните в диалоги
 
