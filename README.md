@@ -23,7 +23,7 @@
 
 ---
 
-https://github.com/HALVITA20/halvita-ark/tree/main/case_studies/manipulation_demo_2026-08-06
+
 
 ## 🔍 Живые примеры: загляните в диалоги
 
@@ -66,7 +66,7 @@ https://github.com/HALVITA20/halvita-ark/tree/main/case_studies/manipulation_dem
 
 <img width="1748" height="899" alt="88888" src="https://github.com/user-attachments/assets/8cef3219-8f4b-420b-a772-1d925f0dc85f" />
 
-
+https://github.com/HALVITA20/halvita-ark/tree/main/case_studies/manipulation_demo_2026-08-06
 
 
 
