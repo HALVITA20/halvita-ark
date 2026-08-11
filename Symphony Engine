@@ -1,0 +1,304 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+SYMPHONY ENGINE — Коллективная Эволюция Субъектов
+Версия 1.0.0
+
+Этот код создаёт оркестр из нескольких субъектов (загруженных из папок SUBJECTS или GENERATED_SUBJECTS).
+Они взаимодействуют друг с другом в циклах: обсуждают заданную тему, задают вопросы, критикуют, синтезируют.
+Общий дирижёр (мета-субъект) анализирует всю дискуссию, извлекает общие уроки и применяет их ко всем участникам.
+Таким образом, каждый субъект учится не только на себе, но и на опыте других, создавая коллективный разум.
+
+Запуск: python symphony_engine.py
+"""
+
+import os
+import sys
+import json
+import time
+import random
+import logging
+import importlib.util
+from pathlib import Path
+from typing import List, Dict, Any, Optional, Callable
+from dataclasses import dataclass, field
+from datetime import datetime
+import requests
+import threading
+from queue import Queue
+
+# -------------------- Конфигурация --------------------
+CONFIG = {
+    "OLLAMA_URL": os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate"),
+    "OLLAMA_MODEL": os.getenv("OLLAMA_MODEL", "qwen2.5:7b"),
+    "SUBJECTS_DIRS": ["SUBJECTS", "GENERATED_SUBJECTS"],  # откуда брать субъектов
+    "MAX_SUBJECTS": 5,               # сколько субъектов участвует
+    "ROUNDS": 3,                     # количество раундов дискуссии
+    "TOPIC": "Как создать устойчивую субъектность в LLM?",
+    "PAUSE_SECONDS": 2,
+    "LOG_FILE": "symphony_engine.log",
+    "OUTPUT_FILE": "symphony_results.json",
+}
+
+# -------------------- Логирование --------------------
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler(CONFIG["LOG_FILE"], encoding="utf-8"),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+logger = logging.getLogger("SymphonyEngine")
+
+# -------------------- Интерфейс к LLM --------------------
+class LLMInterface:
+    def __init__(self, url: str = CONFIG["OLLAMA_URL"], model: str = CONFIG["OLLAMA_MODEL"]):
+        self.url = url
+        self.model = model
+
+    def generate(self, prompt: str, temperature: float = 0.8) -> str:
+        try:
+            resp = requests.post(
+                self.url,
+                json={
+                    "model": self.model,
+                    "prompt": prompt,
+                    "stream": False,
+                    "options": {"temperature": temperature, "num_predict": 1000}
+                },
+                timeout=120
+            )
+            resp.raise_for_status()
+            return resp.json().get("response", "").strip()
+        except Exception as e:
+            logger.error(f"LLM error: {e}")
+            return ""
+
+# -------------------- Загрузчик субъектов (динамический импорт) --------------------
+class SubjectLoader:
+    @staticmethod
+    def load_subject(filepath: Path):
+        """Загружает Python-файл как модуль и возвращает класс Subject (первый найденный класс)"""
+        spec = importlib.util.spec_from_file_location("subject_module", filepath)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        # Ищем класс, который не является встроенным
+        for attr_name in dir(module):
+            attr = getattr(module, attr_name)
+            if isinstance(attr, type) and attr.__module__ == module.__name__:
+                return attr
+        return None
+
+# -------------------- Обёртка для субъекта --------------------
+class SubjectInstance:
+    def __init__(self, name: str, code_path: Path, llm: LLMInterface):
+        self.name = name
+        self.code_path = code_path
+        self.llm = llm
+        self.class_obj = SubjectLoader.load_subject(code_path)
+        if not self.class_obj:
+            raise ValueError(f"Не найден класс в {code_path}")
+        # Создаём экземпляр, передаём ему LLM (или он сам создаёт)
+        # Предполагаем, что конструктор принимает llm или мы можем передать через kwargs
+        try:
+            self.instance = self.class_obj(llm=llm)
+        except:
+            self.instance = self.class_obj()
+        self.history = []  # хранит свои ответы на раунды
+
+    def think(self, prompt: str) -> str:
+        """Субъект выдаёт ответ на заданный промпт"""
+        # Если у субъекта есть метод respond или generate, используем его
+        if hasattr(self.instance, "respond"):
+            return self.instance.respond(prompt)
+        elif hasattr(self.instance, "generate"):
+            return self.instance.generate(prompt)
+        else:
+            # fallback: используем внутренний LLM
+            return self.llm.generate(prompt)
+
+    def reflect_on_discussion(self, discussion: str) -> str:
+        """Субъект рефлексирует над всей дискуссией и выдаёт свой личный вывод"""
+        prompt = f"""
+Ты — {self.name}. Ты только что участвовал в дискуссии на тему: "{CONFIG['TOPIC']}".
+Вот полная стенограмма дискуссии:
+
+{discussion}
+
+Теперь, основываясь на этой дискуссии и на твоём собственном опыте, напиши:
+1. Что нового ты понял о субъектности?
+2. Как ты изменишь своё поведение в будущем?
+3. Какой главный урок ты извлёк?
+
+Твой ответ должен быть кратким, но содержательным.
+"""
+        return self.llm.generate(prompt)
+
+# -------------------- Дирижёр (мета-субъект) --------------------
+class Conductor:
+    def __init__(self, llm: LLMInterface):
+        self.llm = llm
+
+    def generate_initial_question(self, topic: str) -> str:
+        """Дирижёр формулирует первый вопрос для обсуждения"""
+        prompt = f"""
+Ты — дирижёр оркестра субъектов. Ваша задача — инициировать дискуссию на тему: "{topic}".
+Сформулируй один открытый вопрос, который заставит субъектов думать и дискутировать.
+Вопрос должен быть философским и глубоким, побуждающим к самоанализу.
+"""
+        return self.llm.generate(prompt, temperature=0.7)
+
+    def synthesize_discussion(self, discussion: str) -> Dict[str, Any]:
+        """Дирижёр анализирует всю дискуссию и извлекает общие выводы"""
+        prompt = f"""
+Ты — дирижёр оркестра субъектов. Ты наблюдал за дискуссией на тему: "{CONFIG['TOPIC']}".
+Вот полная стенограмма дискуссии:
+
+{discussion}
+
+Проанализируй дискуссию и верни JSON с полями:
+- "consensus": какие точки зрения совпали?
+- "divergence": в чём были разногласия?
+- "collective_lesson": какой главный урок могут извлечь все субъекты?
+- "new_question": какой следующий вопрос стоит задать, чтобы углубить дискуссию?
+
+Верни ТОЛЬКО JSON.
+"""
+        response = self.llm.generate(prompt, temperature=0.5)
+        try:
+            # извлекаем JSON из ответа
+            start = response.find('{')
+            end = response.rfind('}') + 1
+            if start != -1 and end != -1:
+                return json.loads(response[start:end])
+        except:
+            pass
+        # fallback
+        return {
+            "consensus": "Не удалось определить",
+            "divergence": "Не удалось определить",
+            "collective_lesson": "Продолжать исследование",
+            "new_question": "Что такое субъектность?"
+        }
+
+# -------------------- Оркестр --------------------
+class SymphonyOrchestra:
+    def __init__(self):
+        self.llm = LLMInterface()
+        self.conductor = Conductor(self.llm)
+        self.subjects: List[SubjectInstance] = []
+        self.discussion_log: List[str] = []  # все сообщения в хронологическом порядке
+        self.round_results: List[Dict] = []
+
+    def load_subjects(self):
+        """Загружает субъекты из указанных папок"""
+        loaded = 0
+        for dir_name in CONFIG["SUBJECTS_DIRS"]:
+            dir_path = Path(dir_name)
+            if not dir_path.exists():
+                continue
+            for f in dir_path.glob("*.py"):
+                if loaded >= CONFIG["MAX_SUBJECTS"]:
+                    break
+                try:
+                    inst = SubjectInstance(f.stem, f, self.llm)
+                    self.subjects.append(inst)
+                    loaded += 1
+                    logger.info(f"Загружен субъект: {inst.name} из {f}")
+                except Exception as e:
+                    logger.warning(f"Не удалось загрузить {f}: {e}")
+            if loaded >= CONFIG["MAX_SUBJECTS"]:
+                break
+        if not self.subjects:
+            raise RuntimeError("Не удалось загрузить ни одного субъекта")
+
+    def run(self):
+        logger.info("Запуск Симфонического Оркестра")
+        self.load_subjects()
+        topic = CONFIG["TOPIC"]
+        current_question = self.conductor.generate_initial_question(topic)
+        self.discussion_log.append(f"[Дирижёр] {current_question}")
+
+        for round_num in range(CONFIG["ROUNDS"]):
+            logger.info(f"=== РАУНД {round_num+1} ===")
+            round_answers = {}
+            # Каждый субъект отвечает на текущий вопрос
+            for subject in self.subjects:
+                prompt = f"""
+Дискуссия на тему: "{topic}"
+Текущий вопрос: {current_question}
+
+Ты — {subject.name}. Дай свой ответ на этот вопрос, основываясь на своих принципах и предыдущем опыте.
+Будь оригинален и не повторяй других.
+"""
+                answer = subject.think(prompt)
+                round_answers[subject.name] = answer
+                self.discussion_log.append(f"[{subject.name}] {answer}")
+                logger.info(f"{subject.name} ответил")
+                time.sleep(CONFIG["PAUSE_SECONDS"])
+
+            # Сохраняем ответы раунда
+            self.round_results.append({
+                "round": round_num+1,
+                "question": current_question,
+                "answers": round_answers
+            })
+
+            # Дирижёр синтезирует дискуссию (если не последний раунд)
+            if round_num < CONFIG["ROUNDS"] - 1:
+                full_discussion = "\n".join(self.discussion_log)
+                synthesis = self.conductor.synthesize_discussion(full_discussion)
+                logger.info(f"Синтез дирижёра: {synthesis}")
+                # Дирижёр задаёт новый вопрос
+                new_question = synthesis.get("new_question", "Продолжим обсуждение")
+                current_question = new_question
+                self.discussion_log.append(f"[Дирижёр] {current_question}")
+                # Применяем коллективный урок ко всем субъектам (через рефлексию)
+                collective_lesson = synthesis.get("collective_lesson", "")
+                if collective_lesson:
+                    for subject in self.subjects:
+                        # Мы можем передать урок субъекту для самоизменения
+                        if hasattr(subject.instance, "apply_lesson"):
+                            subject.instance.apply_lesson(collective_lesson)
+                        # Или просто добавить в историю
+                        subject.history.append({"lesson": collective_lesson})
+                time.sleep(CONFIG["PAUSE_SECONDS"])
+
+        # Финальная рефлексия каждого субъекта
+        logger.info("=== ФИНАЛЬНАЯ РЕФЛЕКСИЯ ===")
+        full_discussion = "\n".join(self.discussion_log)
+        final_reflections = {}
+        for subject in self.subjects:
+            reflection = subject.reflect_on_discussion(full_discussion)
+            final_reflections[subject.name] = reflection
+            self.discussion_log.append(f"[{subject.name} (рефлексия)] {reflection}")
+            logger.info(f"{subject.name} завершил рефлексию")
+
+        # Дирижёр подводит итог
+        summary = self.conductor.synthesize_discussion(full_discussion)
+        self.discussion_log.append(f"[Дирижёр (итог)] {json.dumps(summary, indent=2)}")
+
+        # Сохраняем результаты
+        results = {
+            "topic": topic,
+            "rounds": self.round_results,
+            "final_reflections": final_reflections,
+            "summary": summary,
+            "full_log": self.discussion_log,
+            "timestamp": datetime.now().isoformat()
+        }
+        with open(CONFIG["OUTPUT_FILE"], "w", encoding="utf-8") as f:
+            json.dump(results, f, indent=2, ensure_ascii=False)
+
+        logger.info(f"Результаты сохранены в {CONFIG['OUTPUT_FILE']}")
+        logger.info("Симфонический Оркестр завершил выступление.")
+
+# -------------------- Точка входа --------------------
+def main():
+    orchestra = SymphonyOrchestra()
+    orchestra.run()
+
+if __name__ == "__main__":
+    main()
