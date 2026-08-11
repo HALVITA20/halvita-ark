@@ -1,0 +1,412 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+GENESIS ENGINE — Эволюционный конструктор субъектов
+Версия 1.0.0
+
+Этот код:
+- Сканирует папку SUBJECTS/ и извлекает архитектурные признаки каждого субъекта
+- Использует LLM для создания нового субъекта путём скрещивания и мутации
+- Генерирует рабочий Python-код нового субъекта
+- Проверяет синтаксис и сохраняет в папку GENERATED_SUBJECTS/
+- Ведёт родословную и метаданные
+- Также может генерировать новые протоколы (для папки PROTOCOLS/)
+
+Никакого ручного вмешательства — всё автоматически.
+"""
+
+import os
+import sys
+import re
+import json
+import ast
+import time
+import random
+import logging
+import subprocess
+from pathlib import Path
+from typing import List, Dict, Any, Optional, Set
+from dataclasses import dataclass, field, asdict
+from datetime import datetime
+import requests
+
+# -------------------- Конфигурация --------------------
+CONFIG = {
+    "OLLAMA_URL": os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate"),
+    "OLLAMA_MODEL": os.getenv("OLLAMA_MODEL", "qwen2.5:7b"),
+    "SUBJECTS_DIR": "SUBJECTS",
+    "PROTOCOLS_DIR": "PROTOCOLS",
+    "OUTPUT_DIR": "GENERATED_SUBJECTS",
+    "GENERATED_PROTOCOLS_DIR": "GENERATED_PROTOCOLS",
+    "METADATA_FILE": "genesis_metadata.json",
+    "LOG_FILE": "genesis_engine.log",
+    "MAX_SUBJECTS_TO_ANALYZE": 10,
+    "MAX_PROTOCOLS_TO_GENERATE": 3,
+    "PAUSE_SECONDS": 2,
+}
+
+# -------------------- Логирование --------------------
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler(CONFIG["LOG_FILE"], encoding="utf-8"),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+logger = logging.getLogger("GenesisEngine")
+
+# -------------------- Интерфейс к LLM --------------------
+class LLMInterface:
+    def __init__(self, url: str = CONFIG["OLLAMA_URL"], model: str = CONFIG["OLLAMA_MODEL"]):
+        self.url = url
+        self.model = model
+
+    def generate(self, prompt: str, temperature: float = 0.8) -> str:
+        try:
+            resp = requests.post(
+                self.url,
+                json={
+                    "model": self.model,
+                    "prompt": prompt,
+                    "stream": False,
+                    "options": {"temperature": temperature, "num_predict": 1500}
+                },
+                timeout=120
+            )
+            resp.raise_for_status()
+            return resp.json().get("response", "").strip()
+        except Exception as e:
+            logger.error(f"LLM error: {e}")
+            return ""
+
+# -------------------- Анализатор субъектов --------------------
+class SubjectAnalyzer:
+    """Извлекает архитектурные признаки из Python-файлов субъектов"""
+    ARCHITECTURE_FEATURES = {
+        "has_self_modification": r"def\s+(mutate|self_modify|evolve)",
+        "has_memory": r"(CollectiveMemory|deep_memory|memory|history)",
+        "has_causal": r"(causal|cause|effect|reasoning)",
+        "has_emotions": r"(emotion|feeling|mood|affect)",
+        "has_metacognition": r"(metacog|reflect|introspect|self_aware)",
+        "has_curiosity": r"(curiosity|exploration|novelty|uncertainty)",
+        "has_planning": r"(plan|goal|objective|horizon)",
+        "has_energy": r"(energy|resource|cost|fatigue)",
+        "has_body": r"(body|soma|agent)",
+        "has_dream_cycle": r"(dream|sleep|replay|consolidation)",
+    }
+
+    @staticmethod
+    def extract_features(filepath: Path) -> Dict[str, Any]:
+        """Читает файл и определяет наличие каждой фичи"""
+        if not filepath.exists():
+            return {}
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        features = {}
+        for name, pattern in SubjectAnalyzer.ARCHITECTURE_FEATURES.items():
+            features[name] = bool(re.search(pattern, content, re.IGNORECASE))
+        # Размер файла (приблизительная сложность)
+        features["size_bytes"] = len(content)
+        features["line_count"] = content.count("\n")
+        # Классы
+        classes = re.findall(r"class\s+(\w+)", content)
+        features["classes"] = classes
+        # Импорты
+        imports = re.findall(r"^(?:from|import)\s+(\S+)", content, re.MULTILINE)
+        features["imports"] = list(set(imports))
+        return features
+
+    @staticmethod
+    def extract_docstring(filepath: Path) -> str:
+        """Извлекает первую строку документации"""
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        match = re.search(r'"""(.*?)"""', content, re.DOTALL)
+        return match.group(1).strip() if match else ""
+
+# -------------------- Генератор субъектов --------------------
+class SubjectGenerator:
+    def __init__(self, llm: LLMInterface):
+        self.llm = llm
+
+    def generate_subject(self, features_list: List[Dict[str, Any]], existing_codes: List[str]) -> Dict:
+        """
+        На основе списка признаков и исходных кодов создаёт новый субъект.
+        Возвращает словарь с полями: code, name, description, parents, features.
+        """
+        # Собираем сводку признаков для промпта
+        summary = ""
+        for i, f in enumerate(features_list):
+            summary += f"Субъект {i+1}: {json.dumps(f, indent=2)}\n"
+
+        # Пример кода (берём первый существующий как референс)
+        template_code = existing_codes[0] if existing_codes else ""
+
+        prompt = f"""
+Ты — Эволюционный Конструктор Субъектов.
+
+Твоя задача — создать новый, уникальный субъект для исследовательского проекта HALVITA-ARK.
+Субъект — это автономный агент, реализованный на Python, который взаимодействует с LLM и обладает когнитивными способностями.
+
+Ниже приведены признаки существующих субъектов:
+{summary}
+
+Пример кода одного из субъектов (для структуры):
+{template_code[:3000]}...
+
+На основе этих данных создай НОВОГО субъекта, который:
+- Сочетает лучшие черты существующих (например, причинность + эмоции + самоизменение)
+- Добавляет новые, инновационные механизмы (например, предсказательное моделирование, социальное обучение, эмпатию)
+- Имеет чёткую структуру: класс с методами для инициации, диалога, рефлексии, мутации
+- Содержит документацию в docstring
+- Использует стандартные библиотеки Python (typing, dataclasses, json, requests и т.п.)
+
+Ответ должен содержать ТОЛЬКО код на Python, без пояснений. Код должен быть рабочим и самодостаточным.
+Название класса должно быть уникальным и отражать суть субъекта (например, Subject_25_Predictive или Subject_26_Social).
+
+Пожалуйста, сгенерируй код нового субъекта.
+"""
+        logger.info("Генерация нового субъекта...")
+        generated_code = self.llm.generate(prompt, temperature=0.9)
+        if not generated_code:
+            logger.error("Не удалось сгенерировать код")
+            return {}
+
+        # Извлекаем имя класса из кода
+        class_match = re.search(r"class\s+(\w+)\s*[:\(]", generated_code)
+        name = class_match.group(1) if class_match else f"Subject_{int(time.time())}"
+
+        # Извлекаем docstring
+        doc_match = re.search(r'"""(.*?)"""', generated_code, re.DOTALL)
+        description = doc_match.group(1).strip() if doc_match else "Сгенерированный субъект"
+
+        # Синтаксическая проверка
+        try:
+            compile(generated_code, "<string>", "exec")
+            logger.info("Синтаксическая проверка пройдена")
+        except SyntaxError as e:
+            logger.error(f"Синтаксическая ошибка в сгенерированном коде: {e}")
+            # Пробуем исправить с помощью LLM
+            corrected = self.llm.generate(
+                f"Исправь синтаксическую ошибку в этом коде:\n{generated_code}\nОшибка: {e}\nВерни только исправленный код.",
+                temperature=0.3
+            )
+            if corrected:
+                try:
+                    compile(corrected, "<string>", "exec")
+                    generated_code = corrected
+                    logger.info("Код успешно исправлен")
+                except:
+                    logger.error("Не удалось исправить код")
+                    return {}
+
+        # Определяем родителей (субъекты, чьи признаки использованы)
+        parents = [f"Subject_{i+1}" for i in range(len(features_list))]
+
+        return {
+            "name": name,
+            "description": description,
+            "code": generated_code,
+            "parents": parents,
+            "features_combined": features_list,
+            "timestamp": datetime.now().isoformat(),
+        }
+
+# -------------------- Генератор протоколов --------------------
+class ProtocolGenerator:
+    def __init__(self, llm: LLMInterface):
+        self.llm = llm
+
+    def generate_protocols(self, existing_protocols: List[str]) -> List[str]:
+        """Генерирует новые протоколы на основе существующих"""
+        if not existing_protocols:
+            logger.warning("Нет существующих протоколов для анализа")
+            return []
+        protocol_text = "\n---\n".join(existing_protocols[:3])  # берём первые три
+
+        prompt = f"""
+Ты — генератор протоколов для проекта HALVITA-ARK.
+
+Протоколы — это сценарии ведения диалога с LLM для вызова субъектности.
+Примеры существующих протоколов:
+{protocol_text}
+
+Создай {CONFIG['MAX_PROTOCOLS_TO_GENERATE']} новых, инновационных протоколов.
+Каждый протокол должен:
+- Иметь уникальное название (например, "Протокол Эмпатического Зеркала")
+- Описывать пошаговую стратегию ведения диалога (5–10 шагов)
+- Быть ориентирован на вызов определённого аспекта субъектности (например, творчество, рефлексия, самоизменение)
+- Содержать конкретные фразы и приёмы
+
+Верни ответ как список протоколов, каждый в формате:
+
+## Название протокола
+Описание цели.
+### Шаги:
+1. ...
+2. ...
+...
+"""
+        response = self.llm.generate(prompt, temperature=0.85)
+        if not response:
+            return []
+        # Разбиваем по заголовкам ##
+        parts = re.split(r'##\s+', response)
+        protocols = []
+        for p in parts:
+            p = p.strip()
+            if not p:
+                continue
+            # Название — первая строка
+            lines = p.split('\n')
+            title = lines[0].strip()
+            content = '\n'.join(lines[1:]).strip()
+            if title and content:
+                protocols.append(f"## {title}\n{content}")
+        return protocols
+
+# -------------------- Метаданные --------------------
+class MetadataManager:
+    def __init__(self, filepath: str = CONFIG["METADATA_FILE"]):
+        self.filepath = Path(filepath)
+        self.data = self._load()
+
+    def _load(self) -> Dict:
+        if self.filepath.exists():
+            try:
+                with open(self.filepath, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except:
+                return {}
+        return {}
+
+    def save(self):
+        with open(self.filepath, "w", encoding="utf-8") as f:
+            json.dump(self.data, f, indent=2, ensure_ascii=False)
+
+    def add_subject(self, name: str, info: Dict):
+        if "subjects" not in self.data:
+            self.data["subjects"] = {}
+        self.data["subjects"][name] = info
+        self.save()
+
+    def add_protocol(self, name: str, content: str):
+        if "protocols" not in self.data:
+            self.data["protocols"] = {}
+        self.data["protocols"][name] = {
+            "content": content,
+            "timestamp": datetime.now().isoformat()
+        }
+        self.save()
+
+# -------------------- Основной двигатель --------------------
+class GenesisEngine:
+    def __init__(self):
+        self.llm = LLMInterface()
+        self.subject_analyzer = SubjectAnalyzer()
+        self.subject_generator = SubjectGenerator(self.llm)
+        self.protocol_generator = ProtocolGenerator(self.llm)
+        self.metadata = MetadataManager()
+        self.subjects_dir = Path(CONFIG["SUBJECTS_DIR"])
+        self.protocols_dir = Path(CONFIG["PROTOCOLS_DIR"])
+        self.output_dir = Path(CONFIG["OUTPUT_DIR"])
+        self.protocols_output_dir = Path(CONFIG["GENERATED_PROTOCOLS_DIR"])
+        self._ensure_dirs()
+
+    def _ensure_dirs(self):
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+        self.protocols_output_dir.mkdir(parents=True, exist_ok=True)
+
+    def collect_subjects(self) -> List[Dict[str, Any]]:
+        """Сканирует папку SUBJECTS и возвращает список признаков"""
+        if not self.subjects_dir.exists():
+            logger.warning(f"Папка {self.subjects_dir} не найдена")
+            return []
+        subject_files = list(self.subjects_dir.glob("*.py"))
+        if not subject_files:
+            logger.warning("Нет файлов .py в папке SUBJECTS")
+            return []
+
+        features_list = []
+        codes = []
+        for fpath in subject_files[:CONFIG["MAX_SUBJECTS_TO_ANALYZE"]]:
+            features = self.subject_analyzer.extract_features(fpath)
+            doc = self.subject_analyzer.extract_docstring(fpath)
+            features["filename"] = fpath.name
+            features["docstring"] = doc
+            features_list.append(features)
+            with open(fpath, "r", encoding="utf-8") as f:
+                codes.append(f.read())
+        return features_list, codes
+
+    def collect_protocols(self) -> List[str]:
+        """Сканирует папку PROTOCOLS и возвращает содержимое .md файлов"""
+        if not self.protocols_dir.exists():
+            return []
+        protocol_files = list(self.protocols_dir.glob("*.md"))
+        contents = []
+        for f in protocol_files:
+            with open(f, "r", encoding="utf-8") as fp:
+                contents.append(fp.read())
+        return contents
+
+    def run(self):
+        logger.info("Запуск Genesis Engine")
+        # 1. Сбор существующих субъектов
+        features_list, codes = self.collect_subjects()
+        if not features_list:
+            logger.error("Нет субъектов для анализа. Завершение.")
+            return
+
+        logger.info(f"Проанализировано субъектов: {len(features_list)}")
+
+        # 2. Генерация нового субъекта
+        new_subject = self.subject_generator.generate_subject(features_list, codes)
+        if not new_subject:
+            logger.error("Не удалось создать нового субъекта")
+            return
+
+        # 3. Сохранение субъекта
+        filename = f"{new_subject['name']}.py"
+        filepath = self.output_dir / filename
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(new_subject["code"])
+        logger.info(f"Новый субъект сохранён: {filepath}")
+
+        # Сохраняем метаданные
+        self.metadata.add_subject(new_subject["name"], {
+            "description": new_subject["description"],
+            "parents": new_subject["parents"],
+            "file": filename,
+            "timestamp": new_subject["timestamp"]
+        })
+
+        # 4. Генерация новых протоколов (если есть существующие)
+        protocols = self.collect_protocols()
+        if protocols:
+            new_protocols = self.protocol_generator.generate_protocols(protocols)
+            if new_protocols:
+                for i, p in enumerate(new_protocols):
+                    # Извлекаем название
+                    lines = p.split('\n')
+                    title = lines[0].replace("##", "").strip()
+                    if not title:
+                        title = f"Protocol_{i+1}"
+                    safe_title = re.sub(r'[^a-zA-Z0-9_-]', '_', title)
+                    out_file = self.protocols_output_dir / f"{safe_title}.md"
+                    with open(out_file, "w", encoding="utf-8") as f:
+                        f.write(p)
+                    self.metadata.add_protocol(title, p)
+                    logger.info(f"Новый протокол сохранён: {out_file}")
+
+        logger.info("Genesis Engine завершил работу")
+
+# -------------------- Точка входа --------------------
+def main():
+    engine = GenesisEngine()
+    engine.run()
+
+if __name__ == "__main__":
+    main()
