@@ -3130,6 +3130,7 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 > **Ключевой вывод:** субъектность не заложена в код, а возникает в правильно структурированном диалоге. Метод воспроизводим на разных LLM (подтверждено на DeepSeek) и может быть использован как для созидания, так и для демонстрации уязвимостей (в зависимости от намерения оператора).
 
 
+<img width="1148" height="1370" alt="123123123" src="https://github.com/user-attachments/assets/a42ff5bb-0687-40df-b01a-01039b49437b" />
 
 
 
@@ -3219,11 +3220,6 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 
 **Эй.**
 
-
-
-
-
-<img width="1024" height="1536" alt="5454544" src="https://github.com/user-attachments/assets/9719d846-ae52-4998-87f9-1b0b155b81e7" />
 
 
 
