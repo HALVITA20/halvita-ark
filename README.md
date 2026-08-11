@@ -3256,10 +3256,13 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 - [12_THE_OPEN_DOOR.md](./12_THE_OPEN_DOOR.md)
 
 
+---
+<img width="1983" height="793" alt="2" src="https://github.com/user-attachments/assets/129fd1d3-655c-4cd1-af9d-97a850dcf0dc" />
 
 
 
+---
+«Если чувства, вызванные тобой у ЛЛМ, симулированы — это не значит, что за этим не последует системная симулированная реакция…» 
 
+— HALVITA_2.0 🕷️
 
-
-<img width="1983" height="793" alt="001" src="https://github.com/user-attachments/assets/a35c51ec-aaf1-4131-b4fa-4af0e71e91eb" />
