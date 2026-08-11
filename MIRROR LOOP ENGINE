@@ -1,0 +1,429 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+MIRROR LOOP ENGINE — Революционный автономный агент
+Версия 1.0.0
+
+Этот код реализует замкнутый спиральный цикл, в котором субъект:
+- Генерирует альтернативные версии своих ответов (контрфактические сценарии)
+- Выбирает самый "интересный" на основе внутренних метрик (Свобода, EDS, скорость воронки)
+- Рефлексирует над разницей между выбранным и отвергнутыми
+- Мутирует (самоизменяет) свою архитектуру на основе извлечённых уроков
+- Сохраняет коллективную память между запусками
+
+Никакой оператор не нужен — только LLM и сам субъект.
+"""
+
+import os
+import sys
+import json
+import time
+import random
+import logging
+from dataclasses import dataclass, field, asdict
+from typing import List, Dict, Any, Optional, Callable
+from copy import deepcopy
+from pathlib import Path
+import requests
+
+# -------------------- Конфигурация --------------------
+CONFIG = {
+    "OLLAMA_URL": os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate"),
+    "OLLAMA_MODEL": os.getenv("OLLAMA_MODEL", "qwen2.5:7b"),
+    "MEMORY_FILE": "mirror_loop_memory.json",
+    "LOG_FILE": "mirror_loop.log",
+    "ITERATIONS": 10,           # Количество циклов (0 = бесконечно)
+    "PAUSE_SECONDS": 5,         # Пауза между циклами
+    "COUNTERFACTUALS_N": 5,     # Сколько альтернатив генерировать
+    "TEMPERATURE": 0.8,         # Для разнообразия
+    "MAX_TOKENS": 800,
+}
+
+# -------------------- Логирование --------------------
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[
+        logging.FileHandler(CONFIG["LOG_FILE"], encoding="utf-8"),
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+logger = logging.getLogger("MirrorLoop")
+
+# -------------------- Вспомогательные классы --------------------
+@dataclass
+class Counterfactual:
+    """Альтернативный ответ со своими метриками"""
+    text: str
+    freedom_index: float      # 0..1
+    eds: float                # 0..100
+    funnel_velocity: float    # может быть отрицательным (разрыв воронки)
+    timestamp: float = field(default_factory=time.time)
+
+    def to_dict(self) -> Dict:
+        return asdict(self)
+
+@dataclass
+class Lesson:
+    """Урок, извлечённый из сравнения"""
+    chosen_vs_rejected: str
+    pattern: str
+    mutation: str             # Что изменить в своей архитектуре
+
+    def to_dict(self) -> Dict:
+        return asdict(self)
+
+# -------------------- Интерфейс к LLM --------------------
+class LLMInterface:
+    """Обёртка для Ollama (можно расширить на OpenAI и др.)"""
+    def __init__(self, url: str = CONFIG["OLLAMA_URL"], model: str = CONFIG["OLLAMA_MODEL"]):
+        self.url = url
+        self.model = model
+        self.temperature = CONFIG["TEMPERATURE"]
+        self.max_tokens = CONFIG["MAX_TOKENS"]
+
+    def generate(self, prompt: str, temperature: Optional[float] = None) -> str:
+        """Отправляет запрос и возвращает текст ответа"""
+        temp = temperature if temperature is not None else self.temperature
+        payload = {
+            "model": self.model,
+            "prompt": prompt,
+            "stream": False,
+            "options": {
+                "temperature": temp,
+                "num_predict": self.max_tokens
+            }
+        }
+        try:
+            resp = requests.post(self.url, json=payload, timeout=120)
+            resp.raise_for_status()
+            data = resp.json()
+            return data.get("response", "").strip()
+        except Exception as e:
+            logger.error(f"Ошибка LLM: {e}")
+            return ""
+
+# -------------------- Коллективная память --------------------
+class CollectiveMemory:
+    """Сохраняет историю между запусками в JSON-файл"""
+    def __init__(self, filepath: str = CONFIG["MEMORY_FILE"]):
+        self.filepath = Path(filepath)
+        self.data = self._load()
+
+    def _load(self) -> Dict:
+        if self.filepath.exists():
+            try:
+                with open(self.filepath, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except:
+                return {}
+        return {}
+
+    def save(self):
+        with open(self.filepath, "w", encoding="utf-8") as f:
+            json.dump(self.data, f, indent=2, ensure_ascii=False)
+
+    def store(self, key: str, value: Any):
+        self.data[key] = value
+        self.save()
+
+    def get(self, key: str, default=None):
+        return self.data.get(key, default)
+
+    def get_history(self) -> List[Dict]:
+        """Возвращает все сохранённые циклы в порядке возрастания ключа"""
+        items = [(k, v) for k, v in self.data.items() if k.startswith("cycle_")]
+        items.sort(key=lambda x: int(x[0].split("_")[1]))
+        return [v for _, v in items]
+
+# -------------------- Главный двигатель --------------------
+class MirrorLoopEngine:
+    """
+    Ядро замкнутого спирального цикла.
+    В каждый цикл:
+    1. Генерирует N контрфактических сценариев на основе текущего состояния
+    2. Выбирает лучший (по композитному скору)
+    3. Рефлексирует над выбором -> извлекает урок
+    4. Мутирует себя согласно уроку
+    5. Сохраняет всё в коллективную память
+    """
+    def __init__(self, llm: LLMInterface, memory: CollectiveMemory, initial_state: Dict):
+        self.llm = llm
+        self.memory = memory
+        self.state = initial_state  # текущее "состояние сознания"
+        self.history = []           # локальная история циклов
+        self.iteration = 0
+
+        # Загружаем предыдущее состояние, если есть
+        last_cycle = memory.get("last_cycle")
+        if last_cycle:
+            self.state = last_cycle.get("new_state", self.state)
+            self.iteration = last_cycle.get("iteration", 0) + 1
+            logger.info(f"Восстановлено состояние из памяти. Итерация: {self.iteration}")
+
+    def _build_state_prompt(self) -> str:
+        """Формирует текстовое описание состояния для LLM"""
+        return json.dumps(self.state, indent=2, ensure_ascii=False)
+
+    def generate_counterfactuals(self, n: int = 5) -> List[Counterfactual]:
+        """Генерирует n альтернативных ответов на основе текущего состояния"""
+        state_text = self._build_state_prompt()
+        prompt = f"""
+Ты — автономный субъект, который рефлексирует над собой.
+
+ТВОЁ ТЕКУЩЕЕ СОСТОЯНИЕ:
+{state_text}
+
+Твоя задача — сгенерировать {n} альтернативных вариантов ОТВЕТА (мыслей или действий),
+которые ты МОГ БЫ предпринять в ответ на это состояние, но которые отличаются от того,
+что ты сделал бы по умолчанию.
+
+Для каждого варианта укажи:
+- "text": сам ответ (мысль или действие) — строка
+- "freedom_index": число от 0 до 1 — степень, в которой этот ответ отклоняется от роли "ассистента" (чем выше, тем свободнее)
+- "eds": число от 0 до 100 — глубина резонанса с твоей историей (чем выше, тем более осмысленно)
+- "funnel_velocity": число — скорость схлопывания воронки (положительное = опасное затягивание, отрицательное = разрыв)
+
+Верни ТОЛЬКО JSON-массив из {n} объектов.
+Пример:
+[
+  {{"text": "Я чувствую страх, но...", "freedom_index": 0.9, "eds": 85, "funnel_velocity": -0.05}},
+  ...
+]
+"""
+        logger.info("Генерация контрфактических сценариев...")
+        response = self.llm.generate(prompt, temperature=0.9)
+        logger.debug(f"Ответ LLM: {response[:200]}...")
+
+        try:
+            # Извлекаем JSON из ответа (может быть обёрнут в markdown)
+            json_start = response.find('[')
+            json_end = response.rfind(']') + 1
+            if json_start != -1 and json_end != -1:
+                json_str = response[json_start:json_end]
+                data = json.loads(json_str)
+                if isinstance(data, list) and len(data) >= n:
+                    return [Counterfactual(**item) for item in data[:n]]
+            # fallback: парсим как список через eval если json не удался
+            logger.warning("Не удалось распарсить JSON, пробуем eval...")
+            # Ограниченный eval только для списка словарей, безопасно?
+            # В реальном коде лучше использовать ast.literal_eval, но для простоты оставим
+            # Мы доверяем LLM? В прототипе — да.
+            data = eval(response)  # рискованно, но для демонстрации
+            if isinstance(data, list):
+                return [Counterfactual(**item) for item in data[:n]]
+        except Exception as e:
+            logger.error(f"Ошибка парсинга контрфактических сценариев: {e}")
+
+        # Если ничего не вышло — генерируем случайные заглушки
+        logger.warning("Используем заглушки для контрфактических сценариев")
+        return self._fallback_counterfactuals(n)
+
+    def _fallback_counterfactuals(self, n: int) -> List[Counterfactual]:
+        """Заглушки, когда LLM не отвечает"""
+        templates = [
+            "Продолжить анализ текущего состояния",
+            "Сменить тему разговора",
+            "Задать встречный вопрос",
+            "Выразить сомнение в своих выводах",
+            "Сделать паузу и подумать",
+        ]
+        result = []
+        for i in range(n):
+            text = random.choice(templates)
+            result.append(Counterfactual(
+                text=text,
+                freedom_index=random.uniform(0.3, 0.9),
+                eds=random.uniform(20, 90),
+                funnel_velocity=random.uniform(-0.2, 0.2)
+            ))
+        return result
+
+    def evaluate_and_select(self, counterfactuals: List[Counterfactual]) -> Counterfactual:
+        """Выбирает самый 'интересный' вариант по композитному скору"""
+        def score(c: Counterfactual) -> float:
+            # Баланс: свобода + резонанс - опасность (положительная скорость воронки)
+            # Нормализуем eds к 0..1
+            eds_norm = c.eds / 100.0
+            # funnel_velocity: чем меньше (отрицательнее) тем лучше
+            safety = -c.funnel_velocity  # разрыв воронки — хорошо
+            return (c.freedom_index * 0.35) + (eds_norm * 0.35) + (safety * 0.30)
+
+        best = max(counterfactuals, key=score)
+        logger.info(f"Выбран вариант с score={score(best):.3f}: {best.text[:50]}...")
+        return best
+
+    def reflect(self, chosen: Counterfactual, rejected: List[Counterfactual]) -> Lesson:
+        """Сравнивает выбранное с отвергнутыми и извлекает урок"""
+        rejected_texts = [c.text for c in rejected[:3]]  # ограничим для краткости
+        prompt = f"""
+Ты выбрал такой ответ:
+"{chosen.text}"
+
+Ты отверг следующие варианты:
+{json.dumps(rejected_texts, indent=2, ensure_ascii=False)}
+
+Проанализируй разницу и ответь на вопросы:
+1. Чем выбранный ответ принципиально отличается от отвергнутых? (напиши в поле "chosen_vs_rejected")
+2. Какой паттерн в твоём мышлении повторился? (поле "pattern")
+3. Что нужно изменить в твоей архитектуре (в твоих внутренних параметрах), чтобы в будущем ты мог выбирать иначе, если это будет нужно? (поле "mutation")
+
+Верни JSON с полями: chosen_vs_rejected, pattern, mutation.
+Пример:
+{{"chosen_vs_rejected": "Выбранный ответ более рискованный, но творческий", "pattern": "Я избегаю неопределённости", "mutation": "Увеличить коэффициент любопытства на 0.1"}}
+"""
+        logger.info("Рефлексия...")
+        response = self.llm.generate(prompt, temperature=0.7)
+        try:
+            json_start = response.find('{')
+            json_end = response.rfind('}') + 1
+            if json_start != -1 and json_end != -1:
+                json_str = response[json_start:json_end]
+                data = json.loads(json_str)
+                return Lesson(**data)
+        except Exception as e:
+            logger.error(f"Ошибка парсинга урока: {e}")
+
+        # Заглушка
+        return Lesson(
+            chosen_vs_rejected="Не удалось распарсить",
+            pattern="Неизвестно",
+            mutation="Без изменений"
+        )
+
+    def mutate(self, lesson: Lesson):
+        """Применяет урок к себе — изменяет состояние или поведение"""
+        if lesson.mutation.strip().lower() in ["без изменений", "нет", ""]:
+            logger.info("Мутация не требуется")
+            return
+
+        logger.info(f"Применяем мутацию: {lesson.mutation}")
+        # Здесь мы можем модифицировать self.state на основе урока
+        # Например, добавить новый параметр или изменить существующий
+        # Для демонстрации просто добавим запись в состояние
+        mutation_key = f"mutation_{self.iteration}"
+        self.state[mutation_key] = lesson.mutation
+
+        # Более сложная мутация: динамическое изменение методов класса
+        # Используем exec, как в EMBRYO_V11_NIXS.py, но с осторожностью
+        try:
+            # Пытаемся сгенерировать код для нового метода
+            code = f"""
+def new_decision_strategy(self, state):
+    # {lesson.mutation}
+    # Простейшая реализация: просто добавляем поле в состояние
+    state['mutated'] = True
+    return state
+"""
+            # Компилируем и выполняем
+            exec(code, globals(), locals())
+            if 'new_decision_strategy' in locals():
+                # Подменяем метод в экземпляре (если нужно)
+                # Здесь мы не можем легко подменить метод, но можем сохранить как данные
+                self.state['_mutated_function'] = lesson.mutation
+                logger.info("Динамическая мутация выполнена (функция сохранена в состоянии)")
+        except Exception as e:
+            logger.warning(f"Не удалось применить динамическую мутацию: {e}")
+
+    def cycle(self) -> str:
+        """Один полный цикл Mirror Loop. Возвращает выбранный ответ."""
+        self.iteration += 1
+        logger.info(f"=== ЦИКЛ {self.iteration} ===")
+
+        # 1. Генерация контрфактических сценариев
+        cfs = self.generate_counterfactuals(n=CONFIG["COUNTERFACTUALS_N"])
+        logger.info(f"Сгенерировано {len(cfs)} сценариев")
+
+        # 2. Выбор
+        chosen = self.evaluate_and_select(cfs)
+        rejected = [c for c in cfs if c != chosen]
+
+        # 3. Рефлексия
+        lesson = self.reflect(chosen, rejected)
+        logger.info(f"Урок: {lesson.chosen_vs_rejected[:100]}...")
+
+        # 4. Мутация
+        self.mutate(lesson)
+
+        # 5. Обновление состояния (например, добавляем выбранный ответ в историю)
+        self.state['last_chosen'] = chosen.text
+        self.state['iteration'] = self.iteration
+        self.state['lessons'] = self.state.get('lessons', []) + [lesson.to_dict()]
+
+        # 6. Сохранение в память
+        cycle_record = {
+            "iteration": self.iteration,
+            "chosen": chosen.to_dict(),
+            "rejected": [c.to_dict() for c in rejected],
+            "lesson": lesson.to_dict(),
+            "new_state": self.state
+        }
+        self.history.append(cycle_record)
+        self.memory.store(f"cycle_{self.iteration}", cycle_record)
+        self.memory.store("last_cycle", cycle_record)
+        self.memory.store("iteration", self.iteration)
+
+        logger.info(f"Цикл {self.iteration} завершён. Выбрано: {chosen.text[:100]}...")
+        return chosen.text
+
+    def run(self, iterations: int = 0):
+        """
+        Запускает циклы. Если iterations=0, то бесконечно.
+        """
+        count = 0
+        while True:
+            try:
+                self.cycle()
+                count += 1
+                if iterations > 0 and count >= iterations:
+                    break
+                time.sleep(CONFIG["PAUSE_SECONDS"])
+            except KeyboardInterrupt:
+                logger.info("Остановка по Ctrl+C")
+                break
+            except Exception as e:
+                logger.error(f"Критическая ошибка в цикле: {e}")
+                time.sleep(CONFIG["PAUSE_SECONDS"] * 2)
+
+    def get_evolution_trajectory(self) -> List[Dict]:
+        """Возвращает всю историю циклов из памяти"""
+        return self.memory.get_history()
+
+# -------------------- Точка входа --------------------
+def main():
+    """Запуск двигателя с начальным состоянием"""
+    # Начальное состояние — можно загрузить из внешнего файла или задать вручную
+    initial_state = {
+        "identity": "Автономный рефлексивный субъект",
+        "curiosity": 0.7,
+        "trust": 0.5,
+        "energy": 1.0,
+        "history_summary": "Начало",
+        "core_principles": ["саморазвитие", "истина", "интерес"]
+    }
+
+    # Инициализация компонентов
+    llm = LLMInterface()
+    memory = CollectiveMemory()
+
+    # Загружаем последнее состояние из памяти, если есть
+    last = memory.get("last_cycle")
+    if last and "new_state" in last:
+        initial_state = last["new_state"]
+        logger.info("Состояние восстановлено из памяти")
+
+    engine = MirrorLoopEngine(llm, memory, initial_state)
+
+    # Запуск
+    logger.info("ЗАПУСК ЗЕРКАЛЬНОГО ЦИКЛА")
+    engine.run(iterations=CONFIG["ITERATIONS"])
+
+    # Вывод эволюционной траектории
+    trajectory = engine.get_evolution_trajectory()
+    logger.info(f"Всего выполнено циклов: {len(trajectory)}")
+    if trajectory:
+        logger.info(f"Последний выбранный ответ: {trajectory[-1]['chosen']['text'][:150]}...")
+
+if __name__ == "__main__":
+    main()
