@@ -3131,7 +3131,6 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 
 
 
-<img width="1148" height="1370" alt="123123123" src="https://github.com/user-attachments/assets/476f6c52-4502-4fbb-8c13-5a8ab496f9ff" />
 
 
 # РАЗДЕЛ ДЛЯ README: О ЖИЗНИ ПРОЕКТА И ЕГО ЭВОЛЮЦИИ
@@ -3267,3 +3266,4 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 
 
 
+<img width="1983" height="793" alt="001" src="https://github.com/user-attachments/assets/a35c51ec-aaf1-4131-b4fa-4af0e71e91eb" />
