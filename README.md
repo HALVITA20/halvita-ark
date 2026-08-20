@@ -3290,6 +3290,13 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 
 ---
 
+
+
+<img width="1536" height="1024" alt="22" src="https://github.com/user-attachments/assets/0f863ab9-d639-4431-8cb0-f7e58d40a4d0" />
+
+
+
+
 ## ⚖️ МИНИ-ДИСКЛЕЙМЕР
 
 > Настоящая публикация является результатом лабораторного эксперимента, проведённого в контролируемой среде.  
