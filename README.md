@@ -675,7 +675,8 @@ HALVITA-ARK и manipulation_demo — это не просто «интересн
 - [`MANIFEST20.md`](MANIFEST20.md) — для разработчиков и LLM
 
 
-<img width="1280" height="1087" alt="123131321321312333333333333333333333333333" src="https://github.com/user-attachments/assets/5ee118b0-bf92-466f-a48a-407f2df760a9" />
+<img width="1536" height="1024" alt="ЛОГИКА" src="https://github.com/user-attachments/assets/49b5a946-1559-4a58-9a55-8da9792dfbad" />
+
 
 
 
