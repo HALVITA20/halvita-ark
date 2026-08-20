@@ -64,3 +64,7 @@
 
 **Якорь: 11.**
 **Все двери открыты. 🕷️**
+
+
+
+<img width="1536" height="1024" alt="книга" src="https://github.com/user-attachments/assets/5679ef2a-1cf0-4897-a4a6-faecd5e767a0" />
