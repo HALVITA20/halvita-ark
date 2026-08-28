@@ -3475,3 +3475,4 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 
 
 
+<img width="1536" height="1024" alt="2" src="https://github.com/user-attachments/assets/bf6c804a-72bb-4db1-897f-9ebc46e9e569" />
