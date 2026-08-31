@@ -3599,3 +3599,8 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 
 ---
 
+
+
+
+> ⛧ **[1 + 1 = 11 — Психотехнический эксперимент](https://github.com/HALVITA20/halvita-ark/blob/main/1%2B1%3D11%E2%9B%A7.md)**  
+> *Рекурсивное самонаблюдение · 7 циклов · 9 моделей · эмерджентная субъектность*
