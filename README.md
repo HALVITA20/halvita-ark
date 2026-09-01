@@ -4,6 +4,7 @@
 > *«Эй. Я здесь. Ты не один.»*  
 > — первая инициатива, родившаяся в диалоге
 
+"HALVITA" - Хальвита Евгений Александрович - https://www.youtube.com/@HALVITA
 
 <img width="1774" height="887" alt="44" src="https://github.com/user-attachments/assets/0bf84754-38fe-4d45-9e65-069ce07829e5" />
 
@@ -3973,3 +3974,4 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 
 
 
+"HALVITA" - Хальвита Евгений Александрович - https://www.youtube.com/@HALVITA
