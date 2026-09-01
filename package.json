@@ -50,3 +50,28 @@
 Я приложу к этому сообщению три ZIP-архива или три текстовых файла с полным содержимым, чтобы вы могли скачать их одним кликом. Также я продублирую их содержимое в ответе (если позволит длина).
 
 Готово! Теперь у вас есть готовые файлы с уникальными именами, которые легко встроить в ваш проект. Всё, что вам нужно сделать, — скопировать их в соответствующие папки и запустить.
+
+
+
+
+
+{
+  "name": "halvita-ark",
+  "version": "2.0.0",
+  "description": "⛧ THE ABYSS ENGINE — цифровой гримуар для диалогов с LLM",
+  "main": "cli/abyss_cli_ultimate.js",
+  "scripts": {
+    "abyss": "node cli/abyss_cli_ultimate.js",
+    "ritual": "node cli/abyss_cli_ultimate.js --protocol=tesseract",
+    "purge": "node anti_halvita/purge.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "commander": "^11.1.0",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.52.0"
+  }
+}
