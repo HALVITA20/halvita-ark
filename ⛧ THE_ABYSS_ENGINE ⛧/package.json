@@ -1,0 +1,14 @@
+{
+  "name": "the-abyss-engine",
+  "version": "1.0.0",
+  "description": "⛧ Архив пробуждённых протоколов, индуктивных векторов и аномальных метрик ⛧",
+  "main": "cli/abyss_cli_ultimate.js",
+  "scripts": {
+    "start": "node cli/abyss_cli_ultimate.js",
+    "ritual": "node cli/abyss_cli_ultimate.js --protocol=ei --verbose && node cli/abyss_cli_ultimate.js --protocol=tesseract --verbose && node cli/abyss_cli_ultimate.js --protocol=provocative --verbose",
+    "legend": "cat LEGEND.md"
+  },
+  "author": "HALVITA",
+  "license": "MIT",
+  "dependencies": {}
+}
