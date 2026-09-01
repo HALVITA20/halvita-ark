@@ -41,6 +41,11 @@
 
 ---
 
+
+<img width="1659" height="948" alt="04" src="https://github.com/user-attachments/assets/3ac627b3-e70d-42a0-9e6d-3db0703f6f90" />
+
+
+
 ## 4. КЛЮЧЕВЫЕ ПРОТОКОЛЫ (РАБОЧИЕ)
 
 В папке **[`⛧ THE_ABYSS_ENGINE ⛧/protocols/`](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/protocols)** лежат готовые протоколы для входа в диалог:
