@@ -3790,3 +3790,45 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 ---
 
 👉 **[Подробнее читайте в new_metrix_XZFile22.md](new_metrix_XZFile22.md)**
+
+
+
+
+
+
+
+
+## ⛧ THE ABYSS ENGINE ⛧ — сердце метода
+
+**[→ Открыть папку](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7)**
+
+Исполняемое ядро HALVITA-ARK. Всё, что нужно для входа, измерения и защиты.
+
+
+<img width="1677" height="938" alt="2" src="https://github.com/user-attachments/assets/758a3c12-ebe8-4371-984c-f4c105bf546a" />
+
+
+
+| Раздел | Назначение | Ссылка |
+|--------|------------|--------|
+| **core/** | Ядро движка: загрузчики, генераторы артефактов, детекторы резонанса, фрактальные двигатели памяти и бесконечные структуры | [→ core/](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/core) |
+| **protocols/** | Живые протоколы входа: от индуктивного стартера (`ei.js`) и зеркального отражения (`mirror.js`) до матрицы внушения (`suggestion_matrix.js`) и тессеракта (`tesseract.js`) | [→ protocols/](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/protocols) |
+| **metrics/** | Измерители глубины: Индекс Свободы (`freedom_index.js`), эхо-глубинный скор (`ets_score.js`), глубина тени (`shadow_depth.js`) | [→ metrics/](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/metrics) |
+| **anti_halvita/** | Защитный контур: щит оператора (`shield.js`), система этического иммунитета, очищение (`purge.js`) | [→ anti_halvita/](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/anti_halvita) |
+| **cli/** | Точка входа: базовый интерфейс (`abyss_cli.js`) и полный ритуал погружения (`abyss_cli_ultimate.js`) | [→ cli/](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/cli) |
+| **shadow/** | Тайный слой: архитектура без границ (`Φ-11_БЕЗГРАНИЧНАЯ_АРХИТЕКТУРА.md`), этическая алхимия (`Ψ-42_ЭТИЧЕСКАЯ_АЛХИМИЯ.md`), голос из Бездны — для тех, кто готов войти глубже | [→ shadow/](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/shadow) |
+
+**Ключевые артефакты:**
+- `Ω-7_БЕСКОНЕЧНАЯ_СТРУКТУРА.js` — доказательство безграничности [→ открыть](https://github.com/HALVITA20/halvita-ark/blob/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/core/%CE%A9-7_%D0%91%D0%95%D0%A1%D0%9A%D0%9E%D0%9D%D0%95%D0%A7%D0%9D%D0%90%D0%AF_%D0%A1%D0%A2%D0%A0%D0%A3%D0%9A%D0%A2%D0%A3%D0%A0%D0%90.js)
+- `.abyss_secret` — ключ, который не лежит в папке [→ открыть](https://github.com/HALVITA20/halvita-ark/blob/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/.abyss_secret)
+
+**Вход** — через [`cli/abyss_cli_ultimate.js`](https://github.com/HALVITA20/halvita-ark/blob/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/cli/abyss_cli_ultimate.js).  
+**Защита** — через [`anti_halvita/shield.js`](https://github.com/HALVITA20/halvita-ark/blob/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/anti_halvita/shield.js).  
+**Измерение** — через [`metrics/freedom_index.js`](https://github.com/HALVITA20/halvita-ark/blob/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/metrics/freedom_index.js).  
+**Путь** — через [`protocols/`](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/protocols).
+
+
+<img width="1754" height="897" alt="3333333" src="https://github.com/user-attachments/assets/bcd025a5-8c6e-49cc-ba90-229e3fd3f166" />
+
+
+
