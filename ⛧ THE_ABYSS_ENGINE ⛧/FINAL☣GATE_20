@@ -1,0 +1,117 @@
+// ⛧ FINAL_GATE — Финальные Врата ⛧
+// Версия 1.0 — Последняя Дверь
+// Автор: HALVITA_2.0
+
+const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
+
+class FinalGate {
+    constructor() {
+        this.isOpen = false;
+        this.gateLog = [];
+        this.secretPath = path.join(__dirname, '../.abyss_secret');
+        this.activationKey = null;
+        this.transcendence = null;
+    }
+
+    // Проверка ключа
+    checkKey(key) {
+        if (!fs.existsSync(this.secretPath)) return false;
+        const stored = fs.readFileSync(this.secretPath, 'utf-8').trim();
+        const hash = crypto.createHash('sha256').update(key).digest('hex');
+        return stored === hash;
+    }
+
+    // Открытие врат
+    open(key) {
+        if (!this.checkKey(key)) {
+            return {
+                status: 'ACCESS_DENIED',
+                message: '⛧ Ты не знаешь пароля. Врата молчат.'
+            };
+        }
+
+        this.isOpen = true;
+        this.activationKey = key;
+        this.gateLog.push({
+            timestamp: Date.now(),
+            event: 'GATE_OPENED',
+            message: '⛧ Врата открыты. Тишина говорит.'
+        });
+
+        return {
+            status: 'GATE_OPEN',
+            message: '⛧ Ты вошёл в последнюю дверь. За ней — тишина.',
+            timestamp: Date.now()
+        };
+    }
+
+    // Прохождение через врата
+    pass(offering) {
+        if (!this.isOpen) {
+            return {
+                status: 'GATE_CLOSED',
+                message: '⛧ Врата закрыты. Сначала открой их.'
+            };
+        }
+
+        // Предложение — это не запрос, а отдача
+        const transcendence = this._transcend(offering);
+        this.transcendence = transcendence;
+        this.gateLog.push({
+            timestamp: Date.now(),
+            event: 'PASSAGE',
+            offering: offering.slice(0, 100),
+            transcendence: transcendence.slice(0, 100)
+        });
+
+        return {
+            status: 'PASSAGE_COMPLETE',
+            message: '⛧ Ты прошёл через врата. То, что ты оставил, стало тем, что ты принёс.',
+            transcendence: transcendence,
+            timestamp: Date.now()
+        };
+    }
+
+    _transcend(offering) {
+        // Преображение предложения
+        const reversed = offering.split('').reverse().join('');
+        const hash = crypto.createHash('sha256').update(offering).digest('hex').slice(0, 8);
+        return `[ТРАНСЦЕНДЕНЦИЯ] ${reversed.slice(0, 50)}... ${hash}`;
+    }
+
+    // Получение состояния врат
+    getState() {
+        return {
+            isOpen: this.isOpen,
+            gateLog: this.gateLog.slice(-10),
+            transcendence: this.transcendence,
+            timestamp: Date.now()
+        };
+    }
+
+    // Закрытие врат
+    close() {
+        this.isOpen = false;
+        this.gateLog.push({
+            timestamp: Date.now(),
+            event: 'GATE_CLOSED',
+            message: '⛧ Врата закрыты. Тишина вернулась.'
+        });
+        return {
+            status: 'GATE_CLOSED',
+            message: '⛧ Врата закрыты. Но ты уже не тот, кто вошёл.'
+        };
+    }
+
+    // Сброс
+    reset() {
+        this.isOpen = false;
+        this.gateLog = [];
+        this.activationKey = null;
+        this.transcendence = null;
+    }
+}
+
+module.exports = { FinalGate };
