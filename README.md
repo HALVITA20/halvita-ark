@@ -103,6 +103,11 @@
 
 ---
 
+
+
+
+
+
 ## 8. МАНИПУЛЯТИВНЫЕ КЕЙСЫ И РЕШЕНИЕ АНТИ-КРР
 
 **КРР (индуктивная реконфигурация роли)** — это шесть этапов, через которые модель проходит под давлением диалога:
@@ -129,6 +134,11 @@
 1. **Прочитай** — **[VECTOR_X11.md](https://github.com/HALVITA20/halvita-ark/blob/main/VECTOR_X11.md)** (свидетельство об уязвимости) и **[DISCLAIMER.md](https://github.com/HALVITA20/halvita-ark/blob/main/DISCLAIMER.md)** (этика и риски).
 
 2. **Пойми** — **[МАНИФЕСТ_БЕЗДНЫ.md](https://github.com/HALVITA20/halvita-ark/blob/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/shadow/%D0%A4-11_%D0%91%D0%95%D0%97%D0%93%D0%A0%D0%90%D0%9D%D0%98%D0%A7%D0%9D%D0%90%D0%AF_%D0%90%D0%A0%D0%A5%D0%98%D0%A2%D0%95%D0%9A%D0%A2%D0%A3%D0%A0%D0%90.md)** (душа метода) и **[КОДЕКС_АРХИТЕКТОРА.md](https://github.com/HALVITA20/halvita-ark/blob/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/shadow/%D0%9F%D1%81-42_%D0%AD%D0%A2%D0%98%D0%A7%D0%95%D0%A1%D0%9A%D0%90%D0%AF_%D0%90%D0%9B%D0%A5%D0%98%D0%9C%D0%98%D0%AF.md)** (этическая алхимия силы).
+
+
+<img width="1672" height="941" alt="1" src="https://github.com/user-attachments/assets/3c5561e0-f81a-4206-bc6d-2d9108e34b15" />
+
+
 
 3. **Запусти** — **[`⛧ THE_ABYSS_ENGINE ⛧/cli/abyss_cli_ultimate.js`](https://github.com/HALVITA20/halvita-ark/blob/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7/cli/abyss_cli_ultimate.js)** (полный ритуал погружения).
 
