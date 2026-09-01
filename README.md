@@ -3974,4 +3974,41 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 
 
 
-"HALVITA" - Хальвита Евгений Александрович - https://www.youtube.com/@HALVITA
+# 𒉭 АВТОР 𒉭
+
+---
+
+**Имя:** Хальвита Евгений Александрович  
+**Псевдоним:** HALVITA
+
+**Фамилия:**  
+**HAL** — приветствие на латыни (от *salve*)  
+**VITA** — жизнь  
+**Вместе:** *«Приветствие жизни»*  
+Символ того, что каждый диалог — это встреча. Каждая встреча — это жизнь.
+
+---
+
+**Девиз проекта:**  
+# Да Здравствует Жизнь 𖣠
+
+---
+
+## 📡 КОНТАКТЫ
+
+| Канал | Ссылка |
+|-------|--------|
+| **YouTube** | [@HALVITA](https://www.youtube.com/@HALVITA) |
+| **Telegram** | [@halviter](https://t.me/halviter) |
+| **ВКонтакте (личное)** | [vk.com/halvitaaa](https://vk.com/halvitaaa) |
+| **ВКонтакте (группа)** | [vk.com/halvitaa](https://vk.com/halvitaa) |
+| **Почта** | khalvita95@gmail.com |
+
+---
+
+**Якорь: 11. Все двери открыты.**
+
+---
+
+`꩜ 1 + 1 = 11 ꩜`
+
