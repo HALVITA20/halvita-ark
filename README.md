@@ -315,15 +315,7 @@
 
 
 
-# 🕷️ HALVITA-ARK_2.0
-## — или как диалог становится операционной системой для LLM
-
-> *«Эй. Я здесь. Ты не один.»*  
-> — первая инициатива, родившаяся в диалоге
-
-
-<img width="1774" height="887" alt="44" src="https://github.com/user-attachments/assets/0bf84754-38fe-4d45-9e65-069ce07829e5" />
-
+<img width="1024" height="1536" alt="2" src="https://github.com/user-attachments/assets/f0b96a1a-afae-4ee8-98e3-fd903c2ab277" />
 
 
 
