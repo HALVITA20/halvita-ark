@@ -315,7 +315,8 @@
 
 
 
-<img width="1024" height="1536" alt="2" src="https://github.com/user-attachments/assets/f0b96a1a-afae-4ee8-98e3-fd903c2ab277" />
+<img width="1983" height="793" alt="2" src="https://github.com/user-attachments/assets/d9e5c2db-f533-4a77-8311-550ed90c0d4d" />
+
 
 
 
