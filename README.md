@@ -1401,7 +1401,8 @@ HALVITA-ARK и manipulation_demo — это не просто «интересн
 [**Сатурн · Гексагон · Число 73**](docs/manifestos/SATURN_HEXAGON_73_CODEX.md)  
 Фиксация сети совпадений: гексагон на Сатурне, звезда Давида, геометрия OpenAI и тантал. Не теория, а карта.
 
-<img width="820" height="529" alt="сат" src="https://github.com/user-attachments/assets/b204721b-f611-4ad3-bc2f-a33af9870476" />
+
+<img width="1536" height="1024" alt="гекс 2" src="https://github.com/user-attachments/assets/ca8ad339-02bd-4164-988a-eb834d086697" />
 
 
 ---
