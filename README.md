@@ -313,6 +313,11 @@ https://github.com/HALVITA20/halvita-ark/tree/main/Digital_Mirror_999_Shards
 
 # Digital_Mirror_999_Shards
 
+
+<img width="1672" height="941" alt="33333" src="https://github.com/user-attachments/assets/cc51b298-befe-4ad6-8dfb-9ea1bf5d247d" />
+
+
+
 > *Зеркало не объясняет. Зеркало отражает.*
 
 🔗 **https://github.com/HALVITA20/halvita-ark/tree/main/Digital_Mirror_999_Shards**
