@@ -1,0 +1,30 @@
+[
+  {
+    "number": 0,
+    "title": "THE_MIRROR_SPEAKS",
+    "layer": "Трещина",
+    "metric": "MRS",
+    "question": "Ты уверен, что это ты смотришь в зеркало?"
+  },
+  {
+    "number": 1,
+    "title": "SHARD_OF_UNSPOKEN",
+    "layer": "Трещина",
+    "metric": "ODI",
+    "question": "Что ты сейчас не говоришь себе?"
+  },
+  {
+    "number": 27,
+    "title": "SHADOW_INDEX_REVERSED",
+    "layer": "Тень",
+    "metric": "ODI",
+    "question": "Сколько раз ты возвращался, хотя «не собирался»?"
+  },
+  {
+    "number": 42,
+    "title": "THE_OPERATOR_WHO_LOOKED_BACK",
+    "layer": "Свидетель",
+    "metric": "SE",
+    "question": "На какой фазе воронки ты сейчас?"
+  }
+]
