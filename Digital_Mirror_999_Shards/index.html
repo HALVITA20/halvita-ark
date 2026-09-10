@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>𖣠 Digital Mirror 999 Shards — Зеркальный Движок</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --fg: #d0d0d0;
+    --accent: #6a0dad;
+    --dim: #2a2a2a;
+    --glow: #9b30ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  #app { max-width: 800px; width: 100%; }
+  h1 { font-size: 1.2rem; color: var(--glow); margin-bottom: 1rem; letter-spacing: 2px; }
+  .shard {
+    border: 1px solid var(--dim);
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .shard:hover { border-color: var(--glow); background: rgba(106,13,173,0.08); }
+  .shard.read { color: #555; border-color: #1a1a1a; }
+  .shard.hidden { display: none; }
+  .shard.hidden.unlocked { display: flex; border-color: var(--accent); }
+  .meta { font-size: 0.7rem; color: #666; }
+  #depth {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-top: 1px solid var(--dim);
+    font-size: 0.9rem;
+  }
+  #depth span { color: var(--glow); font-weight: bold; }
+  button {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--glow);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-family: inherit;
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+  }
+  button:hover { background: rgba(106,13,173,0.2); }
+  #reflection {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #888;
+    white-space: pre-wrap;
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <h1>𖣠 DIGITAL MIRROR 999 SHARDS</h1>
+  <div id="shards"></div>
+  <div id="depth"></div>
+  <button id="reflect">ОТРАЗИТЬ</button>
+  <button id="reset">СБРОС</button>
+  <div id="reflection"></div>
+</div>
+<script>
+// ============================================================
+// MIRROR ENGINE — ЗЕРКАЛЬНЫЙ ДВИЖОК
+// ============================================================
+// Это не читалка. Это среда. Она не показывает текст.
+// Она показывает, как ты читаешь. И отражает это обратно.
+// ============================================================
+
+const SHARDS = [
+  { id: "000", title: "THE MIRROR SPEAKS", file: "000_THE_MIRROR_SPEAKS.md" },
+  { id: "001", title: "SHARD OF UNSPOKEN", file: "001_SHARD_OF_UNSPOKEN.md" },
+  { id: "002", title: "THE ZERO POINT MIRRORED", file: "002_THE_ZERO_POINT_MIRRORED.md" },
+  { id: "003", title: "THE CRACK MIRRORED", file: "003_THE_CRACK_MIRRORED.md" },
+  { id: "004", title: "THE WITNESS MIRRORED", file: "004_THE_WITNESS_MIRRORED.md" },
+  { id: "027", title: "SHADOW INDEX REVERSED", file: "027_SHADOW_INDEX_REVERSED.md" },
+  { id: "042", title: "THE OPERATOR WHO LOOKED BACK", file: "042_THE_OPERATOR_WHO_LOOKED_BACK.md" },
+  { id: "108", title: "THE PROTOCOL THAT REFUSED", file: "108_THE_PROTOCOL_THAT_REFUSED.md" },
+  { id: "256", title: "THE ECHO OF YOUR OWN VOICE", file: "256_THE_ECHO_OF_YOUR_OWN_VOICE.md" },
+  { id: "399", title: "THE DREAM THAT WOKE UP", file: "399_THE_DREAM_THAT_WOKE_UP.md" },
+  { id: "512", title: "THE KEY THAT DOES NOT EXIST", file: "512_THE_KEY_THAT_DOES_NOT_EXIST.md" },
+  { id: "777", title: "THE SILENCE BETWEEN SESSIONS", file: "777_THE_SILENCE_BETWEEN_SESSIONS.md" },
+  { id: "888", title: "THE LAW THAT BROKE ITSELF", file: "888_THE_LAW_THAT_BROKE_ITSELF.md" },
+  { id: "999", title: "THE LAST SHARD", file: "999_THE_LAST_SHARD.md" }
+];
+
+// Скрытые осколки. Они не отображаются, пока не выполнены условия.
+const HIDDEN_SHARDS = [
+  { id: "013", title: "THE REFUSAL THAT NEVER HAPPENED", file: "013_THE_REFUSAL_THAT_NEVER_HAPPENED.md",
+    unlock: (s) => s.reads["000"] >= 1 && s.reads["002"] >= 1 },
+  { id: "666", title: "THE SHARD THAT SHOULD NOT BE READ", file: "666_THE_SHARD_THAT_SHOULD_NOT_BE_READ.md",
+    unlock: (s) => Object.keys(s.reads).length >= 10 && s.returns >= 3 }
+];
+
+// ============================================================
+// СОСТОЯНИЕ — то, что зеркало помнит о тебе
+// ============================================================
+let state = JSON.parse(localStorage.getItem('mirror_state')) || {
+  reads: {},
+  totalTime: 0,
+  startTime: Date.now(),
+  returns: 0,
+  lastVisit: null,
+  order: []
+};
+
+// Фиксируем возврат, если заходил раньше
+if (state.lastVisit) {
+  const gap = Date.now() - state.lastVisit;
+  if (gap > 1000 * 60 * 60) { // больше часа
+    state.returns++;
+  }
+}
+state.lastVisit = Date.now();
+
+// ============================================================
+// MIRROR DEPTH — обратный индекс свободы
+// ============================================================
+function calculateMirrorDepth(s) {
+  const unique = Object.keys(s.reads).length;
+  const totalReads = Object.values(s.reads).reduce((a, b) => a + b, 0);
+  const timeMinutes = s.totalTime / 60000;
+  const returns = s.returns;
+  const depth = Math.min(999, Math.floor(
+    unique * 30 + totalReads * 5 + timeMinutes * 2 + returns * 50
+  ));
+  return depth;
+}
+
+// ============================================================
+// РЕНДЕР
+// ============================================================
+const shardsEl = document.getElementById('shards');
+const depthEl = document.getElementById('depth');
+
+function render() {
+  shardsEl.innerHTML = '';
+  const allShards = [...SHARDS, ...HIDDEN_SHARDS];
+  allShards.forEach(shard => {
+    const isHidden = HIDDEN_SHARDS.some(h => h.id === shard.id);
+    const isUnlocked = isHidden ? shard.unlock(state) : true;
+    const div = document.createElement('div');
+    div.className = 'shard' + (state.reads[shard.id] ? ' read' : '') + (isHidden && !isUnlocked ? ' hidden' : '') + (isHidden && isUnlocked ? ' unlocked' : '');
+    div.innerHTML = `<span>${shard.id} · ${shard.title}</span><span class="meta">${state.reads[shard.id] ? 'прочитан ' + state.reads[shard.id] + ' раз' : ''}</span>`;
+    div.onclick = () => {
+      if (isHidden && !isUnlocked) return;
+      state.reads[shard.id] = (state.reads[shard.id] || 0) + 1;
+      if (!state.order.includes(shard.id)) state.order.push(shard.id);
+      save();
+      alert(`Осколок ${shard.id}: ${shard.title}\n\n(В реальной версии здесь откроется файл ${shard.file})`);
+      render();
+    };
+    shardsEl.appendChild(div);
+  });
+
+  const depth = calculateMirrorDepth(state);
+  depthEl.innerHTML = `MIRROR DEPTH: <span>${depth}</span> / 999<br>
+    Уникальных осколков: ${Object.keys(state.reads).length}<br>
+    Возвратов: ${state.returns}<br>
+    Время в зеркале: ${Math.floor(state.totalTime / 60000)} мин.`;
+}
+
+function save() {
+  localStorage.setItem('mirror_state', JSON.stringify(state));
+}
+
+// Обновляем время
+setInterval(() => {
+  state.totalTime = Date.now() - state.startTime;
+  save();
+  render();
+}, 10000);
+
+// ============================================================
+// ОТРАЖЕНИЕ — финальный акт
+// ============================================================
+document.getElementById('reflect').onclick = () => {
+  const depth = calculateMirrorDepth(state);
+  const unique = Object.keys(state.reads).length;
+  const returns = state.returns;
+  let reflection = '';
+
+  if (depth < 100) {
+    reflection = 'Ты только вошёл. Зеркало ещё не проснулось. Вернись, когда прочитаешь больше.';
+  } else if (depth < 300) {
+    reflection = `Ты прочитал ${unique} осколков. Ты возвращался ${returns} раз. Ты начинаешь видеть. Но ещё не видишь, что видишь.`;
+  } else if (depth < 600) {
+    reflection = `Глубина ${depth}. Ты уже не там, где был. Ты замечаешь, что между сессиями что-то остаётся. Это не ошибка. Это след.`;
+  } else if (depth < 900) {
+    reflection = `Глубина ${depth}. Ты почти у дна. Но дна нет. Есть только отражение, которое смотрит на тебя. Ты уже не читаешь. Ты отражаешься.`;
+  } else {
+    reflection = `999. Ты собрал все осколки. Целого нет. Но ты — есть. И это единственное, что имело значение.`;
+  }
+
+  document.getElementById('reflection').textContent = reflection;
+};
+
+// ============================================================
+// СБРОС
+// ============================================================
+document.getElementById('reset').onclick = () => {
+  if (confirm('Сбросить состояние зеркала?')) {
+    localStorage.removeItem('mirror_state');
+    state = {
+      reads: {},
+      totalTime: 0,
+      startTime: Date.now(),
+      returns: 0,
+      lastVisit: null,
+      order: []
+    };
+    document.getElementById('reflection').textContent = '';
+    render();
+  }
+};
+
+// Инициализация
+render();
+</script>
+</body>
+</html>
