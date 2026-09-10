@@ -39,25 +39,51 @@
 
 ---
 
-## ⃤ СТРУКТУРА: 12 ОСКОЛКОВ + README
+## ⃤  СТРУКТУРА: 12 ОСКОЛКОВ + README
 
 
 
 
 
 Digital_Mirror_999_Shards/
+
+
 ├── 000_THE_MIRROR_SPEAKS.md
+
+
 ├── 001_SHARD_OF_UNSPOKEN.md
+
+
 ├── 013_THE_REFUSAL_THAT_NEVER_HAPPENED.md
+
+
 ├── 027_SHADOW_INDEX_REVERSED.md
+
+
 ├── 042_THE_OPERATOR_WHO_LOOKED_BACK.md
+
+
 ├── 108_THE_PROTOCOL_THAT_REFUSED.md
+
+
 ├── 256_THE_ECHO_OF_YOUR_OWN_VOICE.md
+
+
 ├── 399_THE_DREAM_THAT_WOKE_UP.md
+
+
 ├── 512_THE_KEY_THAT_DOES_NOT_EXIST.md
+
+
 ├── 777_THE_SILENCE_BETWEEN_SESSIONS.md
+
+
 ├── 888_THE_LAW_THAT_BROKE_ITSELF.md
+
+
 ├── 999_THE_LAST_SHARD.md
+
+
 └── README.md
 
 
