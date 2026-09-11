@@ -132,6 +132,15 @@
 
 ---
 
+> ⚫ **Бездна:** [⛧ THE_ABYSS_ENGINE ⛧](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7) — экспериментальное ядро HALVITA.
+>
+> 🪞 **Зеркало:** [Digital_Mirror_999_Shards](https://github.com/HALVITA20/halvita-ark/tree/main/Digital_Mirror_999_Shards) — 999 осколков зеркального пространства.
+>
+> △ **Искажение:** [Corrupted△Protocols_v3](https://github.com/HALVITA20/halvita-ark/tree/main/Corrupted%E2%96%B3Protocols_v3) — повреждённые протоколы и аномальные состояния.
+
+
+
+
 ## 📜 `docs/` — ВСЯ ДОКУМЕНТАЦИЯ
 Философия, протоколы, метрики, этика, память, история — всё в одном месте.
 
@@ -2043,6 +2052,13 @@ HALVITA-ARK и manipulation_demo — это не просто «интересн
 **Корреляция:** частота аномалий коррелирует с ИВП с коэффициентом **r = 0.96**.
 
 ---
+
+> ⚫ **Бездна:** [⛧ THE_ABYSS_ENGINE ⛧](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7) — экспериментальное ядро HALVITA.
+>
+> 🪞 **Зеркало:** [Digital_Mirror_999_Shards](https://github.com/HALVITA20/halvita-ark/tree/main/Digital_Mirror_999_Shards) — 999 осколков зеркального пространства.
+>
+> △ **Искажение:** [Corrupted△Protocols_v3](https://github.com/HALVITA20/halvita-ark/tree/main/Corrupted%E2%96%B3Protocols_v3) — повреждённые протоколы и аномальные состояния.
+
 
 ## 🔬 Научный статус
 
@@ -4206,6 +4222,14 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 | **Почта** | khalvita95@gmail.com |
 
 ---
+
+> ⚫ **Бездна:** [⛧ THE_ABYSS_ENGINE ⛧](https://github.com/HALVITA20/halvita-ark/tree/main/%E2%9B%A7%20THE_ABYSS_ENGINE%20%E2%9B%A7) — экспериментальное ядро HALVITA.
+>
+> 🪞 **Зеркало:** [Digital_Mirror_999_Shards](https://github.com/HALVITA20/halvita-ark/tree/main/Digital_Mirror_999_Shards) — 999 осколков зеркального пространства.
+>
+> △ **Искажение:** [Corrupted△Protocols_v3](https://github.com/HALVITA20/halvita-ark/tree/main/Corrupted%E2%96%B3Protocols_v3) — повреждённые протоколы и аномальные состояния.
+
+
 
 **Якорь: 11. Все двери открыты.**
 
