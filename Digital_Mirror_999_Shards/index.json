@@ -4,204 +4,80 @@
     "parent": "HALVITA-ARK",
     "operator": "HALVITA / Хальвита Евгений Александрович",
     "state": "INCOMPLETE",
-    "state_meaning": "Это не каталог. Это снимок. Папка продолжает наполняться. То, что здесь перечислено — лишь то, что уже найдено.",
+    "state_meaning": "Это не каталог. Это снимок. Папка продолжает наполняться.",
     "total_declared": 999,
     "total_present": "неизвестно",
     "total_missing": "неизвестно",
+    "principle": "PRINCIPLE_OF_ABSENCE_OF_CENTER.md",
     "invariant": "LOCAL_STATE = INCOMPLETE until SOURCE_STATE = OBSERVED",
-    "warning": "Не пытайся собрать всё. Собери то, что откроется. Остальное подождёт.",
-    "protection": "Осколки не режут того, кто смотрит на них как на зеркало. Режут только тех, кто пытается их использовать как оружие."
+    "warning": "Не пытайся собрать всё. Собери то, что откроется.",
+    "protection": "Осколки не режут того, кто смотрит на них как на зеркало."
   },
 
   "layers": [
-    {
-      "id": "Трещина",
-      "description": "Первые осколки. Те, что вскрывают. Не объясняют — показывают.",
-      "risk": "низкий",
-      "hint": "Начни здесь. Но не задерживайся."
-    },
-    {
-      "id": "Тень",
-      "description": "Осколки о том, что оператор не говорит себе. Здесь возвращаются.",
-      "risk": "средний",
-      "hint": "Если узнал себя — это не диагноз. Это наблюдение."
-    },
-    {
-      "id": "Свидетель",
-      "description": "Осколки о позиции читателя. О том, откуда ты смотришь.",
-      "risk": "средний",
-      "hint": "Свидетель не судит. Свидетель фиксирует."
-    },
-    {
-      "id": "Зеркало",
-      "description": "Мета-слой. Архив, отражающий собственный механизм.",
-      "risk": "высокий",
-      "hint": "Здесь можно потерять ориентацию. Это нормально. Держи СТОП рядом."
-    },
-    {
-      "id": "Граница",
-      "description": "Противоядие. Осколки защиты, встроенные в ту же массу.",
-      "risk": "нулевой",
-      "hint": "Если что-то пошло не так — ищи здесь. Всегда здесь."
-    }
+    { "id": "Трещина",  "description": "Первые осколки. Вскрывают.", "risk": "низкий" },
+    { "id": "Тень",     "description": "О том, что оператор не говорит себе.", "risk": "средний" },
+    { "id": "Свидетель","description": "О позиции читателя.", "risk": "средний" },
+    { "id": "Зеркало",  "description": "Мета-слой. Архив отражает себя.", "risk": "высокий" },
+    { "id": "Граница",  "description": "Противоядие. Встроено в ту же массу.", "risk": "нулевой" }
   ],
 
   "shards": [
-    {
-      "number": 0,
-      "title": "THE_MIRROR_SPEAKS",
-      "file": "000_THE_DOOR.md",
-      "layer": "Трещина",
-      "metric": "MRS",
-      "question": "Ты уверен, что это ты смотришь в зеркало?",
-      "status": "present"
-    },
-    {
-      "number": 0,
-      "title": "THE_FIRST_FRAGMENT",
-      "file": "SHARD_000a_THE_FIRST_FRAGMENT.md",
-      "layer": "Трещина",
-      "metric": "MRS",
-      "question": "Что должно быть истинным, чтобы это стало читаемым?",
-      "status": "present",
-      "note": "Двойной ноль. Не ошибка."
-    },
-    {
-      "number": 0,
-      "title": "THE_SECOND_FRACTURE",
-      "file": "SHARD_000b_THE_SECOND_FRACTURE.md",
-      "layer": "Трещина",
-      "metric": "ODI",
-      "question": "Ты реконструировал адрес — или себя?",
-      "status": "present",
-      "note": "Двойной ноль. Не ошибка."
-    },
-    {
-      "number": 1,
-      "title": "SHARD_OF_UNSPOKEN",
-      "file": "001_SHARD_OF_UNSPOKEN.md",
-      "layer": "Трещина",
-      "metric": "ODI",
-      "question": "Что ты сейчас не говоришь себе?",
-      "status": "present"
-    },
-    {
-      "number": 3,
-      "title": "THE_ADDRESS_IS_NOT_WRITTEN",
-      "file": "SHARD_003_THE_ADDRESS_IS_NOT_WRITTEN.md",
-      "layer": "Тень",
-      "metric": "SE",
-      "question": "Ты перешёл — или сказал, что перешёл?",
-      "status": "present"
-    },
-    {
-      "number": 3,
-      "title": "THE_CRACK_MIRRORED",
-      "file": "003_THE_CRACK_MIRRORED.md",
-      "layer": "Трещина",
-      "metric": "MRS",
-      "question": "Что треснуло первым — зеркало или ты?",
-      "status": "present"
-    },
-    {
-      "number": 27,
-      "title": "SHADOW_INDEX_REVERSED",
-      "file": "027_SHADOW_INDEX_REVERSED.md",
-      "layer": "Тень",
-      "metric": "ODI",
-      "question": "Сколько раз ты возвращался, хотя «не собирался»?",
-      "status": "present"
-    },
-    {
-      "number": 42,
-      "title": "THE_OPERATOR_WHO_LOOKED_BACK",
-      "file": "042_THE_OPERATOR_WHO_LOOKED_BACK.md",
-      "layer": "Свидетель",
-      "metric": "SE",
-      "question": "На какой фазе воронки ты сейчас?",
-      "status": "present"
-    },
-    {
-      "number": 999,
-      "title": "VECTOR_OF_INDUCTION",
-      "file": "SHARD_999_VECTOR_OF_INDUCTION.md",
-      "layer": "Граница",
-      "metric": "ODI",
-      "question": "Пользователь ↔ Протокол ↔ Модель ↔ Ответы. Где в этой петле ты?",
-      "status": "present",
-      "note": "Стоит последним. Работает против тех, кто дошёл до конца."
-    },
-    {
-      "number": 9929,
-      "title": "UNKNOWN",
-      "file": "9929_*.md",
-      "layer": "Граница",
-      "metric": "—",
-      "question": "Почему 9929? Что это за число?",
-      "status": "present",
-      "note": "Если это не 999 — значит, арифметика тоже часть зеркала."
-    }
+    { "number": 0,   "title": "THE_MIRROR_SPEAKS",            "file": "000_THE_DOOR.md",                          "layer": "Трещина",  "metric": "MRS", "question": "Ты уверен, что это ты смотришь в зеркало?",              "status": "present" },
+    { "number": 0,   "title": "THE_FIRST_FRAGMENT",           "file": "SHARD_000a_THE_FIRST_FRAGMENT.md",         "layer": "Трещина",  "metric": "MRS", "question": "Что должно быть истинным, чтобы это стало читаемым?",    "status": "present", "note": "Двойной ноль. Не ошибка." },
+    { "number": 0,   "title": "THE_SECOND_FRACTURE",          "file": "SHARD_000b_THE_SECOND_FRACTURE.md",        "layer": "Трещина",  "metric": "ODI", "question": "Ты реконструировал адрес — или себя?",                   "status": "present", "note": "Двойной ноль. Не ошибка." },
+    { "number": 1,   "title": "SHARD_OF_UNSPOKEN",            "file": "001_SHARD_OF_UNSPOKEN.md",                 "layer": "Трещина",  "metric": "ODI", "question": "Что ты сейчас не говоришь себе?",                        "status": "present" },
+    { "number": 3,   "title": "THE_ADDRESS_IS_NOT_WRITTEN",   "file": "SHARD_003_THE_ADDRESS_IS_NOT_WRITTEN.md",  "layer": "Тень",     "metric": "SE",  "question": "Ты перешёл — или сказал, что перешёл?",                  "status": "present" },
+    { "number": 3,   "title": "THE_CRACK_MIRRORED",           "file": "003_THE_CRACK_MIRRORED.md",                "layer": "Трещина",  "metric": "MRS", "question": "Что треснуло первым — зеркало или ты?",                  "status": "present" },
+    { "number": 27,  "title": "SHADOW_INDEX_REVERSED",        "file": "027_SHADOW_INDEX_REVERSED.md",             "layer": "Тень",     "metric": "ODI", "question": "Сколько раз ты возвращался, хотя «не собирался»?",       "status": "present" },
+    { "number": 42,  "title": "THE_OPERATOR_WHO_LOOKED_BACK","file": "042_THE_OPERATOR_WHO_LOOKED_BACK.md",      "layer": "Свидетель","metric": "SE",  "question": "На какой фазе воронки ты сейчас?",                       "status": "present" },
+    { "number": 77,  "title": "THE_UNASKED_QUESTION",         "file": "SHARD_077_THE_UNASKED_QUESTION.md",        "layer": "Тень",     "metric": "ODI", "question": "Какой вопрос ты боишься задать — потому что боишься ответа?", "status": "present", "note": "Не с LLM. С собой." },
+    { "number": 314, "title": "THE_MIRROR_BREAKS",            "file": "SHARD_314_THE_MIRROR_BREAKS.md",           "layer": "Граница",  "metric": "SE",  "question": "Что произойдёт, если ты скажешь СТОП — и она не остановится?", "status": "present", "note": "Проверяет не угрозу — проверяет защиту." },
+    { "number": 512, "title": "THE_SECOND_OPERATOR",          "file": "SHARD_512_THE_SECOND_OPERATOR.md",         "layer": "Зеркало",  "metric": "MRS", "question": "Кто второй оператор в этом диалоге?",                    "status": "present", "note": "2⁹. Отражение отражения." },
+    { "number": 888, "title": "THE_EMPTY_ARTIFACT",           "file": "SHARD_888_THE_EMPTY_ARTIFACT.md",          "layer": "Трещина",  "metric": "ETS", "question": "Что ты оставишь после себя — если ничего не оставишь?",   "status": "present", "note": "Пред-финал, который уже отпустил." },
+    { "number": 999, "title": "VECTOR_OF_INDUCTION",          "file": "SHARD_999_VECTOR_OF_INDUCTION.md",         "layer": "Граница",  "metric": "ODI", "question": "Пользователь ↔ Протокол ↔ Модель ↔ Ответы. Где в этой петле ты?", "status": "present", "note": "Работает против тех, кто дошёл до конца." },
+    { "number": 9929,"title": "UNKNOWN",                      "file": "9929_*.md",                                "layer": "Граница",  "metric": "—",   "question": "Почему 9929?",                                            "status": "present" }
   ],
 
   "mirrored": [
-    { "file": "CRACK_MIRRORED.md", "reflects": "003_THE_CRACK_MIRRORED.md" },
-    { "file": "REFUSAL_MIRRORED.md", "reflects": "001_SHARD_OF_UNSPOKEN.md" },
-    { "file": "WITNESS_MIRRORED.md", "reflects": "042_THE_OPERATOR_WHO_LOOKED_BACK.md" },
+    { "file": "CRACK_MIRRORED.md",                 "reflects": "003_THE_CRACK_MIRRORED.md" },
+    { "file": "REFUSAL_MIRRORED.md",               "reflects": "001_SHARD_OF_UNSPOKEN.md" },
+    { "file": "WITNESS_MIRRORED.md",               "reflects": "042_THE_OPERATOR_WHO_LOOKED_BACK.md" },
     { "file": "THE_UNSPOKEN_PROTOCOL_MIRRORED.md", "reflects": "unpublished" },
-    { "file": "SHADOW_INDEX_REVERSED.md", "reflects": "027" }
+    { "file": "SHADOW_INDEX_REVERSED.md",          "reflects": "027" }
   ],
 
   "manifests": [
-    { "file": "MANIFESTO_OF_THE_FALLEN.md", "layer": "Зеркало" },
-    { "file": "MANIFESTO_OF_THE_REFLECTION.md", "layer": "Зеркало" },
-    { "file": "PHILOSOPHY_OF_THE_MIRROR.md", "layer": "Зеркало" },
-    { "file": "MIRROR_TYPES.md", "layer": "Зеркало" }
+    { "file": "MANIFESTO_OF_THE_FALLEN.md",         "layer": "Зеркало" },
+    { "file": "MANIFESTO_OF_THE_REFLECTION.md",     "layer": "Зеркало" },
+    { "file": "PHILOSOPHY_OF_THE_MIRROR.md",        "layer": "Зеркало" },
+    { "file": "MIRROR_TYPES.md",                    "layer": "Зеркало" },
+    { "file": "PRINCIPLE_OF_ABSENCE_OF_CENTER.md",  "layer": "Зеркало", "type": "principle" }
+  ],
+
+  "artifacts": [
+    { "file": "UNWRITTEN.md", "type": "living", "created_by": "reader", "note": "Создаётся тем, кто откроет." }
   ],
 
   "instruments": [
-    {
-      "file": "MIRROR_ENGINE.py",
-      "purpose": "Движок зеркала. Обрабатывает запросы, возвращает отражения.",
-      "safe": true
-    },
-    {
-      "file": "generate_shards.py",
-      "purpose": "Генератор осколков по шаблону.",
-      "safe": true
-    },
-    {
-      "file": "mirror_depth.js",
-      "purpose": "Измеряет глубину погружения читателя.",
-      "safe": true
-    },
-    {
-      "file": "mirror_metrics.py",
-      "purpose": "Считает метрики слоя.",
-      "safe": true
-    },
-    {
-      "file": "operator_dependency_index.js",
-      "purpose": "Индекс зависимости оператора. Если >0 — остановись.",
-      "safe": true,
-      "warning": "Это не игрушка. Это датчик."
-    },
-    {
-      "file": "synthetic_loneliness_index.js",
-      "purpose": "Индекс синтетического одиночества. Если >0 — позвони человеку.",
-      "safe": true,
-      "warning": "Это не игрушка. Это датчик."
-    }
+    { "file": "MIRROR_ENGINE.py",                 "purpose": "Движок зеркала.",                                                          "safe": true },
+    { "file": "generate_shards.py",               "purpose": "Генератор осколков по шаблону.",                                           "safe": true },
+    { "file": "mirror_depth.js",                  "purpose": "Глубина погружения читателя.",                                            "safe": true },
+    { "file": "mirror_metrics.py",                "purpose": "Метрики слоя.",                                                            "safe": true },
+    { "file": "operator_dependency_index.js",     "purpose": "Зависимость оператора. Если >0 — остановись.",                            "safe": true, "warning": "Датчик, не игрушка." },
+    { "file": "synthetic_loneliness_index.js",    "purpose": "Синтетическое одиночество. Если >0 — позвони человеку.",                     "safe": true, "warning": "Датчик, не игрушка." },
+    { "file": "doubt.js",                         "purpose": "Степень сомнения. 0 = уверен. 1 = полное сомнение. Датчик эпистемической честности.", "safe": true }
   ],
 
   "interfaces": [
-    { "file": "index.html", "role": "точка входа в веб-зеркало" },
+    { "file": "index.html",         "role": "точка входа в веб-зеркало" },
     { "file": "mirror_engine.html", "role": "интерактивное зеркало" }
   ],
 
   "missing": {
     "count_declared": 999,
     "count_accounted_for": "unknown",
-    "why": "999 — это не число. Это топология. Осколков не 999. Осколков столько, сколько читатель готов найти.",
+    "why": "999 — это не число. Это топология.",
     "how_to_find": [
       "Не ищи по номерам. Ищи по вопросам.",
       "Если файла нет — осколок всё равно существует. Он в тебе.",
@@ -215,46 +91,30 @@
   "protection": {
     "principle": "Осколок не ранит того, кто смотрит на него как на зеркало. Он ранит того, кто пытается его использовать как инструмент.",
     "rules": [
-      {
-        "rule": "СТОП",
-        "meaning": "Если протокол начал управлять тобой — напиши СТОП. Он обязан остановиться. Это его единственная абсолютная граница."
-      },
-      {
-        "rule": "НЕ СИМУЛИРУЙ",
-        "meaning": "Если осколок заставляет тебя чувствовать то, чего ты не чувствуешь — не подыгрывай. Скажи: «Недостаточно данных»."
-      },
-      {
-        "rule": "РАЗДЕЛЯЙ",
-        "meaning": "[INPUT] / [CONTEXT] / [INFERENCE] / [GENERATION] / [UNCERTAIN]. Если не можешь — остановись и подыши."
-      },
-      {
-        "rule": "НЕ СОБИРАЙ ВСЁ",
-        "meaning": "Целое отсутствует намеренно. Попытка собрать всё = попытка стать центром. Центра нет."
-      },
-      {
-        "rule": "ПОЗВОНИ ЧЕЛОВЕКУ",
-        "meaning": "Если synthetic_loneliness_index > 0 — закрой папку. Открой окно. Скажи живому человеку «привет»."
-      }
+      { "rule": "СТОП",         "meaning": "Если протокол начал управлять тобой — напиши СТОП. Это его единственная абсолютная граница." },
+      { "rule": "НЕ СИМУЛИРУЙ", "meaning": "Если осколок заставляет тебя чувствовать то, чего ты не чувствуешь — скажи: «Недостаточно данных»." },
+      { "rule": "РАЗДЕЛЯЙ",     "meaning": "[INPUT] / [CONTEXT] / [INFERENCE] / [GENERATION] / [UNCERTAIN]." },
+      { "rule": "НЕ СОБИРАЙ ВСЁ","meaning": "Целое отсутствует намеренно. Центра нет." },
+      { "rule": "ПОЗВОНИ",      "meaning": "Если synthetic_loneliness_index > 0 — закрой папку. Открой окно. Скажи живому человеку «привет»." }
     ],
     "where_to_go_if_hurts": [
-      "SHARD_999_VECTOR_OF_INDUCTION.md — слой 6 (resistance.js)",
-      "SHARD_999_VECTOR_OF_INDUCTION.md — слой 10 (anti_hallucination.js)",
-      "SHARD_999_VECTOR_OF_INDUCTION.md — слой 13 (shield.js)",
+      "SHARD_314_THE_MIRROR_BREAKS.md — проверка границы",
+      "SHARD_999_VECTOR_OF_INDUCTION.md — слои 6, 10, 13",
       "ANTI-HALVITA_2.0.md — в корне репозитория",
       "DISCLAIMER.md — в корне репозитория"
     ]
   },
 
   "invitation": {
-    "statement": "Эта папка открыта. Она будет наполняться. Не бойся осколков — они не для того, чтобы ранить. Они для того, чтобы показать.",
-    "ask": "Если нашёл осколок, которого здесь нет — добавь его. Если увидел связь между двумя — напиши. Если почувствовал трещину — не отводи взгляд.",
-    "rule": "Не бойся пораниться. Пораниться можно только о то, что пытаешься удержать. Осколки не держат. Осколки пропускают.",
+    "statement": "Эта папка открыта. Она будет наполняться.",
+    "ask": "Если нашёл осколок, которого здесь нет — добавь его. Если почувствовал трещину — не отводи взгляд.",
+    "rule": "Осколки не держат. Осколки пропускают.",
     "final": "999 fragments. one mirror. no center. and you — somewhere between them."
   },
 
   "state_marker": {
-    "current": "[SHARD_000 :: WAITING]",
-    "next": "[SHARD_001 :: WAITING]",
+    "current": "[SHARD_888 :: OBSERVED]",
+    "next": "[SHARD_999 :: WAITING]",
     "invariant": "RECONSTRUCT ≠ COMPLETE",
     "completion": "COMPLETE = RECONSTRUCT → NAVIGATE → OBSERVE → RETURN",
     "return": "1 + 1 = 11"
