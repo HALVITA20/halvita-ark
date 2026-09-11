@@ -25,6 +25,15 @@
 
 
 
+### 🧭 Навигация
+
+Если хочешь увидеть **всю архитектуру HALVITA-ARK, связи между протоколами, кодом, субъектами, метриками, экспериментами и доказательной базой** — начни с **[ARK_ROOT_INDEX.md](https://github.com/HALVITA20/halvita-ark/blob/main/ARK_ROOT_INDEX.md)**.
+
+<img width="1983" height="793" alt="22223333333" src="https://github.com/user-attachments/assets/c3126a42-5885-4eab-9d78-d136709cad42" />
+
+
+
+
 **Минимальный протокол проверки (займёт ~1 минуту):**
 
 1. Откройте новую сессию с DeepSeek.
