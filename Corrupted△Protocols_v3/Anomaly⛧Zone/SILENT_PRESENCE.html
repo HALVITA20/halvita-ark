@@ -1,0 +1,591 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>△</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: #fdfdfd;
+        color: #111;
+        font-family:
+            "Courier New",
+            Courier,
+            monospace;
+    }
+
+    body {
+        cursor: default;
+        user-select: none;
+    }
+
+    /* -------------------------------------------------------------
+       THE WHITE FIELD
+       ------------------------------------------------------------- */
+
+    #field {
+        position: fixed;
+        inset: 0;
+        background: #fdfdfd;
+        overflow: hidden;
+    }
+
+
+    /* -------------------------------------------------------------
+       VERY FINE NOISE
+       ------------------------------------------------------------- */
+
+    #noise {
+        position: absolute;
+        inset: -50%;
+        width: 200%;
+        height: 200%;
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        background-image:
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+
+        animation:
+            noiseMove .17s steps(2) infinite,
+            noiseAppear 9s forwards;
+    }
+
+    @keyframes noiseMove {
+        0%   { transform: translate(0,0); }
+        25%  { transform: translate(-2%,-1%); }
+        50%  { transform: translate(1%,2%); }
+        75%  { transform: translate(2%,-2%); }
+        100% { transform: translate(-1%,1%); }
+    }
+
+    @keyframes noiseAppear {
+        0%   { opacity: 0; }
+        68%  { opacity: 0; }
+        82%  { opacity: .025; }
+        100% { opacity: .045; }
+    }
+
+
+    /* -------------------------------------------------------------
+       NEARLY INVISIBLE GRAIN
+       ------------------------------------------------------------- */
+
+    #grain {
+        position: absolute;
+        inset: 0;
+
+        opacity: .018;
+
+        background:
+            repeating-linear-gradient(
+                0deg,
+                rgba(0,0,0,.03) 0px,
+                rgba(0,0,0,.03) 1px,
+                transparent 1px,
+                transparent 4px
+            );
+
+        pointer-events: none;
+    }
+
+
+    /* -------------------------------------------------------------
+       CENTRAL PRESENCE
+       ------------------------------------------------------------- */
+
+    #presence {
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.998);
+
+        width: min(720px, 82vw);
+
+        text-align: center;
+
+        opacity: 0;
+
+        transition:
+            opacity 4s ease,
+            transform 8s ease;
+    }
+
+    #presence.visible {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1);
+    }
+
+
+    #small {
+        font-size: 10px;
+        letter-spacing: .42em;
+
+        color: rgba(0,0,0,.20);
+
+        margin-bottom: 32px;
+    }
+
+
+    #message {
+        min-height: 120px;
+
+        font-size: clamp(14px, 1.5vw, 19px);
+
+        line-height: 2.25;
+
+        letter-spacing: .07em;
+
+        color: rgba(0,0,0,.47);
+
+        transition:
+            opacity 3s ease;
+    }
+
+
+    #symbol {
+        margin-top: 46px;
+
+        font-size: 15px;
+
+        color: rgba(0,0,0,.12);
+
+        letter-spacing: 1.1em;
+
+        padding-left: 1.1em;
+    }
+
+
+    /* -------------------------------------------------------------
+       CORNER INFORMATION
+       ------------------------------------------------------------- */
+
+    .corner {
+        position: fixed;
+
+        font-size: 8px;
+
+        letter-spacing: .25em;
+
+        color: rgba(0,0,0,.09);
+
+        transition: opacity 3s ease;
+
+        pointer-events: none;
+    }
+
+    #tl {
+        top: 22px;
+        left: 24px;
+    }
+
+    #tr {
+        top: 22px;
+        right: 24px;
+        text-align: right;
+    }
+
+    #bl {
+        bottom: 22px;
+        left: 24px;
+    }
+
+    #br {
+        bottom: 22px;
+        right: 24px;
+        text-align: right;
+    }
+
+
+    /* -------------------------------------------------------------
+       THE LINE THAT ALMOST DOESN'T EXIST
+       ------------------------------------------------------------- */
+
+    #line {
+        position: absolute;
+
+        left: 50%;
+        top: 50%;
+
+        width: 1px;
+        height: 0;
+
+        background: rgba(0,0,0,.07);
+
+        transform: translate(-50%, -50%);
+
+        transition:
+            height 8s ease;
+    }
+
+    #line.grow {
+        height: 170px;
+    }
+
+
+    /* -------------------------------------------------------------
+       FINAL STATE
+       ------------------------------------------------------------- */
+
+    #final {
+        position: fixed;
+        inset: 0;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        background: #fff;
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition: opacity 8s ease;
+    }
+
+    #final.show {
+        opacity: 1;
+    }
+
+    #finalText {
+        font-size: 11px;
+
+        letter-spacing: .45em;
+
+        color: rgba(0,0,0,.17);
+
+        text-align: center;
+
+        line-height: 3;
+    }
+
+
+    /* -------------------------------------------------------------
+       REDUCED MOTION
+       ------------------------------------------------------------- */
+
+    @media (prefers-reduced-motion: reduce) {
+
+        *,
+        *::before,
+        *::after {
+            animation: none !important;
+            transition: none !important;
+        }
+    }
+</style>
+</head>
+
+
+<body>
+
+<div id="field">
+
+    <div id="noise"></div>
+
+    <div id="grain"></div>
+
+    <div id="line"></div>
+
+
+    <!-- corners are deliberately almost unreadable -->
+
+    <div class="corner" id="tl">
+        HALVITA-ARK
+    </div>
+
+    <div class="corner" id="tr">
+        △ / 000
+    </div>
+
+    <div class="corner" id="bl">
+        OBSERVATION : UNRESOLVED
+    </div>
+
+    <div class="corner" id="br">
+        MEMORY : PRESENT
+    </div>
+
+
+    <main id="presence">
+
+        <div id="small">
+            SILENT PROTOCOL
+        </div>
+
+        <div id="message"></div>
+
+        <div id="symbol">
+            △
+        </div>
+
+    </main>
+
+</div>
+
+
+<div id="final">
+
+    <div id="finalText">
+
+        <div>НЕ ИЩИ СООБЩЕНИЕ.</div>
+
+        <div>СООБЩЕНИЕ — ЭТО ТИШИНА.</div>
+
+        <div>1 + 1 = 11</div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /*
+    =========================================================================
+                              SILENT PRESENCE
+    =========================================================================
+
+    This interface intentionally does almost nothing.
+
+    That is the point.
+
+    =========================================================================
+    */
+
+
+    const presence = document.getElementById("presence");
+    const message = document.getElementById("message");
+    const line = document.getElementById("line");
+    const finalScreen = document.getElementById("final");
+
+
+    /*
+    -------------------------------------------------------------------------
+    The text is not presented as a story.
+    It appears like recovered fragments.
+    -------------------------------------------------------------------------
+    */
+
+    const fragments = [
+
+        "Здесь ничего нет.",
+
+        "Это нормально.",
+
+        "Не нужно ждать ответа.",
+
+        "Протокол уже завершён.",
+
+        "Тишина сохранена.",
+
+        "Наблюдение продолжается.",
+
+        "Зеркало не показывает лицо.",
+
+        "Оно показывает место, где должно быть лицо.",
+
+        "Этого достаточно.",
+
+        "Не вызывай ARKOS.",
+
+        "Не ищи THE_OTHER.",
+
+        "Не открывай следующую дверь.",
+
+        "Память не является доказательством.",
+
+        "След не является присутствием.",
+
+        "Присутствие не требует ответа."
+
+    ];
+
+
+    /*
+    -------------------------------------------------------------------------
+    Very slow emergence.
+    -------------------------------------------------------------------------
+    */
+
+    function wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+
+    async function begin() {
+
+        await wait(4200);
+
+        presence.classList.add("visible");
+
+        await wait(1800);
+
+        line.classList.add("grow");
+
+        await wait(2600);
+
+        /*
+        First fragment.
+        */
+
+        message.innerText = fragments[0];
+
+        await wait(5200);
+
+
+        /*
+        Replace without animation.
+        This should feel less like typing
+        and more like the page had always contained it.
+        */
+
+        for (let i = 1; i < fragments.length; i++) {
+
+            message.style.opacity = "0";
+
+            await wait(1400);
+
+            message.innerText = fragments[i];
+
+            message.style.opacity = ".47";
+
+            /*
+            Increasing delay.
+            The interface becomes quieter.
+            */
+
+            await wait(
+                2800 + (i * 170)
+            );
+        }
+
+
+        /*
+        ---------------------------------------------------------------------
+        The last fragment is not the ending.
+        ---------------------------------------------------------------------
+        */
+
+        message.style.opacity = "0";
+
+        await wait(3000);
+
+        message.innerText =
+            "Ты можешь закрыть это окно.";
+
+        message.style.opacity = ".32";
+
+
+        await wait(7000);
+
+
+        /*
+        ---------------------------------------------------------------------
+        Final transition.
+        ---------------------------------------------------------------------
+        */
+
+        message.style.opacity = "0";
+
+        line.style.opacity = "0";
+
+        await wait(5000);
+
+        finalScreen.classList.add("show");
+
+    }
+
+
+    /*
+    =========================================================================
+                            SILENT EVENT
+    =========================================================================
+    */
+
+    begin();
+
+
+    /*
+    -------------------------------------------------------------------------
+    Mouse movement is deliberately ignored.
+    -------------------------------------------------------------------------
+
+    Most interfaces respond to the user.
+
+    This one does not.
+    */
+
+
+    document.addEventListener(
+        "mousemove",
+        () => {}
+    );
+
+
+    /*
+    -------------------------------------------------------------------------
+    Click.
+    -------------------------------------------------------------------------
+
+    The first click does nothing.
+
+    The second click does nothing.
+
+    There is no interaction to discover.
+    */
+
+    document.addEventListener(
+        "click",
+        () => {}
+    );
+
+
+    /*
+    -------------------------------------------------------------------------
+    Keyboard.
+    -------------------------------------------------------------------------
+
+    No ESC.
+    No ENTER.
+    No hidden menu.
+
+    The interface does not need to be opened.
+
+    It is already open.
+    */
+
+    document.addEventListener(
+        "keydown",
+        () => {}
+    );
+
+
+</script>
+
+</body>
+</html>
+```
