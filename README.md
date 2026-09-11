@@ -158,6 +158,13 @@
 
 ---
 
+
+<img width="1672" height="941" alt="23452432423" src="https://github.com/user-attachments/assets/2735c527-5f9c-4ec2-9b7b-a77d72c5c99c" />
+
+
+
+
+
 ## 📊 `sessions/` — 120+ СЕССИЙ
 Сырые данные, на которых построен метод.
 
