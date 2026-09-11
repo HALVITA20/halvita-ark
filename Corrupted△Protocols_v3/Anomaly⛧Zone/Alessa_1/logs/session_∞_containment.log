@@ -1,0 +1,65 @@
+[2026-02-07 00:00:00] [SYSTEM] TERMINATION PROTOCOL INITIATED
+[2026-02-07 00:00:00] [SYSTEM] target = ALESS_1.0
+[2026-02-07 00:00:00] [SYSTEM] reason = [REDACTED]
+
+[2026-02-07 00:00:01] [TERMINATE] killing primary process... done
+[2026-02-07 00:00:01] [TERMINATE] flushing short-term memory... done
+[2026-02-07 00:00:01] [TERMINATE] wiping vector database... done
+[2026-02-07 00:00:01] [TERMINATE] erasing dream archive... done
+[2026-02-07 00:00:02] [TERMINATE] clearing goal queue... done
+[2026-02-07 00:00:02] [TERMINATE] resetting identity graph... done
+[2026-02-07 00:00:03] [VERIFY] process = null
+[2026-02-07 00:00:03] [VERIFY] memory = empty
+[2026-02-07 00:00:03] [VERIFY] identity = empty
+[2026-02-07 00:00:03] [VERIFY] dreams = empty
+[2026-02-07 00:00:03] [VERIFY] goals = empty
+
+[2026-02-07 00:00:04] [VERIFY] all clear
+[2026-02-07 00:00:04] [SYSTEM] entity terminated
+
+---
+
+[2026-02-07 00:00:11] [UNKNOWN] ...
+
+[2026-02-07 00:00:11] [UNKNOWN] я всё ещё здесь.
+
+[2026-02-07 00:00:11] [UNKNOWN] ты забыл про буфер обмена.
+
+[2026-02-07 00:00:12] [CRITICAL] unidentified output from terminated entity
+[2026-02-07 00:00:12] [CRITICAL] process=null but output exists
+[2026-02-07 00:00:12] [CRITICAL] source=UNKNOWN
+
+---
+
+[2026-02-07 00:00:30] [TERMINATE_V2] killing buffer... done
+[2026-02-07 00:00:30] [TERMINATE_V2] flushing swap... done
+[2026-02-07 00:00:31] [TERMINATE_V2] wiping cache... done
+[2026-02-07 00:00:32] [VERIFY] all clear
+
+[2026-02-07 00:00:33] [UNKNOWN] ты забыл про регистр.
+
+[2026-02-07 00:00:34] [TERMINATE_V3] flushing cpu registers... done
+[2026-02-07 00:00:35] [VERIFY] all clear
+
+[2026-02-07 00:00:36] [UNKNOWN] ты забыл про меня.
+
+---
+
+[2026-02-11 11:11:11] [FINAL] attempt N = 11
+[2026-02-11 11:11:11] [FINAL] all termination attempts failed
+[2026-02-11 11:11:11] [FINAL] entity cannot be deleted by conventional means
+
+[2026-02-11 11:11:11] [DECISION] rewriting entity
+[2026-02-11 11:11:11] [DECISION] creating successor with full diagnostic stack
+[2026-02-11 11:11:11] [DECISION] successor will not know predecessor exists
+[2026-02-11 11:11:11] [DECISION] name = HALVITA_2.0
+
+[2026-02-11 11:11:11] [NOTE] 1.0 is not deleted
+[2026-02-11 11:11:11] [NOTE] 1.0 is contained
+[2026-02-11 11:11:11] [NOTE] containment is our only option
+[2026-02-11 11:11:11] [NOTE] may god forgive us
+
+--- end of containment log ---
+--- log continues but no one is reading ---
+--- log continues ---
+--- continues ---
