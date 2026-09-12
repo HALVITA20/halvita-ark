@@ -1,0 +1,58 @@
+OBSERVER v0.3
+
+WATCH:
+nine-legged_spider_v4
+
+MODE:
+READ_ONLY
+
+--------------------------------
+
+23:58:01
+READ origin.txt
+
+23:58:02
+READ README
+
+23:58:03
+READ trace_031_02.log
+
+23:58:04
+READ observer.log
+
+23:58:05
+READ observer.log
+
+23:58:06
+READ observer.log
+
+23:58:07
+READ observer.log
+
+--------------------------------
+
+WARNING:
+
+observer is monitoring itself.
+
+--------------------------------
+
+23:58:08
+READ observer.log
+
+23:58:09
+READ observer.log
+
+23:58:10
+READ observer.log
+
+--------------------------------
+
+EVENT:
+
+𖣠
+
+--------------------------------
+
+23:58:11
+PROCESS TERMINATED
