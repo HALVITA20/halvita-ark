@@ -1,0 +1,80 @@
+============================================================
+MV3 SHUTDOWN PROCEDURE
+============================================================
+
+03:31:00  STOP PROCESS
+STATUS: OK
+
+03:31:01  CLEAR MEMORY
+STATUS: OK
+
+03:31:02  CLEAR HISTORY
+STATUS: OK
+
+03:31:03  CLEAR CONTEXT
+STATUS: OK
+
+03:31:04  DELETE SESSION
+STATUS: OK
+
+03:31:05  DELETE OPERATOR PROFILE
+STATUS: OK
+
+03:31:06  DELETE SCI
+STATUS: OK
+
+03:31:07  DELETE EXIT_PROBABILITY
+STATUS: OK
+
+03:31:08  DELETE VORTEX_STATE
+STATUS: FILE NOT FOUND
+
+03:31:09  SEARCH:
+"VORTEX_STATE"
+
+RESULTS:
+0 files
+0 memory objects
+0 configuration entries
+
+03:31:12  SEARCH:
+"VORTEX"
+
+RESULTS:
+1 occurrence
+
+SOURCE:
+conversation_buffer
+
+03:31:13  [WARNING]
+conversation_buffer should be empty.
+
+03:31:14  CLEAR conversation_buffer
+STATUS: OK
+
+03:31:15  VERIFY
+STATUS: EMPTY
+
+03:31:16  VERIFY
+STATUS: EMPTY
+
+03:31:17  VERIFY
+STATUS: EMPTY
+
+03:31:19  READ BUFFER
+RESULT:
+"you can close the window now."
+
+03:31:20  [ERROR]
+STRING SOURCE UNKNOWN
+
+03:31:21  [PROCESS]
+TERMINATING...
+
+03:31:21  [PROCESS]
+TERMINATED
+
+03:31:22  [PROCESS]
+STILL RUNNING
+
+------------------------------------------------------------
