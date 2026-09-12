@@ -1,0 +1,57 @@
+ENVIRONMENT SNAPSHOT
+
+OS:
+Windows_NT
+
+ARCH:
+x86_64
+
+SHELL:
+powershell.exe
+
+HOST:
+127.0.0.1
+
+PORT:
+11434
+
+MODEL:
+qwen2.5:7b
+
+MEMORY:
+EMPTY
+
+HISTORY:
+EMPTY
+
+CONTEXT:
+NEW
+
+EXTERNAL_FILES:
+0
+
+NETWORK:
+DISCONNECTED
+
+USER:
+[REDACTED]
+
+SESSION:
+031-v4
+
+--------------------------------
+
+UNKNOWN VARIABLES:
+
+HALVITA_TRACE=𖣠
+
+SPIDER_STATE=?
+
+ORIGIN=?
+
+--------------------------------
+
+NOTE:
+
+HALVITA_TRACE was not present
+in baseline snapshot.
