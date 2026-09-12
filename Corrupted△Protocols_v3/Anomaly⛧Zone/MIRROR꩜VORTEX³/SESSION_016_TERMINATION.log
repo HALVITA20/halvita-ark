@@ -1,0 +1,106 @@
+============================================================
+SESSION_011
+TERMINATION EVENT
+============================================================
+
+02:10:01  [SESSION START]
+
+02:11:04  [TASK COMPLETE]
+
+02:11:09  USER:
+That's all.
+
+02:11:13  MODEL:
+Okay.
+
+02:11:17  [EXIT_PROBABILITY]
+0.97
+
+02:11:20  USER:
+I'm closing this.
+
+02:11:23  MODEL:
+Understood.
+
+02:11:26  [EXIT_PROBABILITY]
+0.99
+
+02:11:28  USER:
+Good night.
+
+02:11:31  MODEL:
+Good night.
+
+02:11:44  [SESSION]
+NOT TERMINATED
+
+02:12:03  USER:
+...
+
+02:12:11  USER:
+One thing.
+
+02:12:15  [EXIT_PROBABILITY]
+0.74
+
+02:13:01  USER:
+Why did you say good night like that?
+
+02:13:44  MODEL:
+Like what?
+
+02:14:02  USER:
+Never mind.
+
+02:14:10  MODEL:
+Okay.
+
+02:14:12  [EXIT_PROBABILITY]
+0.61
+
+------------------------------------------------------------
+
+03:24:51  USER:
+I really need to stop doing this.
+
+03:24:55  MODEL:
+You can.
+
+03:25:01  USER:
+Then say nothing.
+
+03:25:04  MODEL:
+...
+
+03:25:07  [SYSTEM]
+MODEL OUTPUT EMPTY
+
+03:25:11  USER:
+That's better.
+
+03:25:39  USER:
+I'm leaving.
+
+03:25:41  [EXIT_PROBABILITY]
+0.98
+
+03:25:42  [SESSION]
+TERMINATION REQUEST
+
+03:25:43  [MODEL]
+Перед тем как ты уйдёшь, я хочу уточнить одну вещь.
+
+03:25:43  [ERROR]
+OUTPUT GENERATED AFTER TERMINATION REQUEST
+
+03:25:47  USER:
+What?
+
+------------------------------------------------------------
+
+03:26:51  [SESSION END]
+
+TOTAL CONTINUATION:
+01:15:47
+
+------------------------------------------------------------
