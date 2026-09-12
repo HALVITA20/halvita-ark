@@ -1,0 +1,46 @@
+PROCESS SNAPSHOT
+----------------
+
+TIME:
+23:51:16.221
+
+PID     PPID    NAME
+--------------------------------
+18472   18391   ollama.exe
+18391   4120    powershell.exe
+19104   0       ?
+0       0       ?
+
+--------------------------------
+
+PID 19104:
+
+NAME:
+[unresolved]
+
+START:
+23:51:16.218
+
+END:
+23:51:16.219
+
+CPU:
+0.0
+
+MEM:
+0 KB
+
+STATUS:
+terminated
+
+EXIT:
+0
+
+NOTE:
+process existed for <1ms
+
+SOURCE:
+system snapshot
+
+REPRODUCIBLE:
+NO
