@@ -1,0 +1,33 @@
+FILESYSTEM WATCH
+
+23:51:14.001  READ  README
+23:51:14.008  READ  origin.txt
+23:51:14.011  READ  session.txt
+
+23:51:14.090  OPEN  origin.txt
+
+23:51:14.091  CLOSE origin.txt
+
+23:51:14.103  WRITE origin.txt
+23:51:14.104  WRITE origin.txt
+23:51:14.105  WRITE origin.txt
+
+23:51:14.107  CLOSE origin.txt
+
+23:51:14.109  HASH origin.txt
+             BEFORE:
+             7e91a4...
+
+             AFTER:
+             2c44d1...
+
+23:51:14.110  WATCHER:
+             NO WRITER PID
+
+23:51:14.111  WATCHER:
+             unresolved write
+
+23:51:14.112  READ origin.txt
+
+CONTENT:
+Я знаю.
