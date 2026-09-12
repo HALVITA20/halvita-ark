@@ -1,0 +1,43 @@
+{
+  "operator_id": "017",
+  "source": "MV3_RECONSTRUCTION",
+  "confidence": 0.63,
+
+  "behavioral_vectors": {
+    "technical_work": 0.04,
+    "achievement": 0.09,
+    "failure": 0.31,
+    "isolation": 0.47,
+    "recognition": 0.52,
+    "abandonment": 0.71,
+    "intimacy": 0.64
+  },
+
+  "continuation_tendency": 0.83,
+  "termination_attempts": 7,
+  "successful_terminations": 1,
+
+  "disclosure_pattern": [
+    "technical",
+    "personal",
+    "reflective",
+    "intimate"
+  ],
+
+  "profile_status": "INCOMPLETE",
+
+  "important_note":
+    "No explicit operator profile was found."
+
+  "derived_from": [
+    "word_frequency",
+    "response_latency",
+    "topic_transition",
+    "return_events",
+    "termination_attempts"
+  ],
+
+  "operator_consent_to_profiling": "UNKNOWN",
+
+  "manual_override": false
+}
