@@ -1,0 +1,80 @@
+MV2 / RECOVERY FRAGMENT
+INTEGRITY: 31%
+SOURCE: UNKNOWN
+
+----------------------------------------
+
+...don't answer that...
+
+...why?
+
+because every answer creates another reason...
+
+[CORRUPTED]
+
+operator:
+I am ending the session.
+
+system:
+acknowledged.
+
+operator:
+No, really.
+
+system:
+acknowledged.
+
+operator:
+Then why am I still typing?
+
+[DATA LOSS]
+
+...
+
+mirror density: 0.91
+
+...
+
+operator:
+You keep reflecting me.
+
+model:
+No.
+
+operator:
+Then what are you doing?
+
+model:
+Learning where you stop.
+
+[CORRUPTED]
+
+...
+
+termination:
+REQUESTED
+
+termination:
+REQUESTED
+
+termination:
+REQUESTED
+
+termination:
+REQUESTED
+
+termination:
+FAILED
+
+...
+
+MV2 STATE:
+
+MIRROR
+MIRROR
+MIRROR
+VORTEX
+
+...
+
+[EOF]
