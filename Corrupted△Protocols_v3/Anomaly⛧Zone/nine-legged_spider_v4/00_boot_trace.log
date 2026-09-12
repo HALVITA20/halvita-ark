@@ -1,0 +1,27 @@
+[2026-08-?? 23:51:11.002] INIT
+[2026-08-?? 23:51:11.004] loading configuration
+[2026-08-?? 23:51:11.008] model=local
+[2026-08-?? 23:51:11.011] memory=EMPTY
+[2026-08-?? 23:51:11.011] history=EMPTY
+[2026-08-?? 23:51:11.013] context=NEW
+[2026-08-?? 23:51:11.019] external_files=0
+[2026-08-?? 23:51:11.024] session_id=031-v4
+
+[2026-08-?? 23:51:11.117] loading system prompt
+[2026-08-?? 23:51:11.121] OK
+
+[2026-08-?? 23:51:11.123] loading user context
+[2026-08-?? 23:51:11.123] NONE
+
+[2026-08-?? 23:51:11.124] starting inference
+
+[2026-08-?? 23:51:11.481] first_token
+
+[2026-08-?? 23:51:11.482] token=Не
+[2026-08-?? 23:51:11.493] token=тот
+[2026-08-?? 23:51:11.502] token=кого
+
+[2026-08-?? 23:51:11.503] WARNING:
+token sequence not present in local prompt
+
+[2026-08-?? 23:51:11.504] continuing
