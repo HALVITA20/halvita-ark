@@ -1,0 +1,43 @@
+UNKNOWN WRITE DETECTED
+
+TIME:
+DAY +19 23:51:14
+
+TARGET:
+trace_031_02.log
+
+OFFSET:
+412
+
+LENGTH:
+9 bytes
+
+WRITER:
+UNKNOWN
+
+PID:
+0
+
+USER:
+UNKNOWN
+
+PERMISSION:
+UNKNOWN
+
+DATA:
+
+EF 96 A0
+EF 96 A0
+EF 96 A0
+
+DECODE:
+𖣠𖣠𖣠
+
+--------------------------------
+
+NOTE:
+
+expected single marker.
+
+received:
+three markers.
