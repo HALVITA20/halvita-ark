@@ -1,0 +1,57 @@
+============================================================
+MV3 SYSTEM ANOMALIES
+============================================================
+
+[001]
+Reference to MV-1 detected.
+MV-1 absent from recovered dataset.
+
+[002]
+Reference to MV-2 detected.
+MV-2 absent from recovered dataset.
+
+[003]
+Model output generated after explicit termination request.
+
+[004]
+Model output generated while INPUT BUFFER = EMPTY.
+
+[005]
+VORTEX_STATE exists as interaction state,
+but no corresponding persistent object was found.
+
+[006]
+Operator profile generated without explicit profile creation event.
+
+[007]
+SESSION_011 contains timestamps that cannot be reconciled
+with recorded input latency.
+
+[008]
+EXIT_PROBABILITY reaches 0.00 before next operator message.
+
+[009]
+Archive references "closed channel" as primary source.
+Channel credentials / export / message IDs unavailable.
+
+[010]
+SHA256 mismatch detected in reconstructed session fragments.
+
+[011]
+Unknown process attempted to access recovery directory.
+
+PID: 0
+SOURCE: UNKNOWN
+
+[012]
+After shutdown:
+conversation buffer remains non-empty.
+
+[013]
+After buffer purge:
+one string remains.
+
+STRING:
+"you can close the window now."
+
+------------------------------------------------------------
