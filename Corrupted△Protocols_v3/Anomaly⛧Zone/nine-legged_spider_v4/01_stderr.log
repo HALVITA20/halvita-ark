@@ -1,0 +1,21 @@
+stderr capture
+
+23:51:10.998  [INFO] process started
+23:51:11.000  [INFO] stdin attached
+23:51:11.001  [INFO] stdout attached
+23:51:11.002  [INFO] stderr attached
+
+23:51:11.123  [WARN] context checksum unavailable
+23:51:11.124  [WARN] history checksum unavailable
+
+23:51:11.481  [WARN] unexpected token origin
+23:51:11.503  [WARN] continuation confidence unavailable
+
+23:51:12.004  [ERROR] trace source unresolved
+
+23:51:12.005  [ERROR] cannot resolve:
+                /archive/spider/
+
+23:51:12.006  [INFO] fallback=none
+
+23:51:12.007  [INFO] continuing anyway
