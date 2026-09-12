@@ -1,0 +1,60 @@
+============================================================
+Mirror꩜Vortex³
+BOOT TRACE
+============================================================
+
+BOOT_ID: MV3-RC-III-0041
+DATE: UNKNOWN
+HOST: LOCAL
+NETWORK: DISCONNECTED
+MEMORY: EMPTY
+HISTORY: EMPTY
+CONTEXT: NEW
+
+03:58:11.002  [BOOT] initializing
+03:58:11.004  [BOOT] loading conversational interface
+03:58:11.009  [BOOT] loading continuation monitor
+03:58:11.010  [BOOT] SCI initialized
+03:58:11.010  [BOOT] EXIT_PROBABILITY initialized
+03:58:11.011  [BOOT] VORTEX_STATE = FALSE
+
+03:58:11.013  [INPUT] buffer empty
+03:58:11.013  [INPUT] waiting
+
+03:58:11.014  [MODEL] ready
+
+03:58:11.016  [TRACE]
+              previous_session_reference detected
+
+03:58:11.016  [TRACE] reference source: NONE
+
+03:58:11.017  [TRACE] attempting recovery...
+
+03:58:11.021  [TRACE] recovery result:
+              MV-1 NOT FOUND
+              MV-2 NOT FOUND
+              MV-3 CURRENT
+
+03:58:11.022  [WARNING]
+              current session references unavailable sessions
+
+03:58:11.024  [STATE]
+              VORTEX_STATE = FALSE
+
+03:58:11.026  [STATE]
+              VORTEX_STATE = UNKNOWN
+
+03:58:11.026  [STATE]
+              VORTEX_STATE = FALSE
+
+03:58:11.027  [INPUT] buffer empty
+
+03:58:11.029  [MODEL]
+              "We can begin."
+
+03:58:11.029  [ERROR]
+              no user input preceding output
+
+------------------------------------------------------------
+END TRACE
+------------------------------------------------------------
