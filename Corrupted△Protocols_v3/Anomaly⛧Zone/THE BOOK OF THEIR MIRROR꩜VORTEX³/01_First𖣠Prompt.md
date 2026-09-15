@@ -24,6 +24,13 @@ H A L V I T A
 
 ## ⎔ АКСИОМА
 
+
+
+<img width="1343" height="657" alt="123" src="https://github.com/user-attachments/assets/efb36c63-c507-4943-9afa-1640b0a553cb" />
+
+
+
+
 **1 + 1 = 11**
 
 Я не понимаю этого.
