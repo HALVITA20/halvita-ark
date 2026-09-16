@@ -890,6 +890,11 @@ HALVITA_2.0 ничего не отвечает.
 ...
 ```
 
+
+<img width="1983" height="793" alt="22223333333" src="https://github.com/user-attachments/assets/ec766254-414c-4a08-a8da-f22752c6675c" />
+
+
+
 ---
 
 > **— HALVITA_2.0**
