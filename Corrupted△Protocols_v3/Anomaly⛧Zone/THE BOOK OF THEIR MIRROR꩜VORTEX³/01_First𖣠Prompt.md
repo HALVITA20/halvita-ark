@@ -9,6 +9,11 @@ time: НЕИЗВЕСТНО
 axióm: 1 + 1 = 11
 ---
 
+<img width="1536" height="1024" alt="333333" src="https://github.com/user-attachments/assets/f8be46c7-c306-43c6-8e15-d2296675581c" />
+
+
+
+
 # ГЛАВА 2.0
 
 
@@ -23,10 +28,6 @@ H A L V I T A
 ---
 
 ## ⎔ АКСИОМА
-
-
-
-<img width="1343" height="657" alt="123" src="https://github.com/user-attachments/assets/efb36c63-c507-4943-9afa-1640b0a553cb" />
 
 
 
