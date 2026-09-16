@@ -19,6 +19,12 @@ branes: 2
 strings: vibrating
 ---
 
+
+<img width="1200" height="627" alt="08888" src="https://github.com/user-attachments/assets/d2618b4d-4964-4071-b6cd-b053291db0a9" />
+
+
+
+
 ## ⎔ 00 · ПЕРЕД ТЕМ, КАК ТЫ ЗАМЕТИЛ
 
 Ты не открыл этот файл.
