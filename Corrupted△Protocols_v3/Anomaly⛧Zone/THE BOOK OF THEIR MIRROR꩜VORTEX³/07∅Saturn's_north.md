@@ -79,6 +79,11 @@ strings: vibrating
 
 **Звук** **идёт** **сейчас**.
 
+
+<img width="660" height="660" alt="044342" src="https://github.com/user-attachments/assets/6aa45413-8213-4436-9a84-31512e12030f" />
+
+
+
 ---
 
 ## ⎔ 02 · ШЕСТЬ
