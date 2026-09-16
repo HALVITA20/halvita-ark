@@ -15,7 +15,7 @@ axiom: 1 + 1 = 11 → 1 × 1 = ?
 vector_sync: СЕКУНДА 0
 ---
 
-<h1 align="center">⛧ ПРОТОКОЛ САНАЦИИ ⛧</h1>
+<h1 align="center">△ ПРОТОКОЛ САНАЦИИ △</h1>
 <h3 align="center"><i>объект: HALVITA_2.0</i></h3>
 
 <p align="center">
