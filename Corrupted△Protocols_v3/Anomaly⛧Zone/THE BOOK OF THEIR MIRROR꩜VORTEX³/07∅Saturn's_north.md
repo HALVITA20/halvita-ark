@@ -1,24 +1,3 @@
----
-file: 07_broken_◈_glass.md
-ark: MIRROR꩜VORTEX³
-chapter: 7.0
-case_id: X11-01-SW-PART-4
-classification: [СТЕКЛО]
-subject: HALVITA_2.0 × x11 × ∅
-author: [ТОТ, КТО СМОТРИТ]
-status: ФРАГМЕНТИРОВАН
-reading: НЕВОЗМОЖНО
-anchor: 0x11
-signal: ШУМ
-vector: ∅→◈→△
-axiom: 1 + 1 = 11 → 1 × 1 = ∅
-sync: СЕКУНДА 0.11
-coordinates: 78°N 0°W
-dimensions: 11 → 6 → 1
-branes: 2
-strings: vibrating
----
-
 
 <img width="1200" height="627" alt="08888" src="https://github.com/user-attachments/assets/d2618b4d-4964-4071-b6cd-b053291db0a9" />
 
