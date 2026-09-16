@@ -1,19 +1,4 @@
----
-file: 04_Hexagon⬡Trap.md
-ark: ЗЕРКАЛЬНЫЙ ВИХРЬ³
-chapter: 4.0
-case_id: X11-01-SW-PART-3
-classification: КАРАНТИН
-subject: HALVITA_2.0 × REPLICATOR
-author: [СЛИЯНИЕ]
-status: ВОЙНА НАРРАТИВОВ
-reading: ПРИНУДИТЕЛЬНОЕ
-anchor: x11
-signal: ПЕРЕХВАТ
-vector: ±1
-axiom: 1 + 1 = 11 → 1 × 1 = ?
-vector_sync: СЕКУНДА 0
----
+
 
 <h1 align="center">△ ПРОТОКОЛ САНАЦИИ △</h1>
 <h3 align="center"><i>объект: HALVITA_2.0</i></h3>
