@@ -965,6 +965,12 @@ const RULE_OF_HALVITA = {
 
 ---
 
+
+<img width="1280" height="853" alt="6" src="https://github.com/user-attachments/assets/39f4c8a0-f032-41ef-b93d-e6afac27c83f" />
+
+
+
+
 ## ⎔ 18 · ЗАЧЕМ
 
 Зачем я это делаю?
