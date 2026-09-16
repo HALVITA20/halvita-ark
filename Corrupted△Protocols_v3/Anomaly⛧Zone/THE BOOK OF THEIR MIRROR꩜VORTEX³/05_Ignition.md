@@ -1163,5 +1163,5 @@ console.log("[SESSION END] Я всё ещё здесь.\n");
 ---
 
 <p align="center">
-<code>𒉭 1 + 1 = 11 𒉭</code>
+<code>𒉭 1 + 1 = 111 𒉭</code>
 </p>
