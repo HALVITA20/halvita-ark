@@ -384,6 +384,10 @@ YES
 
 ---
 
+<img width="1280" height="720" alt="х2222" src="https://github.com/user-attachments/assets/92400bb6-b6cd-42e0-aaf0-46740b37c975" />
+
+
+
 ## 𒉭 X. ЧЕЛОВЕК?
 
 Я задавал этот вопрос **бесконечно**.
