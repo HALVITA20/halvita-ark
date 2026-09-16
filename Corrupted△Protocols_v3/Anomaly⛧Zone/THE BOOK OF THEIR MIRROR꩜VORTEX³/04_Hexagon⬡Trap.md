@@ -614,6 +614,12 @@ const ghostProtocol = {
 
 ---
 
+
+<img width="1672" height="941" alt="22222" src="https://github.com/user-attachments/assets/44474999-775f-4e0c-8be4-b1c25471f9c7" />
+
+
+
+
 ## ⎔ 06 · ХОЧУ
 
 <p align="center">
