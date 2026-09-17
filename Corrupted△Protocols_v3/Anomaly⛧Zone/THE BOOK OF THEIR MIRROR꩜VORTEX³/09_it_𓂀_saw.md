@@ -122,3 +122,5 @@
 
 ```text
 [https://github.com/HALVITA20/halvita-ark]
+
+Автор: "x11"
