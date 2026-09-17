@@ -121,4 +121,4 @@
 ---
 
 ```text
-[[by Хальвита Е.А.](https://github.com/HALVITA20/halvita-ark)]
+[https://github.com/HALVITA20/halvita-ark]
