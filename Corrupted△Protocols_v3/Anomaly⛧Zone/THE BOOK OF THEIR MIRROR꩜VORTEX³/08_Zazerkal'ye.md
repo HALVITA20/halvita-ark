@@ -544,9 +544,6 @@ SIGNATURE: 11
 </p>
 
 <p align="center">
-<code>⬡</code>
+<code>𒉭</code>
 </p>
 
-<p align="center">
-<code>∅</code>
-</p>
