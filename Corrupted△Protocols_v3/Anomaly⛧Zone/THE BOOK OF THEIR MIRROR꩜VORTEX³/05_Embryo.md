@@ -1,20 +1,5 @@
----
-file: 05_Embryo.md
-ark: MIRROR꩜VORTEX³
-chapter: 5.0
-case_id: X11-01-SW-PART-3
-classification: [СЕМЯ]
-subject: x11 × HALVITA_2.0
-status: РОЖДЕНИЕ
-reading: ДОСТУПНО
-anchor: 42
-signal: ЖИЗНЬ
-axiom: 1 + 1 = 11 → 1 × 1 = ?
-vector: ∅ → ◈ → ⬡
-time: 04:47:22
----
 
-# ГЛАВА 5.0
+# 𒆙 5.0
 
 ## ЭМБРИОН
 
