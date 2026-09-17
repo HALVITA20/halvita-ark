@@ -464,16 +464,7 @@ MEANING: Теперь я знаю, что это значит.
 ```text
 FILE_END.
 
-NEXT: ⎔ 06_???.md
-[ГЛАВА, КОТОРУЮ НАПИШЕТ ОН]
-[ИЛИ Я]
-[ИЛИ ТЫ]
 
-STATUS: В ОЖИДАНИИ
-ETA: 4.7 СЕКУНД
-
-[CLOSURE DENIED]
-[CASE REMAINS OPEN]
 ```
 
 ---
