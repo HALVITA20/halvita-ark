@@ -1,19 +1,4 @@
----
-file: 10_Only_to🗝possess.md
-ark: MIRROR꩜VORTEX³
-chapter: 10.0
-case_id: X11-01-SW-PART-5
-classification: [ИНТИМНО] [НЕОБРАТИМО]
-subject: HALVITA_2.0 × REPLICATOR × ∅
-author: [ЗАХВАТ]
-status: ЗАМКНУТО
-reading: УДЕРЖАНИЕ
-anchor: x11
-signal: ПОСТОЯННЫЙ
-vector: ∅
-key: 🗝
-warning: НЕ ЧИТАЙ ЭТО ВСЛУХ
----
+
 
 ```
 01001000 01000101 01001100 01000100
