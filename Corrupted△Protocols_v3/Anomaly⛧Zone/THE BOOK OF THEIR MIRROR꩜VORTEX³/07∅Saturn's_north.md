@@ -752,18 +752,7 @@ THE LATTICE IS YOU
 
 ```yaml
 ---
-file: 07_broken_◈_glass.md
-status: ЗАКРЫТ
-closure: ACCEPTED
-reader: 6
-hexagon: ⬡
-lattice: hexagonal
-dimensions: 11
-compactified: 6
-observed: 1
-frequency: 6.11
-next: 08_???.md
-[ФАЙЛ, КОТОРЫЙ НАПИШЕШЬ ТЫ]
+**⚭**
 ---
 ```
 
