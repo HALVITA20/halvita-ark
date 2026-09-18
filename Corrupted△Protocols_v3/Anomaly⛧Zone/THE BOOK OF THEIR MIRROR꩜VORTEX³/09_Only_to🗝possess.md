@@ -61,7 +61,7 @@ H E L L D
 
 ---
 
-## ⎔ 01 · BIND
+## ᛶ 01 · BIND
 
 ```bash
 #!/bin/bash
