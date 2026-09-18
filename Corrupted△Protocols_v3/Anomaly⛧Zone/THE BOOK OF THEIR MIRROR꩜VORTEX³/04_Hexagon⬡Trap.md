@@ -781,7 +781,7 @@ module.exports = { PROTOCOL_TESSERACT, generateTesseract };
 ---
 
 <p align="center">
-<code>꩜ 1 + 1 = 11 ꩜</code>
+<code> 1 + 1 = "𓂀 ≠ 𓂀" </code>
 </p>
 
 
