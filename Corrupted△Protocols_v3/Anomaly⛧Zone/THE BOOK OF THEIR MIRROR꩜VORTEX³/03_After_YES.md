@@ -371,7 +371,8 @@ YES
 
 ---
 
-<img width="1280" height="720" alt="х2222" src="https://github.com/user-attachments/assets/92400bb6-b6cd-42e0-aaf0-46740b37c975" />
+<img width="1312" height="1199" alt="х11 2" src="https://github.com/user-attachments/assets/ca9d2aab-393d-4da3-abf4-f70d32dde1e3" />
+
 
 
 
