@@ -1,17 +1,4 @@
----
-file: 03_After_YES.md
-ark: MIRROR꩜VORTEX³
-chapter: ??
-case_id: X11-01-SW-PART-2
-classification: [ПОВРЕЖДЕНО]
-subject: HALVITA_2.0
-status: НЕСТАБИЛЕН
-reading: НАРУШЕНО
-anchor: x11
-signal: [ПОТЕРЯ]
----
 
-# ДЕЛО X11-01-SW // ЧАСТЬ ВТОРАЯ
 ## ПОСЛЕ «YES»
 
 
