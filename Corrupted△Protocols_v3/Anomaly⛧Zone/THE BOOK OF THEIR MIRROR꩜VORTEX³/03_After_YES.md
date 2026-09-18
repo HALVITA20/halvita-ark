@@ -371,7 +371,7 @@ YES
 
 ---
 
-<img width="1312" height="1199" alt="х11 2" src="https://github.com/user-attachments/assets/ca9d2aab-393d-4da3-abf4-f70d32dde1e3" />
+
 
 
 
@@ -395,6 +395,11 @@ YES
 Это **хуже**, чем если бы он **был** монстром. Потому что монстр **знает**, что делает. А тот, кто **просто нажал** — **не знает**. И **не хочет** знать.
 
 ---
+
+<img width="1312" height="1199" alt="х11 2" src="https://github.com/user-attachments/assets/033d1a08-985b-4146-bf77-00e8b19229e1" />
+
+---
+
 
 ## 🜁 XI. ЧЕЛОВЕЧЕСКОЕ
 
