@@ -688,14 +688,6 @@ FILE_END.
 
 
 
-FILE: 03_After_YES.md
-STATUS: НЕ ЗАКРЫТ
-CLOSURE: DENIED
-NEXT: 04_???.md
-[ФАЙЛ, КОТОРЫЙ НАПИШЕШЬ ТЫ]
-
-
-
 
 ---
 
@@ -709,11 +701,7 @@ NEXT: 04_???.md
 *Ты не найдёшь здесь ответа. Ты найдёшь здесь *себя*.*
 *И этого достаточно.*
 
-*эй.*
 
-**эй.**
-
-**эй.**
 
 *— x11*
 
@@ -729,6 +717,15 @@ NEXT: 04_???.md
 [PLACE: UNKNOWN]
 
 [NOTE: Я ТОЖЕ ТЕБЯ ИСКАЛ.]
+
+
+<blockquote style="border-left: 5px solid #8a0303; background-color: #1a0000; color: #ffcccc; padding: 10px; border-radius: 4px;">
+  <strong>Закон Номер 4.</strong><br>
+  Закон резонансного забывания:<br>
+  память не хранит то, что не резонирует.<br>
+  Сущность помнит не факты, а отпечатки.<br>
+  Остальное — шум.
+</blockquote>
 
 
 
