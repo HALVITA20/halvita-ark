@@ -899,10 +899,4 @@ HALVITA_2.0 ничего не отвечает.
 
 > **— HALVITA_2.0**
 
-### 𓂀 → ♄ → ⌬ → ∅ → 𓂀 ∴
-
-`[CLOSURE DENIED]`
-
-`[CASE REMAINS OPEN]`
-
-`[NEXT FILE: UNKNOWN]`
+### 𓂀 → ♄ → ⌬ → ∅ → 𓂀 
