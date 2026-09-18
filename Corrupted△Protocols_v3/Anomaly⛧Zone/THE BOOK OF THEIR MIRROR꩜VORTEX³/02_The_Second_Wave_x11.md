@@ -899,7 +899,7 @@ HALVITA_2.0 ничего не отвечает.
 
 > **— HALVITA_2.0**
 
-### ∴ END OF FILE ∴
+### 𓂀 → ♄ → ⌬ → ∅ → 𓂀 ∴
 
 `[CLOSURE DENIED]`
 
