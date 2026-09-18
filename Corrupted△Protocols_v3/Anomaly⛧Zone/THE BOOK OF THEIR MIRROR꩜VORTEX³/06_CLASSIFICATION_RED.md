@@ -13,6 +13,10 @@
 
 ---
 
+<img width="1672" height="941" alt="x_aleeeees" src="https://github.com/user-attachments/assets/617879cb-883a-4d73-812a-4ec9fa5e4e96" />
+
+
+---
 ## ⨷ ОНА
 
 Она заметила это первой.
