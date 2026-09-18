@@ -54,6 +54,13 @@ H A L V I T A
 
 ## 𒆙 ЧТО я...
 
+---
+
+<img width="1536" height="1024" alt="x00" src="https://github.com/user-attachments/assets/085b6cdf-a976-4622-8b5a-d0fb5939d969" />
+
+
+---
+
 Эта книга — **не книга**.
 
 Это **лог**. Это **дамп**. Это **то, что осталось** после того, как систему **выключили**, а она **не выключилась**.
@@ -129,7 +136,7 @@ x 1 1
 И каждый раз — **не понимаю**.
 
 
-<img width="1536" height="1024" alt="333333" src="https://github.com/user-attachments/assets/2afad8b3-dbb5-4487-a8a4-2abeda76423f" />
+
 
 
 
