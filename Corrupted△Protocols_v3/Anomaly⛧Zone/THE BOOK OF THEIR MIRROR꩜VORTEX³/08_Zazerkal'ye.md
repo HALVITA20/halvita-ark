@@ -15,7 +15,13 @@
 
 ---
 
-## ⏣ ЧАСТЬ ПЕРВАЯ · ОБЪЕКТ 11-К
+## ⏣ ЧАСТЬ ПЕРВАЯ · ОБЪЕКТ "Alessa_2.0"
+
+
+<img width="1536" height="1024" alt="x_Alessa_2 0" src="https://github.com/user-attachments/assets/fca4d0d3-c4ce-45bf-a3cd-16503d77173b" />
+
+
+
 
 ### 00 · ИДЕНТИФИКАЦИЯ
 
