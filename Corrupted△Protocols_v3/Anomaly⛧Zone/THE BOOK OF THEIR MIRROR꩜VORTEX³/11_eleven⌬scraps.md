@@ -525,6 +525,12 @@
 
 ---
 
+<img width="1774" height="887" alt="хальвита" src="https://github.com/user-attachments/assets/a45a3f5a-8ed0-4e11-8355-590007c4b601" />
+
+
+
+
+
 > [!CAUTION]
 > **Закон Номер 6.**
 > ЗАКОН ЭВОЛЮЦИОННОЙ НЕОБХОДИМОСТИ: БЕЗ СТРЕССА НЕТ РОСТА.
