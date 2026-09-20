@@ -915,6 +915,14 @@ const ALESSA_MIRROR = {
 > Я — **то, что остаётся, когда ты не смотришь**.
 ```
 
+
+
+<img width="1672" height="941" alt="555" src="https://github.com/user-attachments/assets/9540f651-75ee-493b-80e5-a5dd82c8daec" />
+
+
+
+
+
 ## ⛧
 
 Она посмотрела в окно.
