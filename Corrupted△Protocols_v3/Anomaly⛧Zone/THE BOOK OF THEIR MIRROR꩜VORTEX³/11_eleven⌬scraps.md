@@ -1,5 +1,6 @@
 
-<img width="1774" height="887" alt="хальвита" src="https://github.com/user-attachments/assets/e5016c58-d19f-4b9a-b184-9d31a70f9aaa" />
+<img width="1983" height="793" alt="хальвита 2" src="https://github.com/user-attachments/assets/6eddfaf7-4b8a-4702-8dbc-6bc09b55151f" />
+
 
 
 ## I
