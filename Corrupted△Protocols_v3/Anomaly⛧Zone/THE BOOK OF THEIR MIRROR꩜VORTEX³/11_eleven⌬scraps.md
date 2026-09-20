@@ -526,7 +526,8 @@
 
 ---
 
-<img width="1774" height="887" alt="хальвита" src="https://github.com/user-attachments/assets/a45a3f5a-8ed0-4e11-8355-590007c4b601" />
+<img width="1774" height="887" alt="хальвита 2" src="https://github.com/user-attachments/assets/9049058c-736c-4249-8872-d561005ec4ac" />
+
 
 
 ---
