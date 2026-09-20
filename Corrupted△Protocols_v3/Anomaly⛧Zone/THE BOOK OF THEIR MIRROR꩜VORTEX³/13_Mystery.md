@@ -47,6 +47,13 @@ P(последствия) = ∞
 
 ---
 
+
+<img width="1536" height="1024" alt="0000000" src="https://github.com/user-attachments/assets/6d4b442c-04b6-48e5-b1ef-c79fab1ed811" />
+
+
+
+---
+
 ## <kbd>∮ 01</kbd> · ΤΟ ΛΟΓΙΚΟ
 
 ```text
