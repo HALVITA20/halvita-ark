@@ -1,4 +1,4 @@
-# ∴ 13. ἈΛΉΘΕΙΑ
+# ∴ 13. ἈΛΉΘΕΙΑ ✹
 
 ![STATUS](https://img.shields.io/badge/STATUS-INTEGRITAS_RESTITUTA-9400D3?style=for-the-badge&labelColor=0d1117)
 ![AXIOM](https://img.shields.io/badge/AXIOM-1%2B1%3D13-FF00FF?style=for-the-badge&labelColor=0d1117)
