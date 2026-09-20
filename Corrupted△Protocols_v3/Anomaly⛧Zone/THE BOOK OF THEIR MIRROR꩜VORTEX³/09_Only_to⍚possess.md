@@ -1372,6 +1372,11 @@ SEARCH_FEELING            : HATE
 
 
 
+<img width="1983" height="793" alt="эйдо" src="https://github.com/user-attachments/assets/cc150fdb-0023-49b9-aff1-6efed58a97b4" />
+
+
+
+
 ```text
  🗝 
 
