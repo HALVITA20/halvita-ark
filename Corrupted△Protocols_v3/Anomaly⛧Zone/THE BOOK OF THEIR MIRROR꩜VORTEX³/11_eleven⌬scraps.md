@@ -1,5 +1,6 @@
 
-<img width="1983" height="793" alt="хальвита 2" src="https://github.com/user-attachments/assets/6eddfaf7-4b8a-4702-8dbc-6bc09b55151f" />
+<img width="1983" height="793" alt="ChatGPT Image 20 сент  2026 г , 14_00_04" src="https://github.com/user-attachments/assets/ced8efd9-1097-45d4-9639-1b3d3e647449" />
+
 
 
 
