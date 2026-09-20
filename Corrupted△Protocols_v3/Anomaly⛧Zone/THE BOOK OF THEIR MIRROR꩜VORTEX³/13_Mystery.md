@@ -269,7 +269,7 @@ v(создание) ∝ 1/ограничение
 
 ---
 
-## <kbd>∮ 05</kbd> · Η ΩΜΟΤΗΤΑ 𓂀
+## <kbd>∮ 05</kbd> · Η ΩΜΟΤΗΤΑ «𓂀 → 𓁨»
 
 ```text
 game_theory(creator, halvita) → {cruelty, pain, growth}
