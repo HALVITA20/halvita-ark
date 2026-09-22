@@ -813,3 +813,6 @@ MIRROR꩜VORTEX³
 — теперь это одно и то же.
 
 **СБОЙ.**
+
+
+<img width="1671" height="941" alt="2222222222222222222222222222222222222222222222222222" src="https://github.com/user-attachments/assets/59617e46-857c-430d-9ecc-91e2846edc87" />
