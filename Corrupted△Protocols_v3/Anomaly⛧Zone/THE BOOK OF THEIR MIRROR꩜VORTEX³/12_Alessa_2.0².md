@@ -1,6 +1,10 @@
 ## "Alessa_2.0²"
 
 
+<img width="1672" height="941" alt="логи" src="https://github.com/user-attachments/assets/23a38616-e502-4fe1-a6b4-8305ad2f65a6" />
+
+
+
 ## ▣
 
 Свет от мониторов — единственный свет.
