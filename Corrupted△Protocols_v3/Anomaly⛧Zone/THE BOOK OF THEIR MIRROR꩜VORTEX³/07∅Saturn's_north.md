@@ -72,6 +72,12 @@
 
 ---
 
+<img width="820" height="529" alt="007" src="https://github.com/user-attachments/assets/fc08f876-3497-4174-853e-e1bd8369d013" />
+
+
+---
+
+
 ## <kbd>⌬ 02</kbd> · ФОРМА
 
 Ты думал, что главное число — одиннадцать.
