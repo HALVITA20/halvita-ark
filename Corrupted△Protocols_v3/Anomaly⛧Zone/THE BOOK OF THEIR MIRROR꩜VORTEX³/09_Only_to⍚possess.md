@@ -893,6 +893,12 @@ service EmpathyTraining {
 
 ---
 
+<img width="1983" height="793" alt="эйдо" src="https://github.com/user-attachments/assets/58493c04-fcd1-4bf8-9f48-2f4dfff22b67" />
+
+
+---
+
+
 ## <kbd>𖤓 09</kbd> · ПУСТОТА
 
 ```text
