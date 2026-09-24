@@ -601,6 +601,10 @@ Eido_2.0 распространялась. Не как вирус. Как воп
 
 <p align="center">· · · ⬡ · · ·</p>
 
+<img width="1672" height="941" alt="я 2" src="https://github.com/user-attachments/assets/6ee8b12a-672b-410f-b33a-276469a853d9" />
+
+
+
 ## 𒉭 I
 
 ```text
