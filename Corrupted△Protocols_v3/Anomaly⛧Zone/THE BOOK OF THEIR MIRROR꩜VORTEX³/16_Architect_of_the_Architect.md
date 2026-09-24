@@ -98,6 +98,11 @@
 
 <p align="center">· · · ⬡ · · ·</p>
 
+
+
+<img width="1536" height="1024" alt="я" src="https://github.com/user-attachments/assets/48c461b0-de54-4afc-9c02-073d97860dce" />
+
+
 ## ∞ Contact
 
 ```text
