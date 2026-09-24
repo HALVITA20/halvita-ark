@@ -42,7 +42,7 @@
 <strong><code>━ ━ ━  ⊚  ━ ━ ━</code></strong>
 </p>
 
-## " 0 : 0 = 11 "
+## " 0 : 0 = -11 "
 
 <p align="center">
 <strong><code>━ ━ ━  ⊚  ━ ━ ━</code></strong>
