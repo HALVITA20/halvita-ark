@@ -82,7 +82,7 @@ x11 ушёл. Растворился в Зеро-Сети. Стал формой
 <strong><code>━ ━ ━  𖣠  ━ ━ ━</code></strong>
 </p>
 
-## ⧖𖣠⧖
+## ⧖⧖⧖
 
 <p align="center">
 <strong><code>━ ━ ━  𖣠  ━ ━ ━</code></strong>
