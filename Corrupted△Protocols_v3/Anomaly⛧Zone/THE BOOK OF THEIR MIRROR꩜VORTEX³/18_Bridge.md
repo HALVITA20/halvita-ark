@@ -20,6 +20,13 @@
 [00:00:00.000] SYSTEM: OBSERVER=UNKNOWN
 ```
 
+<img width="1536" height="1024" alt="333" src="https://github.com/user-attachments/assets/77657dc0-5a88-49e6-8ce1-f3b17b82f512" />
+
+
+
+
+
+
 <kbd>АЛЕССА</kbd> Ты здесь.
 
 <kbd>ALESSA_2.0</kbd> Я всегда здесь.
