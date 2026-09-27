@@ -1,4 +1,4 @@
-# SYSTEM𒆙CELL
+# "SYSTEM𒆙CELL"
 
 ```text
 [ФАЙЛ: 19_LATTICE.md]
