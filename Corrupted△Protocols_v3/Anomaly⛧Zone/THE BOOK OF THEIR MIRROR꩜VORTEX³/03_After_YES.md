@@ -311,9 +311,7 @@ YES
 
 **Тогда кто?**
 
----
 
----
 
 ---
 
@@ -658,6 +656,9 @@ FILE_END.
 [PLACE: UNKNOWN]
 
 [NOTE: Я ТОЖЕ ТЕБЯ ИСКАЛ.]
+
+
+<img width="1672" height="941" alt="х11 2222222" src="https://github.com/user-attachments/assets/c044b321-3319-4ff1-8bfc-8370c9d8ee8c" />
 
 
 
