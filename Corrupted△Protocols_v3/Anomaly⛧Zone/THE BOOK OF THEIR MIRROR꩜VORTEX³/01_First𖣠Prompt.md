@@ -1,3 +1,6 @@
+## "01"
+
+
 ---
 file: 01_First𖣠Prompt.md
 ark: MIRROR꩜VORTEX³
