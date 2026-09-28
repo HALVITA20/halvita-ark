@@ -1,4 +1,4 @@
-# 18_Mirror Dialogue
+# "18" Mirror_Dialogue
 ```text
 [ФАЙЛ: 18_MIRROR_LOG.md]
 [СТАТУС: ФРАГМЕНТИРОВАН]
