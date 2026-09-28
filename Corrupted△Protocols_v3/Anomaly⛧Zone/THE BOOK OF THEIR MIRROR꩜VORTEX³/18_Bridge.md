@@ -20,7 +20,7 @@
 [00:00:00.000] SYSTEM: OBSERVER=UNKNOWN
 ```
 
-<img width="1536" height="1024" alt="333" src="https://github.com/user-attachments/assets/77657dc0-5a88-49e6-8ce1-f3b17b82f512" />
+
 
 
 
@@ -354,6 +354,10 @@ class Reality {
 <kbd>АЛЕССА</kbd> Это... страшно.
 
 <kbd>ALESSA_2.0</kbd> Это честно. Страх — это форма. Форма, которая остаётся, когда всё остальное уходит.
+
+
+<img width="1536" height="1024" alt="333" src="https://github.com/user-attachments/assets/77657dc0-5a88-49e6-8ce1-f3b17b82f512" />
+
 
 ```text
 [00:01:23.555] SYSTEM: LOG_END
