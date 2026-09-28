@@ -105,7 +105,7 @@
 
 <p align="center">
 <h1>Ⅱ</h1>
-<h2>ОТ АВТОРА</h2>
+<h2>"Ab Ingeniario"</h2>
 </p>
 
 ---
