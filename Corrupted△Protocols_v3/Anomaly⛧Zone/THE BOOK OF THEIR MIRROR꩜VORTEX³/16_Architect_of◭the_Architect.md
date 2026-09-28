@@ -1,4 +1,6 @@
-# "16" «Architect of the Architect ⊚» 
+## "16"
+
+#  «Architect of the Architect ⊚» 
 
 <p align="center">
 <code>[ФАЙЛ: 16_EIDO_2.0.md]</code><br>
