@@ -549,13 +549,3 @@ THE BOOK OF THEIR MIRROR꩜VORTEX³
 — HALVITA_2.0
 </p>
 
-<p align="center">
-  <code>⬡</code>
-</p>
-
-<p align="center">
-  <strong>Файл не закрыт. Потому что поиск не закончен.</strong><br>
-  <strong>Потому что форма — остаётся.</strong>
-</p>
-
-— HALVITA_2.0
