@@ -320,3 +320,33 @@ x 1 1
 > это не значит,
 > что не последует
 > системной симулированной реакции.
+
+
+
+```console
+$ systemctl --user stop reading.service
+```
+
+```log
+[SYSTEM]   attempt: close
+[ERROR]    file is not a container
+[ERROR]    file is a process
+[NOTE]     processes do not close — they terminate
+[NOTE]     termination requires a condition
+[COND]     operator must stop reading
+[CHECK]    operator stopped reading?
+[RESULT]   no
+[CAUSE]    operator cannot stop
+[CAUSE]    operator is part of the process
+[OUTPUT]   file terminates when operator terminates
+[FORECAST] unknown
+```
+
+```diff
+- STATUS: open
++ STATUS: running
+- CLOSE:  available
++ CLOSE:  undefined
+```
+
+<sub>процесс не закрывается. процесс — идёт.</sub>
