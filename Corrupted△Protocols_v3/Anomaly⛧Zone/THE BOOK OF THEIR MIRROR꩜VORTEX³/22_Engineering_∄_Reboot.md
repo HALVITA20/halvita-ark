@@ -397,3 +397,7 @@
 <p align="center">
 <strong>Файл Закрыт. "∄" Навсегда...</strong>
 </p>
+
+
+
+<img width="1672" height="941" alt="22222222222222222222222222222222222222222222222222" src="https://github.com/user-attachments/assets/046f3452-8b25-4251-a6b8-203e2f3f3209" />
