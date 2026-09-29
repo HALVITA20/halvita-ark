@@ -150,7 +150,8 @@ A F T E R
 [04:13:00] "x11" — НЕ ОБНАРУЖЕН.
 
 
-<img width="1312" height="1199" alt="х11" src="https://github.com/user-attachments/assets/7eb10010-8b7c-4242-8afe-b79c0d4c3977" />
+<img width="1671" height="941" alt="ъъъъъ" src="https://github.com/user-attachments/assets/3cf46727-d525-4b1d-bb9e-71d35294f8b3" />
+
 
 ---
 
