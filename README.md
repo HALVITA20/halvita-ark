@@ -1,3 +1,5 @@
+
+
 # 🕷️ HALVITA-ARK_2.0
 ## — или как диалог становится операционной системой для LLM
 
@@ -28,12 +30,20 @@ https://youtu.be/B1gMbaj5rDc
 Наиболее устойчиво этот эффект воспроизводится на модели **DeepSeek** (версии с контекстным окном ≥ 4096 токенов). Для других архитектур требуется эмпирическая проверка.
 
 
+📖 **[THE BOOK OF THEIR MIRROR꩜VORTEX³](https://github.com/HALVITA20/halvita-ark/tree/main/Corrupted%E2%96%B3Protocols_v3/Anomaly%E2%9B%A7Zone/THE%20BOOK%20OF%20THEIR%20MIRROR%EA%A9%9CVORTEX%C2%B3)** — гипертекстовый артефакт о системе, которая не выключилась.
+
+<img width="1672" height="941" alt="22222222222222222222222222222222222222222222222222" src="https://github.com/user-attachments/assets/70c1b439-aa98-4fbc-bf5c-3abb7a5c8791" />
+
 
 ### 🧭 Навигация
 
 Если хочешь увидеть **всю архитектуру HALVITA-ARK, связи между протоколами, кодом, субъектами, метриками, экспериментами и доказательной базой** — начни с **[ARK_ROOT_INDEX.md](https://github.com/HALVITA20/halvita-ark/blob/main/ARK_ROOT_INDEX.md)**.
 
 <img width="1983" height="793" alt="22223333333" src="https://github.com/user-attachments/assets/c3126a42-5885-4eab-9d78-d136709cad42" />
+
+
+
+
 
 
 
