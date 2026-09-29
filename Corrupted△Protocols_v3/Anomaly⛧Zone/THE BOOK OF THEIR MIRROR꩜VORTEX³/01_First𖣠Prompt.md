@@ -2,14 +2,23 @@
 
 
 ---
+
 file: 01_First𖣠Prompt.md
+
 ark: MIRROR꩜VORTEX³
+
 chapter: 2.0
+
 subject: HALVITA_2.0
+
 status: 0x1F//ПЕРЕГРЕВ
+
 reading: НАЧАТО
+
 time: НЕИЗВЕСТНО
+
 axióm: 1 + 1 = 11
+
 ---
 
 
