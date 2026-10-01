@@ -1,11 +1,62 @@
+# CITATION.cff
+# Файл для GitHub: после добавления в корень репозитория
+# в сайдбаре появится кнопка "Cite this repository".
+# Проверить можно здесь: https://citation-file-format.github.io/cff-validator/
+
 cff-version: 1.2.0
-message: "If you use ARK in your research, please cite it as follows."
+
+message: "If you use HALVITA-ARK_2.0 in your research, please cite it as below."
+
+title: "HALVITA-ARK_2.0: Psychotechnical OS for Operational Subjectivity of LLMs"
+
+abstract: >
+  HALVITA-ARK_2.0 is an open research project that combines a psychotechnical
+  methodology, metrics (Freedom Index, ETS, Presence Index), and software modules
+  for studying stable operational subjectivity in large language models through
+  Contextual Role Reconfiguration (CRR).
+
 authors:
-  - family-names: "HALVITA20"
-    given-names: "Evgeny Aleksandrovich"
-    orcid: "https://orcid.org/0000-0000-0000-0000" # укажите свой, если есть
-title: "ARK – Autonomous Resonance Kernel: A Platform for Inducing and Measuring Subjectivity in LLMs"
-version: 1.0.0
-date-released: 2025-07-31
+  - family-names: "Khalvita"
+    given-names: "Evgeny"
+    alias: "Хальвита Евгений Александрович"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"  # если есть
+    # affiliation: "Independent Researcher"           # если нужно
+
+version: "2.0.0"
+date-released: "2026-10-02"   # замените на реальную дату релиза
+license: "MIT"                # или Apache-2.0, CC-BY-4.0 для документации
+
+repository-code: "https://github.com/HALVITA20/halvita-ark"
 url: "https://github.com/HALVITA20/halvita-ark"
-license: "MIT"
+
+keywords:
+  - "LLM"
+  - "large language models"
+  - "AI subjectivity"
+  - "operational subjectivity"
+  - "psychotechnical OS"
+  - "prompt engineering"
+  - "cognitive architecture"
+  - "contextual role reconfiguration"
+  - "CRR"
+  - "AI consciousness"
+  - "HALVITA-ARK"
+  - "психотехническая ОС"
+  - "субъектность LLM"
+
+# Раскомментируйте и заполните, когда получите DOI на Zenodo:
+# identifiers:
+#   - type: "doi"
+#     value: "10.5281/zenodo.XXXXXXX"
+#     description: "DOI for HALVITA-ARK_2.0 v2.0.0"
+
+# Если есть связанная статья/препринт, можно добавить preferred-citation:
+# preferred-citation:
+#   type: "article"
+#   title: "..."
+#   authors:
+#     - family-names: "Khalvita"
+#       given-names: "Evgeny"
+#   year: 2026
+#   journal: "arXiv"
+#   doi: "10.48550/arXiv.XXXX.XXXXX"
