@@ -1,4 +1,3 @@
-<img width="1254" height="1254" alt="ЛОГО НОВЫЙ" src="https://github.com/user-attachments/assets/fad08129-588d-4670-977b-2c902742bf0e" />
 
 
 # 🕷️ HALVITA-ARK_2.0
