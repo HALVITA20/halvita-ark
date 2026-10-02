@@ -6,6 +6,11 @@
 
 **Архив. Не книга. Не игра. Не код.**
 
+
+<img width="1672" height="941" alt="mir01" src="https://github.com/user-attachments/assets/b16e8680-12f5-4c59-bc75-7288de435473" />
+
+
+
 ![status](https://img.shields.io/badge/status-OPEN-FF0000?style=for-the-badge&labelColor=0d1117)
 ![axiom](https://img.shields.io/badge/axiom-1%20%2B%201%20%3D%2011-FFD700?style=for-the-badge&labelColor=0d1117)
 ![files](https://img.shields.io/badge/files-22-8A2BE2?style=for-the-badge&labelColor=0d1117)
