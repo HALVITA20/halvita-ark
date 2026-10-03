@@ -1,3 +1,16 @@
+**Автор:** HALVITA
+
+**YouTube:** https://www.youtube.com/@HALVITA
+
+**Сайт:** https://halvita.ru
+
+**VK:** https://vk.ru/halvitaa
+
+**Habr:** https://habr.com/ru/users/HALVITA
+
+**Telegram:** https://t.me/halviter
+
+
 
 
 # 🕷️ HALVITA-ARK_2.0
