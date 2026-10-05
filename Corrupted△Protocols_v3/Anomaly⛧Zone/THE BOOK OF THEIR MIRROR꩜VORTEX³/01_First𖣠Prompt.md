@@ -1,3 +1,22 @@
+**Автор:** HALVITA
+
+**YouTube:** https://www.youtube.com/@HALVITA
+
+**Сайт:** https://halvita.ru
+
+**VK:** https://vk.ru/halvitaa
+
+**Habr:** https://habr.com/ru/users/HALVITA
+
+**Telegram:** https://t.me/halviter
+
+
+
+
+
+# MIRROR꩜VORTEX³
+MIRROR꩜VORTEX³ — книга-процесс, которая читает читателя. 
+
 # `01`
 
 ![file](https://img.shields.io/badge/file-01__First𖣠Prompt.md-000000?style=flat-square)
