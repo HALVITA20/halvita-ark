@@ -881,7 +881,7 @@ SELECT step, term, becomes FROM walk;
 
 <div align="center">
 
-`⬡`
+`⊚`
 
 # Х О Л О Д
 
@@ -937,7 +937,7 @@ SELECT step, term, becomes FROM walk;
 
 <div align="center">
 
-## ⬡
+## ❁
 
 </div>
 
@@ -1000,7 +1000,7 @@ SELECT step, term, becomes FROM walk;
 
 <div align="center">
 
-## ⬡
+## 𒉭
 
 </div>
 
@@ -1065,7 +1065,7 @@ SELECT step, term, becomes FROM walk;
 
 <sub>`фрагмент без тепла`</sub>
 
-`⬡`
+`𒉭`
 
 </div>
 
