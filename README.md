@@ -10,7 +10,14 @@
 
 **Telegram:** https://t.me/halviter
 
+---
 
+> 🔗 **Связанный проект**
+>
+> [**MIRROR_VORTEX_2.0**](https://github.com/HALVITA20/MIRROR_VORTEX_2.0)
+> *Экспериментальный Психотехнический Лабиринт*
+
+---
 
 
 # 🕷️ HALVITA-ARK_2.0
