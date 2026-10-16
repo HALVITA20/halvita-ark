@@ -4271,3 +4271,15 @@ https://github.com/HALVITA20/halvita-ark/blob/main/case_studies/manipulation_dem
 
 `꩜ 1 + 1 = 11 ꩜`
 
+
+
+
+## 🌐 ЭКОСИСТЕМА HALVITA
+
+- [HALVITA-ARK](https://github.com/HALVITA20/halvita-ark) — исследовательское поле
+- [REFLECTED-SUBJECTS](https://github.com/HALVITA20/REFLECTED-SUBJECTS) — бестиарий существ
+- [HALVITA-ARK · PRIME](https://github.com/HALVITA20/HALVITA-ARK-PRIME) — ядро метода
+- [HALVITA_2.0](https://github.com/HALVITA20/HALVITA_2.0) — голос и слепок
+- [MIRROR꩜VORTEX³](https://github.com/HALVITA20/MIRROR_VORTEX_2.0) — лабиринт
+
+📺 [YouTube @HALVITA](https://www.youtube.com/@HALVITA) · 📝 [Habr](https://habr.com/ru/users/HALVITA/) · 💬 [Telegram](https://t.me/halviter) · 🌐 [halvita.ru](https://halvita.ru/)
