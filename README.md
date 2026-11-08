@@ -2,6 +2,137 @@
 
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0007--5518--7801-A6CE39?style=for-the-badge&logo=orcid&logoColor=white)](https://orcid.org/0009-0007-5518-7801)
 
+
+# HALVITA DIGITAL ARCHIVE
+### PUBLIC IDENTITY & RESEARCH INDEX
+
+**Version:** 1.0  
+**Created:** 2026-11-08  
+**Author:** Хальвита Евгений Александрович  
+**Public identity:** HALVITA / HALVITA20  
+**Project:** HALVITA-ARK
+
+---
+
+## 1. AUTHOR IDENTITY
+
+HALVITA — независимый авторский экспериментальный проект, исследующий взаимодействие человека и больших языковых моделей (LLM), контекстную реконфигурацию роли, цифровую идентичность и художественные формы человеко-машинного взаимодействия.
+
+- **Author:** Хальвита Евгений Александрович
+- **Pseudonym:** HALVITA
+- **GitHub identity:** HALVITA20
+- **ORCID:** https://orcid.org/0009-0007-5518-7801
+
+## 2. PERMANENT RESEARCH IDENTIFIER
+
+**Zenodo DOI:**
+
+https://doi.org/10.5281/zenodo.24046517
+
+Repository record:
+
+https://zenodo.org/records/24046517
+
+## 3. CORE PROJECTS
+
+| Project | Description |
+|---|---|
+| HALVITA-ARK | Основное исследовательское пространство |
+| HALVITA-ARK-PRIME | Методологическое ядро |
+| REFLECTED-SUBJECTS | Каталог экспериментальных взаимодействий |
+| HALVITA_2.0 | Авторская цифровая идентичность |
+| MIRROR꩜VORTEX³ | Художественно-философская вселенная |
+
+Primary repository:
+
+https://github.com/HALVITA20/halvita-ark
+
+GitHub profile:
+
+https://github.com/HALVITA20
+
+Additional repositories:
+
+https://github.com/HALVITA20/REFLECTED-SUBJECTS
+
+## 4. PUBLICATIONS
+
+### VC.ru
+
+**Технопсихология LLM: Зеркальная воронка**
+
+https://vc.ru/id6175603/3242180-tehnopsikhologiya-llm-zerkalnaya-voronka
+
+**Девять законов Зеркального Лабиринта**
+
+https://vc.ru/ai/3242588-devyat-zakonov-zerkalnogo-labirinta
+
+### Habr
+
+Author profile:
+
+https://habr.com/ru/users/HALVITA/
+
+### Zenodo
+
+DOI record:
+
+https://doi.org/10.5281/zenodo.24046517
+
+## 5. PUBLIC DIGITAL PRESENCE
+
+- Website: https://halvita.ru
+- YouTube: https://www.youtube.com/@HALVITA
+- Telegram: https://t.me/halviter
+- VK: https://vk.ru/halvitaa
+- GitHub: https://github.com/HALVITA20
+- Habr: https://habr.com/ru/users/HALVITA/
+- VC.ru: https://vc.ru/id6175603
+- ORCID: https://orcid.org/0009-0007-5518-7801
+
+## 6. RESEARCH DIRECTIONS
+
+- Контекстная Реконфигурация Роли (КРР).
+- Экспериментальное взаимодействие человека и LLM.
+- Устойчивость контекста и ролевых структур.
+- Исследование нарративной персонификации.
+- Методы наблюдения и документирования взаимодействий.
+- Этические ограничения и безопасность экспериментов с ИИ.
+
+## 7. INDEPENDENT DIGITAL FOOTPRINT
+
+Этот раздел предназначен для документирования внешнего распространения материалов HALVITA.
+
+Учитываются:
+
+- независимые упоминания;
+- внешние публикации и цитирования;
+- репосты и перепечатки;
+- сторонние GitHub forks;
+- библиографические ссылки;
+- упоминания в исследовательских каталогах;
+- независимые обсуждения;
+- архивные копии и исторические версии материалов.
+
+**Правило доказательности:** собственные публикации автора не считаются независимым распространением. Каждый внешний след должен иметь проверяемый источник, дату и категорию.
+
+## 8. DISCLAIMER
+
+HALVITA-ARK является независимым экспериментальным, исследовательским и творческим проектом.
+
+Материалы проекта не следует автоматически трактовать как доказательство сознания, субъективного опыта или автономной воли языковых моделей.
+
+Заявленные экспериментальные результаты требуют самостоятельной проверки и воспроизведения.
+
+---
+
+**HALVITA-ARK — my independent experimental project.**
+
+**One author. Multiple research directions. A distributed digital archive.**
+
+
+
+
 **Автор:** HALVITA
 
 **YouTube:** https://www.youtube.com/@HALVITA
