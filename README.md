@@ -22,6 +22,7 @@ HALVITA — независимый авторский экспериментал
 - **Pseudonym:** HALVITA
 - **GitHub identity:** HALVITA20
 - **ORCID:** https://orcid.org/0009-0007-5518-7801
+- **Substack:** https://halvita.substack.com/p/the-nine-laws-of-the-mirror-labyrinth
 
 ## 2. PERMANENT RESEARCH IDENTIFIER
 
