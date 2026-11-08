@@ -1,5 +1,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24046517.svg)](https://doi.org/10.5281/zenodo.24046517)
 
+[![ORCID](https://img.shields.io/badge/ORCID-0009--0007--5518--7801-A6CE39?style=for-the-badge&logo=orcid&logoColor=white)](https://orcid.org/0009-0007-5518-7801)
+
 **Автор:** HALVITA
 
 **YouTube:** https://www.youtube.com/@HALVITA
