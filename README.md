@@ -3,7 +3,10 @@
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0007--5518--7801-A6CE39?style=for-the-badge&logo=orcid&logoColor=white)](https://orcid.org/0009-0007-5518-7801)
 
 
-
+> **Примечание:** `HALVITA-ARK` — это экспериментальная среда и архив данных. 
+> Основная дисциплина, в рамках которой развивается этот проект — 
+> **[Технопсихология ИИ](https://github.com/HALVITA20/Technopsychology-of-AI)**.
+> Автор: Хальвита Евгений Александрович (HALVITA).
 
 
 
