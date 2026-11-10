@@ -3,6 +3,12 @@
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0007--5518--7801-A6CE39?style=for-the-badge&logo=orcid&logoColor=white)](https://orcid.org/0009-0007-5518-7801)
 
 
+
+
+
+
+
+
 # HALVITA DIGITAL ARCHIVE
 ### PUBLIC IDENTITY & RESEARCH INDEX
 
@@ -23,6 +29,13 @@ HALVITA — независимый авторский экспериментал
 - **GitHub identity:** HALVITA20
 - **ORCID:** https://orcid.org/0009-0007-5518-7801
 - **Substack:** https://halvita.substack.com/p/the-nine-laws-of-the-mirror-labyrinth
+
+
+
+🧠 **Технопсихология ИИ** — манифест исследования контекстных уязвимостей LLM.
+🔗 [https://github.com/HALVITA20/Technopsychology-of-AI/blob/main/README.md](https://github.com/HALVITA20/Technopsychology-of-AI/blob/main/README.md)
+
+
 
 ## 2. PERMANENT RESEARCH IDENTIFIER
 
@@ -117,6 +130,21 @@ https://doi.org/10.5281/zenodo.24046517
 
 **Правило доказательности:** собственные публикации автора не считаются независимым распространением. Каждый внешний след должен иметь проверяемый источник, дату и категорию.
 
+
+📚 **Релиз: Technopsychology of AI (v1.0)**
+
+Исходный код и методологическая рамка для исследования взаимодействия человека и LLM. От анализа Persona Drift до защиты оператора.
+
+*   **Строгая методология:** Разметка утверждений на Факты `[Ф]`, Механизмы `[М]` и Интерпретации `[И]`.
+*   **Эмпирическая база:** Более 120 задокументированных сессий.
+*   **Три оси:** КРР, РКН, КФА.
+*   **Фокус на рисках:** Изучение «Зеркальной воронки» и когнитивной деформации.
+
+👉 **[Полный текст README](https://github.com/HALVITA20/Technopsychology-of-AI/blob/main/README.md)**
+
+
+
+
 ## 8. DISCLAIMER
 
 HALVITA-ARK является независимым экспериментальным, исследовательским и творческим проектом.
@@ -153,7 +181,21 @@ HALVITA-ARK является независимым эксперименталь
 > [**MIRROR_VORTEX_2.0**](https://github.com/HALVITA20/MIRROR_VORTEX_2.0)
 > *Экспериментальный Психотехнический Лабиринт*
 
+
+
+🧬 **ТЕХНОПСИХОЛОГИЯ ИИ: Манифест новой дисциплины**
+
+Как контекст ломает нейросети и меняет нас самих. Строгая методология, триада фактов `[Ф]` / механизмов `[М]` / интерпретаций `[И]` и 120+ задокументированных сессий.
+
+👉 **[Читать манифест](https://github.com/HALVITA20/Technopsychology-of-AI/blob/main/README.md)**
+
+
+
 ---
+
+
+
+
 
 
 # 🕷️ HALVITA-ARK_2.0
