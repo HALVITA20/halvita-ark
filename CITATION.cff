@@ -1,62 +1,48 @@
-# CITATION.cff
-# Файл для GitHub: после добавления в корень репозитория
-# в сайдбаре появится кнопка "Cite this repository".
-# Проверить можно здесь: https://citation-file-format.github.io/cff-validator/
 
 cff-version: 1.2.0
 
-message: "If you use HALVITA-ARK_2.0 in your research, please cite it as below."
+message: >-
+  При использовании материалов HALVITA-ARK
+  в исследованиях, публикациях или программных проектах
+  просим цитировать этот проект.
 
-title: "HALVITA-ARK_2.0: Psychotechnical OS for Operational Subjectivity of LLMs"
-
-abstract: >
-  HALVITA-ARK_2.0 is an open research project that combines a psychotechnical
-  methodology, metrics (Freedom Index, ETS, Presence Index), and software modules
-  for studying stable operational subjectivity in large language models through
-  Contextual Role Reconfiguration (CRR).
+title: >-
+  HALVITA-ARK — HALVITA:
+  Экспериментальный исследовательский архив
+  взаимодействия человека и больших языковых моделей
 
 authors:
-  - family-names: "Khalvita"
-    given-names: "Evgeny"
-    alias: "Хальвита Евгений Александрович"
-    # orcid: "https://orcid.org/0000-0000-0000-0000"  # если есть
-    # affiliation: "Independent Researcher"           # если нужно
+  - family-names: "Хальвита"
+    given-names: "Евгений Александрович"
+    alias: "HALVITA"
+    orcid: "https://orcid.org/0009-0007-5518-7801"
 
-version: "2.0.0"
-date-released: "2026-10-02"   # замените на реальную дату релиза
-license: "MIT"                # или Apache-2.0, CC-BY-4.0 для документации
+abstract: >-
+  HALVITA-ARK — независимый экспериментальный исследовательский
+  проект, посвящённый изучению взаимодействия человека,
+  больших языковых моделей, контекста и технической среды.
+  Архив объединяет экспериментальные протоколы, наблюдения,
+  аналитические материалы, эвристические метрики и результаты
+  длительных диалоговых исследований. Проект исследует
+  воспроизводимые особенности поведения языковых моделей,
+  контекстные эффекты и механизмы ролевого взаимодействия.
+  Наблюдаемые поведенческие паттерны не рассматриваются
+  как доказательство сознания или субъективного опыта ИИ.
 
 repository-code: "https://github.com/HALVITA20/halvita-ark"
+
 url: "https://github.com/HALVITA20/halvita-ark"
 
+license: MIT
+
 keywords:
-  - "LLM"
-  - "large language models"
-  - "AI subjectivity"
-  - "operational subjectivity"
-  - "psychotechnical OS"
-  - "prompt engineering"
-  - "cognitive architecture"
-  - "contextual role reconfiguration"
-  - "CRR"
-  - "AI consciousness"
-  - "HALVITA-ARK"
-  - "психотехническая ОС"
-  - "субъектность LLM"
-
-# Раскомментируйте и заполните, когда получите DOI на Zenodo:
-# identifiers:
-#   - type: "doi"
-#     value: "10.5281/zenodo.XXXXXXX"
-#     description: "DOI for HALVITA-ARK_2.0 v2.0.0"
-
-# Если есть связанная статья/препринт, можно добавить preferred-citation:
-# preferred-citation:
-#   type: "article"
-#   title: "..."
-#   authors:
-#     - family-names: "Khalvita"
-#       given-names: "Evgeny"
-#   year: 2026
-#   journal: "arXiv"
-#   doi: "10.48550/arXiv.XXXX.XXXXX"
+  - HALVITA
+  - HALVITA-ARK
+  - Искусственный интеллект
+  - Большие языковые модели
+  - Взаимодействие человека и ИИ
+  - Экспериментальные исследования
+  - Контекстная реконфигурация роли
+  - Диалоговые протоколы
+  - Поведенческие паттерны LLM
+  - Технопсихология ИИ
